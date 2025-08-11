@@ -1,17 +1,19 @@
-/* Brutalism Theme Styles */
+/* Brutalism Theme Styles - Surgical & Targeted Version */
 
 /* Base brutalism theme */
 [data-theme="brutalism"] {
+  /* Typography */
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
+  
   /* Remove smooth transitions - brutalism is immediate */
   * {
     transition: none;
     animation-timing-function: step-end;
   }
-
-  /* Typography */
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0;
   
   h1, h2, h3, h4, h5, h6 {
     font-family: "Arial Black", "Helvetica Bold", sans-serif;
@@ -20,43 +22,29 @@
     letter-spacing: 0.05em;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
   }
-  
-  /* Backgrounds */
-  background-color: rgb(240, 240, 240);
-  color: rgb(0, 0, 0);
 }
 
 /* Brutalism color variables - Better Contrast */
 [data-theme="brutalism"] {
   --background: 0 0% 98%;
   --foreground: 0 0% 5%;
-  
   --muted: 0 0% 85%;
   --muted-foreground: 0 0% 25%;
-  
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 5%;
-  
   --card: 0 0% 100%;
   --card-foreground: 0 0% 5%;
-  
   --border: 0 0% 0%;
   --input: 0 0% 0%;
-  
   --primary: 45 100% 50%;
   --primary-foreground: 0 0% 0%;
-  
   --secondary: 0 100% 50%;
   --secondary-foreground: 0 0% 100%;
-  
   --accent: 210 100% 50%;
   --accent-foreground: 0 0% 100%;
-  
   --destructive: 350 80% 55%;
   --destructive-foreground: 0 0% 100%;
-  
   --ring: 45 100% 50%;
-  
   --radius: 0rem;
 }
 
@@ -64,1514 +52,755 @@
 .dark [data-theme="brutalism"] {
   --background: 0 0% 8%;
   --foreground: 0 0% 95%;
-  
   --muted: 0 0% 20%;
   --muted-foreground: 0 0% 70%;
-  
   --popover: 0 0% 12%;
   --popover-foreground: 0 0% 95%;
-  
   --card: 0 0% 12%;
   --card-foreground: 0 0% 95%;
-  
   --border: 0 0% 100%;
   --input: 0 0% 100%;
-  
   --primary: 45 100% 50%;
   --primary-foreground: 0 0% 0%;
-  
   --secondary: 0 100% 50%;
   --secondary-foreground: 0 0% 100%;
-  
   --accent: 210 100% 50%;
   --accent-foreground: 0 0% 100%;
-  
   --destructive: 350 80% 60%;
   --destructive-foreground: 0 0% 0%;
-  
   --ring: 45 100% 50%;
 }
 
-/* Fix icon visibility in brutalism theme - LIGHT MODE */
-[data-theme="brutalism"]:not(.dark) {
-  /* All icons should be black in light mode */
-  svg {
-    color: hsl(0 0% 0%) !important;
-    stroke: currentColor !important;
-  }
-  
-  /* Buttons and their icons */
-  button {
-    color: hsl(0 0% 0%) !important;
-  }
-  
-  button svg {
-    color: inherit !important;
-  }
+/* === TARGETED COMPONENT FIXES === */
+
+/* INPUT FIELD FIXES - Surgical targeting */
+[data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]) {
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+  border-radius: 0;
+  font-weight: 700;
+  padding: 0.75rem;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+  outline: none;
+  font-size: 16px;
+  line-height: 1.2;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  user-select: text;
+  cursor: text;
 }
 
-/* Fix icon visibility in brutalism theme - DARK MODE */
-.dark [data-theme="brutalism"] {
-  /* All icons should be white/light in dark mode */
-  svg {
-    color: hsl(0 0% 95%) !important;
-    stroke: currentColor !important;
-  }
-  
-  /* Ensure all lucide icons are visible */
-  .lucide,
-  svg.lucide {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  /* Navigation and header specific */
-  nav svg,
-  header svg {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  /* Buttons and their icons in dark mode */
-  button {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  button svg {
-    color: inherit !important;
-  }
-  
-  /* Theme customizer and settings icons */
-  .absolute svg,
-  [class*="z-"] svg {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  /* Icons in cards and components */
-  .card svg,
-  [data-card] svg {
-    color: hsl(0 0% 95%) !important;
-  }
+[data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]):focus {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+  border-color: black;
 }
 
-/* System dark mode support */
-@media (prefers-color-scheme: dark) {
-  [data-theme="brutalism"]:not(.light) svg {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  [data-theme="brutalism"]:not(.light) button {
-    color: hsl(0 0% 95%) !important;
-  }
-}
-  
-  /* Select and dropdown icons in dark mode */
-  [data-radix-select-trigger] {
-    background-color: hsl(0 0% 15%) !important;
-    color: hsl(0 0% 95%) !important;
-    border-color: hsl(0 0% 95%) !important;
-  }
-  
-  [data-radix-select-trigger] span,
-  [data-radix-select-trigger] svg {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  [data-radix-select-trigger] [data-placeholder] {
-    color: hsl(0 0% 60%) !important;
-  }
-  
-  /* Dropdown content in dark mode */
-  [data-radix-dropdown-menu-content],
-  [data-radix-select-content],
-  [data-radix-popover-content],
-  [role="menu"],
-  [role="listbox"] {
-    background-color: hsl(0 0% 12%) !important;
-    border-color: hsl(0 0% 95%) !important;
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  [data-radix-dropdown-menu-item],
-  [data-radix-select-item],
-  [role="menuitem"],
-  [role="option"] {
-    color: hsl(0 0% 95%) !important;
-  }
-  
-  [data-radix-dropdown-menu-item]:hover,
-  [data-radix-select-item]:hover,
-  [data-radix-dropdown-menu-item][data-highlighted],
-  [data-radix-select-item][data-highlighted],
-  [role="menuitem"]:hover,
-  [role="option"]:hover {
-    background-color: hsl(45, 100%, 50%) !important;
-    color: black !important;
-  }
-
-/* Brutalism components */
-[data-theme="brutalism"] {
-  /* Ensure interactive elements are clickable */
-  button,
-  [role="button"],
-  a,
-  input,
-  select,
-  textarea,
-  [data-radix-select-trigger],
-  [data-radix-dropdown-menu-trigger],
-  [data-radix-dialog-trigger] {
-    pointer-events: auto !important;
-    user-select: auto !important;
-  }
-  /* === INPUT FIELD FIXES === */
-  
-  /* Ensure inputs are fully interactive and accessible */
-  input,
-  textarea,
-  [contenteditable] {
-    pointer-events: auto !important;
-    user-select: text !important;
-    cursor: text !important;
-    z-index: 10 !important;
-    position: relative !important;
-    -webkit-user-select: text !important;
-    -moz-user-select: text !important;
-    -ms-user-select: text !important;
-  }
-  
-  /* Remove any overlay that might block input */
-  input::before,
-  input::after {
-    display: none !important;
-  }
-  
-  /* Ensure input containers don't block interaction */
-  .relative:has(input),
-  [class*="input"]:has(input),
-  div:has(input) {
-    pointer-events: auto !important;
-    z-index: 1 !important;
-    position: relative !important;
-  }
-  
-  /* Fix input styling while preserving brutalist look */
-  input {
-    background-color: white !important;
-    color: black !important;
-    border: 3px solid black !important;
-    border-radius: 0 !important;
-    font-weight: 700 !important;
-    padding: 0.75rem !important;
-    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3) !important;
-    outline: none !important;
-    width: 100% !important;
-    min-height: 44px !important;
-    font-size: 16px !important;
-    line-height: 1.2 !important;
-    -webkit-appearance: none !important;
-    -moz-appearance: none !important;
-    appearance: none !important;
-    -webkit-tap-highlight-color: transparent !important;
-  }
-  
-  input:focus {
-    background-color: white !important;
-    color: black !important;
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 2px !important;
-    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5) !important;
-    z-index: 100 !important;
-    border-color: black !important;
-  }
-  
-  input:hover:not(:focus) {
-    box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.4) !important;
-    transform: translate(-1px, -1px) !important;
-  }
-  
-  input::placeholder {
-    color: hsl(0, 0%, 50%) !important;
-    opacity: 1 !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-  }
-  
-  /* Fix any input overlays or pseudo-elements that might interfere */
-  input::-webkit-inner-spin-button,
-  input::-webkit-outer-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
-  }
-  
-  input[type="number"] {
-    -moz-appearance: textfield !important;
-  }
-
-  /* === CHECKBOX & RADIO FIXES === */
-  
-  /* Checkbox styling - ensure tick is visible */
-  [data-radix-checkbox-root],
-  .checkbox,
-  input[type="checkbox"] {
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    background-color: white !important;
-    width: 20px !important;
-    height: 20px !important;
-    cursor: pointer !important;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1) !important;
-    position: relative !important;
-    flex-shrink: 0 !important;
-  }
-  
-  /* Checkbox hover state */
-  [data-radix-checkbox-root]:hover:not([data-state="checked"]),
-  .checkbox:hover:not(:checked),
-  input[type="checkbox"]:hover:not(:checked) {
-    background-color: hsl(0, 0%, 95%) !important;
-    transform: translate(-1px, -1px) !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
-  }
-  
-  /* Checked state - high contrast yellow background */
-  [data-radix-checkbox-root][data-state="checked"],
-  .checkbox:checked,
-  input[type="checkbox"]:checked {
-    background-color: hsl(45, 100%, 60%) !important;
-    border-color: black !important;
-    color: black !important;
-  }
-  
-  /* Checkbox indicator (tick mark) - maximum contrast */
-  [data-radix-checkbox-indicator],
-  .checkbox-indicator {
-    color: black !important;
-    stroke: black !important;
-    stroke-width: 4px !important;
-    font-weight: 900 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    fill: black !important;
-  }
-  
-  /* Check mark icon - ultra thick and black for maximum visibility */
-  [data-radix-checkbox-indicator] svg,
-  .checkbox-indicator svg {
-    color: black !important;
-    stroke: black !important;
-    stroke-width: 4px !important;
-    width: 14px !important;
-    height: 14px !important;
-    fill: black !important;
-    stroke-linecap: round !important;
-    stroke-linejoin: round !important;
-    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.8)) !important;
-  }
-  
-  /* Alternative checkmark using CSS for maximum visibility */
-  [data-radix-checkbox-indicator]:before {
-    content: "✓" !important;
-    position: absolute !important;
-    font-size: 16px !important;
-    font-weight: 900 !important;
-    color: black !important;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    line-height: 1 !important;
-  }
-  
-  /* Radio button styling - proper circles */
-  [data-radix-radio-group-item],
-  .radio,
-  input[type="radio"] {
-    border: 4px solid black !important;
-    border-radius: 50% !important; /* Force circular shape - critical */
-    background-color: white !important;
-    width: 20px !important;
-    height: 20px !important;
-    cursor: pointer !important;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1) !important;
-    position: relative !important;
-    flex-shrink: 0 !important;
-    min-width: 20px !important;
-    min-height: 20px !important;
-    max-width: 20px !important;
-    max-height: 20px !important;
-  }
-  
-  /* Radio hover state */
-  [data-radix-radio-group-item]:hover:not([data-state="checked"]),
-  .radio:hover:not(:checked),
-  input[type="radio"]:hover:not(:checked) {
-    background-color: hsl(0, 0%, 95%) !important;
-    transform: translate(-1px, -1px) !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
-    border-radius: 50% !important;
-  }
-  
-  /* Radio checked state */
-  [data-radix-radio-group-item][data-state="checked"],
-  .radio:checked,
-  input[type="radio"]:checked {
-    background-color: hsl(45, 100%, 60%) !important;
-    border-color: black !important;
-    border-radius: 50% !important;
-  }
-  
-  /* Radio indicator (dot) */
-  [data-radix-radio-group-indicator],
-  .radio-indicator {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    position: relative !important;
-    border-radius: 50% !important;
-  }
-  
-  /* Radio dot - larger and more visible */
-  [data-radix-radio-group-indicator] > div,
-  .radio-indicator > div {
-    width: 10px !important;
-    height: 10px !important;
-    border-radius: 50% !important;
-    background-color: black !important;
-    position: relative !important;
-    z-index: 2 !important;
-  }
-  
-  /* Alternative radio dot using CSS for guaranteed visibility */
-  [data-radix-radio-group-indicator]:before {
-    content: "" !important;
-    position: absolute !important;
-    width: 10px !important;
-    height: 10px !important;
-    border-radius: 50% !important;
-    background-color: black !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    display: block !important;
-  }
-
-  /* === SWITCH FIXES === */
-  
-  /* Switch root container - clean brutalist toggle */
-  [data-radix-switch-root],
-  .switch {
-    background-color: hsl(0, 0%, 85%) !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    width: 50px !important;
-    height: 26px !important;
-    cursor: pointer !important;
-    position: relative !important;
-    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
-    transition: none !important;
-    overflow: hidden !important;
-  }
-  
-  /* Switch checked state - clearly ON */
-  [data-radix-switch-root][data-state="checked"],
-  .switch:checked {
-    background-color: hsl(45, 100%, 60%) !important;
-    border-color: black !important;
-  }
-  
-  /* Switch thumb (the sliding part) - clean square slider */
-  [data-radix-switch-thumb],
-  .switch-thumb {
-    background-color: white !important;
-    border: 3px solid black !important;
-    border-radius: 0 !important;
-    width: 18px !important;
-    height: 18px !important;
-    display: block !important;
-    position: relative !important;
-    transform: translateX(1px) translateY(-50%) !important;
-    top: 50% !important;
-    transition: transform 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
-    z-index: 2 !important;
-  }
-  
-  /* Switch thumb in checked state - slides to the right */
-  [data-radix-switch-root][data-state="checked"] [data-radix-switch-thumb],
-  .switch:checked .switch-thumb {
-    transform: translateX(23px) translateY(-50%) !important;
-    background-color: black !important;
-    border-color: black !important;
-  }
-  
-  /* Remove ALL content inside switch - no ticks, no icons */
-  [data-radix-switch-root]::before,
-  [data-radix-switch-root]::after,
-  [data-radix-switch-root] *::before,
-  [data-radix-switch-root] *::after {
-    display: none !important;
-    content: none !important;
-  }
-  
-  /* Remove any SVG or icon content */
-  [data-radix-switch-root] svg,
-  [data-radix-switch-root] .icon,
-  [data-radix-switch-root] [class*="icon"] {
-    display: none !important;
-  }
-  
-  /* Clean text content if any */
-  [data-radix-switch-root] span:not([data-radix-switch-thumb]) {
-    display: none !important;
-  }
-  
-  /* Switch hover state */
-  [data-radix-switch-root]:hover:not(:disabled) {
-    transform: translate(-1px, -1px) !important;
-    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3), 3px 3px 0px rgba(0, 0, 0, 1) !important;
-  }
-  
-  /* Switch focus state */
-  [data-radix-switch-root]:focus-visible {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 3px !important;
-  }
-  
-  /* Disabled switch state */
-  [data-radix-switch-root]:disabled {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
-    background: repeating-linear-gradient(
-      45deg,
-      hsl(0, 0%, 80%),
-      hsl(0, 0%, 80%) 8px,
-      hsl(0, 0%, 70%) 8px,
-      hsl(0, 0%, 70%) 16px
-    ) !important;
-  }
-
-  /* === SLIDER FIXES === */
-  
-  /* Slider root - fully interactive container */
-  [data-radix-slider-root],
-  .slider {
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: 30px !important;
-    touch-action: none !important;
-    user-select: none !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    z-index: 1 !important;
-  }
-  
-  /* Slider track - clickable background */
-  [data-radix-slider-track],
-  .slider-track {
-    background-color: hsl(0, 0%, 85%) !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    position: relative !important;
-    flex-grow: 1 !important;
-    height: 16px !important;
-    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
-    cursor: pointer !important;
-    pointer-events: auto !important;
-  }
-  
-  /* Slider range (filled portion) */
-  [data-radix-slider-range],
-  .slider-range {
-    background-color: hsl(45, 100%, 60%) !important;
-    position: absolute !important;
-    height: 100% !important;
-    border-right: 3px solid black !important;
-    pointer-events: none !important;
-  }
-  
-  /* Slider thumb - draggable handle */
-  [data-radix-slider-thumb],
-  .slider-thumb {
-    background-color: white !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    width: 24px !important;
-    height: 24px !important;
-    display: block !important;
-    cursor: grab !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
-    transition: none !important;
-    position: relative !important;
-    z-index: 10 !important;
-    pointer-events: auto !important;
-    touch-action: none !important;
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;
-    -khtml-user-select: none !important;
-    -moz-user-select: none !important;
-    -ms-user-select: none !important;
-    user-select: none !important;
-    outline: none !important;
-  }
-  
-  /* Slider thumb active state - being dragged */
-  [data-radix-slider-thumb]:active,
-  [data-radix-slider-thumb][data-state="active"] {
-    cursor: grabbing !important;
-    background-color: hsl(45, 100%, 60%) !important;
-    transform: translate(1px, 1px) !important;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
-    z-index: 20 !important;
-  }
-  
-  /* Slider thumb hover state */
-  [data-radix-slider-thumb]:hover:not(:active):not([data-state="active"]) {
-    background-color: hsl(0, 0%, 95%) !important;
-    transform: translate(-1px, -1px) !important;
-    box-shadow: 5px 5px 0px rgba(0, 0, 0, 1) !important;
-  }
-  
-  /* Slider thumb focus state */
-  [data-radix-slider-thumb]:focus,
-  [data-radix-slider-thumb]:focus-visible {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 3px !important;
-    z-index: 15 !important;
-  }
-  
-  /* Ensure ALL slider elements are interactive */
-  [data-radix-slider-root],
-  [data-radix-slider-root] *,
-  [data-radix-slider-track],
-  [data-radix-slider-range],
-  [data-radix-slider-thumb] {
-    pointer-events: auto !important;
-  }
-  
-  /* Remove any conflicting styles that might block interaction */
-  [data-radix-slider-root]::before,
-  [data-radix-slider-root]::after {
-    display: none !important;
-  }
-  
-  /* Ensure track is clickable for jumping to position */
-  [data-radix-slider-track]:hover {
-    background-color: hsl(0, 0%, 80%) !important;
-  }
-
-  /* === TABS FIXES === */
-  
-  /* Tabs list - proper spacing between tabs */
-  [data-radix-tabs-list],
-  .tabs-list {
-    background-color: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    gap: 4px !important;
-    display: flex !important;
-    box-shadow: none !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    min-height: 48px !important;
-  }
-  
-  /* Tab triggers - individual tabs with clear spacing */
-  [data-radix-tabs-trigger],
-  .tabs-trigger {
-    background-color: hsl(0, 0%, 90%) !important;
-    color: black !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 1.25rem !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    cursor: pointer !important;
-    position: relative !important;
-    white-space: nowrap !important;
-    overflow: visible !important;
-    min-width: fit-content !important;
-    flex-shrink: 0 !important;
-    margin-right: 4px !important;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1) !important;
-    line-height: 1.2 !important;
-    font-size: 14px !important;
-    letter-spacing: 0.05em !important;
-  }
-  
-  /* Remove margin from last tab */
-  [data-radix-tabs-trigger]:last-child {
-    margin-right: 0 !important;
-  }
-  
-  /* Active tab state - distinct styling */
-  [data-radix-tabs-trigger][data-state="active"],
-  .tabs-trigger[data-state="active"] {
-    background-color: hsl(45, 100%, 60%) !important;
-    color: black !important;
-    border-color: black !important;
-    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3) !important;
-    z-index: 2 !important;
-    transform: none !important;
-  }
-  
-  /* Tab hover state */
-  [data-radix-tabs-trigger]:hover:not([data-state="active"]) {
-    background-color: white !important;
-    transform: translate(-1px, -1px) !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
-    z-index: 1 !important;
-  }
-  
-  /* Tab focus state */
-  [data-radix-tabs-trigger]:focus-visible {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 2px !important;
-    z-index: 3 !important;
-  }
-  
-  /* Tab content - clear separation from tabs */
-  [data-radix-tabs-content],
-  .tabs-content {
-    background-color: white !important;
-    color: black !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    padding: 1.5rem !important;
-    margin-top: 8px !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
-    min-height: 200px !important;
-  }
-  
-  /* Ensure tab text doesn't get cut off */
-  [data-radix-tabs-trigger] span,
-  [data-radix-tabs-trigger] * {
-    display: block !important;
-    text-overflow: visible !important;
-    overflow: visible !important;
-  }
-  
-  /* Tab disabled state */
-  [data-radix-tabs-trigger]:disabled,
-  [data-radix-tabs-trigger][data-disabled] {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
-    background: repeating-linear-gradient(
-      45deg,
-      hsl(0, 0%, 80%),
-      hsl(0, 0%, 80%) 6px,
-      hsl(0, 0%, 70%) 6px,
-      hsl(0, 0%, 70%) 12px
-    ) !important;
-    transform: none !important;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5) !important;
-  }
-
-  /* === ALERT COMPONENT FIXES === */
-  
-  /* Alert styling with maximum contrast */
-  .alert,
-  [role="alert"],
-  [data-alert],
-  [class*="alert"] {
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    padding: 1.25rem !important;
-    background-color: white !important;
-    color: black !important;
-    font-weight: 700 !important;
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1) !important;
-    position: relative !important;
-    margin: 1rem 0 !important;
-  }
-  
-  /* Alert variants - high contrast versions */
-  .alert[data-variant="warning"],
-  .alert.warning,
-  [role="alert"][data-variant="warning"] {
-    background-color: hsl(45, 100%, 90%) !important;
-    color: black !important;
-    border-color: hsl(45, 100%, 25%) !important;
-    border-width: 5px !important;
-  }
-  
-  .alert[data-variant="destructive"],
-  .alert.destructive,
-  [role="alert"][data-variant="destructive"] {
-    background-color: hsl(0, 100%, 95%) !important;
-    color: black !important;
-    border-color: hsl(0, 100%, 25%) !important;
-    border-width: 5px !important;
-  }
-  
-  .alert[data-variant="info"],
-  .alert.info,
-  [role="alert"][data-variant="info"] {
-    background-color: hsl(210, 100%, 95%) !important;
-    color: black !important;
-    border-color: hsl(210, 100%, 25%) !important;
-    border-width: 5px !important;
-  }
-  
-  /* ALL alert text and icons - force black */
-  .alert,
-  .alert *,
-  [role="alert"],
-  [role="alert"] *,
-  [data-alert],
-  [data-alert] * {
-    color: black !important;
-  }
-  
-  /* Fix ALL yellow text variants in alerts */
-  .alert .text-yellow-600,
-  .alert .text-yellow-500,
-  .alert .text-yellow-400,
-  .alert .text-yellow-700,
-  .alert .text-yellow-800,
-  [role="alert"] .text-yellow-600,
-  [role="alert"] .text-yellow-500,
-  [role="alert"] .text-yellow-400,
-  [role="alert"] .text-yellow-700,
-  [role="alert"] .text-yellow-800,
-  .alert [class*="text-yellow"],
-  [role="alert"] [class*="text-yellow"] {
-    color: hsl(45, 100%, 20%) !important;
-    font-weight: 900 !important;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  /* Fix other problematic color classes in alerts */
-  .alert [class*="text-"],
-  [role="alert"] [class*="text-"] {
-    color: black !important;
-  }
-  
-  /* Alert titles and descriptions */
-  .alert h1,
-  .alert h2,
-  .alert h3,
-  .alert h4,
-  .alert h5,
-  .alert h6,
-  .alert .alert-title,
-  .alert .alert-description,
-  [role="alert"] h1,
-  [role="alert"] h2,
-  [role="alert"] h3,
-  [role="alert"] h4,
-  [role="alert"] h5,
-  [role="alert"] h6,
-  [role="alert"] .alert-title,
-  [role="alert"] .alert-description {
-    color: black !important;
-    font-weight: 900 !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  /* Alert icons - ensure visibility */
-  .alert svg,
-  [role="alert"] svg,
-  .alert .icon,
-  [role="alert"] .icon {
-    color: black !important;
-    stroke: black !important;
-    fill: black !important;
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  /* === DROPDOWN & POPOVER FIXES === */
-  
-  /* All Radix dropdown content */
-  [data-radix-dropdown-menu-content],
-  [data-radix-select-content],
-  [data-radix-popover-content],
-  [data-radix-context-menu-content],
-  [role="menu"],
-  [role="listbox"] {
-    background-color: white !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
-    z-index: 50 !important;
-    overflow: visible !important;
-  }
-  
-  /* Dropdown menu items */
-  [data-radix-dropdown-menu-item],
-  [data-radix-select-item],
-  [data-radix-context-menu-item],
-  [role="menuitem"],
-  [role="option"] {
-    border-radius: 0 !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    padding: 0.5rem 1rem !important;
-    color: black !important;
-    cursor: pointer !important;
-    transition: none !important;
-  }
-  
-  /* Hover states for menu items */
-  [data-radix-dropdown-menu-item]:hover,
-  [data-radix-dropdown-menu-item][data-highlighted],
-  [data-radix-select-item]:hover,
-  [data-radix-select-item][data-highlighted],
-  [data-radix-context-menu-item]:hover,
-  [data-radix-context-menu-item][data-highlighted],
-  [role="menuitem"]:hover,
-  [role="option"]:hover,
-  [role="option"][data-highlighted] {
-    background-color: hsl(45, 100%, 50%) !important;
-    color: black !important;
-    outline: none !important;
-  }
-  
-  /* Select trigger specific - improved for interactivity */
-  [data-radix-select-trigger] {
-    background-color: white;
-    color: black;
-    border: 4px solid black;
-    border-radius: 0;
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-    cursor: pointer;
-  }
-  
-  [data-radix-select-trigger]:focus {
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 2px !important;
-  }
-  
-  /* Select value and placeholder */
-  [data-radix-select-trigger] span {
-    color: black !important;
-  }
-  
-  [data-radix-select-trigger] [data-placeholder] {
-    color: hsl(0, 0%, 40%) !important;
-  }
-  
-  /* Select icon (chevron) */
-  [data-radix-select-trigger] svg {
-    color: black !important;
-    stroke-width: 3px !important;
-  }
-  
-  /* Select viewport */
-  [data-radix-select-viewport] {
-    padding: 0 !important;
-  }
-  
-  /* Dropdown separators */
-  [data-radix-dropdown-menu-separator],
-  [data-radix-context-menu-separator] {
-    height: 4px !important;
-    background-color: black !important;
-    margin: 0 !important;
-  }
-  
-  /* === BUTTON & CARD LAYOUT FIXES === */
-  
-  /* Buttons - stable positioning and proper contrast */
-  button,
-  .btn,
-  [role="button"] {
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1) !important;
-    font-weight: 900 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.1em !important;
-    padding: 0.75rem 1.5rem !important;
-    cursor: pointer !important;
-    position: relative !important;
-    z-index: 1 !important;
-    background-color: white !important;
-    color: black !important;
-    transition: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: fit-content !important;
-    margin: 2px !important; /* Add stable margin to prevent layout shift */
-  }
-  
-  /* Button hover - stable transform with margin compensation */
-  button:hover:not(:disabled),
-  .btn:hover:not(:disabled),
-  [role="button"]:hover:not(:disabled) {
-    transform: translate(-2px, -2px) !important;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
-    margin: 0px !important; /* Compensate for transform */
-  }
-  
-  /* Button active - pressed effect with margin compensation */
-  button:active:not(:disabled),
-  .btn:active:not(:disabled),
-  [role="button"]:active:not(:disabled) {
-    transform: translate(2px, 2px) !important;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
-    margin: 4px 2px 0px 4px !important; /* Compensate for transform */
-  }
-  
-  /* Yellow buttons - improved contrast */
-  button[class*="yellow"],
-  .btn[class*="yellow"],
-  [class*="bg-yellow"] button,
-  [class*="bg-primary"] button,
-  button.bg-primary,
-  .btn.bg-primary {
-    background-color: hsl(45, 100%, 60%) !important;
-    color: black !important;
-    border-color: black !important;
-    font-weight: 900 !important;
-  }
-  
-  /* Primary variant button text - force black */
-  .bg-primary,
-  [class*="bg-primary"] {
-    color: black !important;
-  }
-  
-  .bg-primary *,
-  [class*="bg-primary"] * {
-    color: black !important;
-  }
-  
-  /* Button containers - prevent layout shift with stable space allocation */
-  .flex:has(button),
-  .grid:has(button),
-  [class*="space-"]:has(button) {
-    align-items: flex-start !important;
-    gap: 8px !important; /* Consistent spacing */
-  }
-  
-  /* Button groups - maintain consistent spacing */
-  .flex button + button,
-  .space-x-3 button + button,
-  .grid button {
-    margin-left: 0px !important; /* Remove margin, use gap instead */
-  }
-  
-  /* Button container specific fixes for stable layout */
-  .space-x-3,
-  .space-x-4,
-  [class*="space-x-"] {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: flex-start !important;
-    gap: 0.75rem !important;
-  }
-  
-  .space-x-3 > *,
-  .space-x-4 > *,
-  [class*="space-x-"] > * {
-    margin: 0 !important;
-  }
-  
-  /* Cards - stable layout and no unwanted hover effects */
-  .card,
-  [data-card],
-  [class*="card"] {
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
-    background-color: white !important;
-    position: relative !important;
-    z-index: 1 !important;
-    color: black !important;
-    transition: none !important;
-    padding: 1.5rem !important;
-  }
-  
-  /* Remove ALL unwanted hover effects from cards */
-  .card:hover,
-  [data-card]:hover,
-  [class*="card"]:hover,
-  .card:hover *,
-  [data-card]:hover *,
-  [class*="card"]:hover * {
-    background-color: white !important;
-    color: black !important;
-    border-color: black !important;
-    transform: none !important; /* Prevent any transforms */
-  }
-  
-  /* Force card content to stay black */
-  .card,
-  .card *,
-  [data-card],
-  [data-card] *,
-  [class*="card"],
-  [class*="card"] * {
-    color: black !important;
-    background: transparent !important;
-  }
-  
-  /* Card headers and content */
-  .card-header,
-  .card-content,
-  .card-footer,
-  .card-title,
-  .card-description {
-    color: black !important;
-    background: transparent !important;
-  }
-  
-  /* Inputs - enhanced for full interactivity */
-  textarea,
-  select {
-    border: 3px solid black;
-    border-radius: 0;
-    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
-    font-weight: 700;
-    padding: 0.5rem;
-    background-color: white;
-    cursor: text;
-    pointer-events: auto;
-    user-select: text;
-  }
-  
-  /* Fix search input with icon - maintain interactivity */
-  .relative input {
-    padding-left: 2.5rem !important;
-    pointer-events: auto !important;
-    z-index: 2 !important;
-  }
-  
-  /* Ensure icons don't overlap or block input */
-  .relative > svg:first-child {
-    pointer-events: none !important;
-    z-index: 1 !important;
-  }
-  
-  .relative > svg:first-child + input {
-    padding-left: 2.5rem !important;
-    pointer-events: auto !important;
-    z-index: 2 !important;
-  }
-  
-  textarea:focus,
-  select:focus {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 2px;
-    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Badges */
-  .badge {
-    border: 2px solid black !important;
-    border-radius: 0 !important;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.75rem;
-  }
-  
-  /* Checkbox and Radio hover states */
-  [data-radix-checkbox-root]:hover,
-  [data-radix-radio-group-item]:hover {
-    transform: translate(-1px, -1px) !important;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 1) !important;
-  }
-  
-  /* Focus states for checkboxes and radios */
-  [data-radix-checkbox-root]:focus-visible,
-  [data-radix-radio-group-item]:focus-visible {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 2px !important;
-  }
-  
-  /* Ensure no double icons or content in switches */
-  [data-radix-switch-root] svg,
-  [data-radix-switch-root] .icon {
-    display: none !important;
-  }
-  
-  /* Slider keyboard navigation */
-  [data-radix-slider-thumb]:focus {
-    outline: none !important;
-  }
-  
-  [data-radix-slider-thumb]:focus-visible {
-    outline: 3px solid hsl(45, 100%, 50%) !important;
-    outline-offset: 3px !important;
-  }
-  
-  /* === REMOVE PURPLE HOVER EFFECTS GLOBALLY === */
-  
-  /* Prevent ALL purple/violet hover effects */
-  * {
-    --tw-text-opacity: 1 !important;
-  }
-  
-  /* Override ALL purple/violet color variables */
-  :root {
-    --purple: hsl(0, 0%, 0%) !important;
-    --violet: hsl(0, 0%, 0%) !important;
-    --purple-50: hsl(0, 0%, 100%) !important;
-    --purple-100: hsl(0, 0%, 95%) !important;
-    --purple-200: hsl(0, 0%, 90%) !important;
-    --purple-300: hsl(0, 0%, 80%) !important;
-    --purple-400: hsl(0, 0%, 70%) !important;
-    --purple-500: hsl(0, 0%, 0%) !important;
-    --purple-600: hsl(0, 0%, 0%) !important;
-    --purple-700: hsl(0, 0%, 0%) !important;
-    --purple-800: hsl(0, 0%, 0%) !important;
-    --purple-900: hsl(0, 0%, 0%) !important;
-    --violet-50: hsl(0, 0%, 100%) !important;
-    --violet-100: hsl(0, 0%, 95%) !important;
-    --violet-200: hsl(0, 0%, 90%) !important;
-    --violet-300: hsl(0, 0%, 80%) !important;
-    --violet-400: hsl(0, 0%, 70%) !important;
-    --violet-500: hsl(0, 0%, 0%) !important;
-    --violet-600: hsl(0, 0%, 0%) !important;
-    --violet-700: hsl(0, 0%, 0%) !important;
-    --violet-800: hsl(0, 0%, 0%) !important;
-    --violet-900: hsl(0, 0%, 0%) !important;
-  }
-  
-  /* Remove purple hover effects from ALL elements */
-  *:hover,
-  *:focus,
-  *:active {
-    background-color: inherit !important;
-    color: inherit !important;
-  }
-  
-  /* Force override any purple/violet classes */
-  .text-purple-500,
-  .text-purple-600,
-  .text-purple-700,
-  .text-violet-500,
-  .text-violet-600,
-  .text-violet-700,
-  [class*="text-purple"],
-  [class*="text-violet"],
-  .bg-purple-500,
-  .bg-purple-600,
-  .bg-purple-700,
-  .bg-violet-500,
-  .bg-violet-600,
-  .bg-violet-700,
-  [class*="bg-purple"],
-  [class*="bg-violet"],
-  .border-purple-500,
-  .border-purple-600,
-  .border-purple-700,
-  .border-violet-500,
-  .border-violet-600,
-  .border-violet-700,
-  [class*="border-purple"],
-  [class*="border-violet"] {
-    color: black !important;
-    background-color: white !important;
-    border-color: black !important;
-  }
-  
-  /* Force override hover states with purple/violet */
-  *:hover.text-purple-500,
-  *:hover.text-purple-600,
-  *:hover.text-purple-700,
-  *:hover.text-violet-500,
-  *:hover.text-violet-600,
-  *:hover.text-violet-700,
-  *:hover[class*="text-purple"],
-  *:hover[class*="text-violet"],
-  *:hover.bg-purple-500,
-  *:hover.bg-purple-600,
-  *:hover.bg-purple-700,
-  *:hover.bg-violet-500,
-  *:hover.bg-violet-600,
-  *:hover.bg-violet-700,
-  *:hover[class*="bg-purple"],
-  *:hover[class*="bg-violet"] {
-    color: black !important;
-    background-color: white !important;
-    border-color: black !important;
-  }
-  
-  /* Specifically target cards and their children */
-  .card,
-  .card *,
-  .card:hover,
-  .card:hover *,
-  [data-card],
-  [data-card] *,
-  [data-card]:hover,
-  [data-card]:hover *,
-  [class*="card"],
-  [class*="card"] *,
-  [class*="card"]:hover,
-  [class*="card"]:hover * {
-    color: black !important;
-    background-color: transparent !important;
-    border-color: black !important;
-  }
-  
-  /* Ensure card background stays white */
-  .card,
-  [data-card],
-  [class*="card"] {
-    background-color: white !important;
-  }
-  
-  /* Dialogs/Modals */
-  [role="dialog"],
-  .modal,
-  .dialog {
-    border: 6px solid black !important;
-    border-radius: 0 !important;
-    box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
-  }
-  
-  /* Tables */
-  table {
-    border: 4px solid black !important;
-    border-collapse: separate;
-    border-spacing: 0;
-  }
-  
-  th {
-    border: 3px solid black !important;
-    background-color: hsl(45, 100%, 50%);
-    color: black;
-    font-weight: 900;
-    text-transform: uppercase;
-    padding: 1rem;
-  }
-  
-  td {
-    border: 2px solid black !important;
-    padding: 0.75rem;
-    font-weight: 700;
-  }
-  
-  /* Links */
-  a {
-    color: hsl(210, 100%, 50%);
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 2px;
-    font-weight: 900;
-  }
-  
-  a:hover {
-    background-color: hsl(45, 100%, 50%);
-    color: black;
-    text-decoration: none;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
-  }
-  
-  /* Scrollbars */
-  ::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: hsl(0, 0%, 80%);
-    border: 2px solid black;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: hsl(45, 100%, 50%);
-    border: 2px solid black;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(0, 100%, 50%);
-  }
-  
-  /* === POPOVER SPECIFIC === */
-  [data-radix-popover-content] {
-    background-color: white !important;
-    border: 4px solid black !important;
-    border-radius: 0 !important;
-    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
-    padding: 1rem !important;
-  }
-  
-  /* === TOOLTIP SPECIFIC === */
-  [data-radix-tooltip-content] {
-    background-color: black !important;
-    color: white !important;
-    border: 2px solid black !important;
-    border-radius: 0 !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    padding: 0.5rem 0.75rem !important;
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5) !important;
-  }
+[data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]):hover:not(:focus) {
+  box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.4);
+  transform: translate(-1px, -1px);
 }
 
-/* Brutalism animations - harsh and immediate */
-@keyframes brutalism-slam {
-  0% {
-    transform: scale(0) rotate(180deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes brutalism-shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-10px);
-  }
-  75% {
-    transform: translateX(10px);
-  }
-}
-
-@keyframes brutalism-flash {
-  0%, 100% {
-    background-color: transparent;
-  }
-  50% {
-    background-color: hsl(45, 100%, 50%);
-  }
-}
-
-@keyframes brutalism-glitch {
-  0%, 100% {
-    transform: translate(0);
-    filter: hue-rotate(0deg);
-  }
-  20% {
-    transform: translate(-4px, 4px);
-    filter: hue-rotate(90deg);
-  }
-  40% {
-    transform: translate(4px, -4px);
-    filter: hue-rotate(180deg);
-  }
-  60% {
-    transform: translate(-4px, -4px);
-    filter: hue-rotate(270deg);
-  }
-  80% {
-    transform: translate(4px, 4px);
-    filter: hue-rotate(360deg);
-  }
-}
-
-/* Utility classes for brutalism */
-.brutalism-slam {
-  animation: brutalism-slam 0.3s steps(4, end);
-}
-
-.brutalism-shake {
-  animation: brutalism-shake 0.2s steps(3, end);
-}
-
-.brutalism-flash {
-  animation: brutalism-flash 0.3s steps(2, end);
-}
-
-.brutalism-glitch {
-  animation: brutalism-glitch 0.5s steps(5, end) infinite;
-}
-
-/* Brutalism hover effects */
-.brutalism-hover-slam:hover {
-  animation: brutalism-slam 0.2s steps(3, end);
-}
-
-.brutalism-hover-shake:hover {
-  animation: brutalism-shake 0.15s steps(2, end);
-}
-
-.brutalism-hover-flash:hover {
-  animation: brutalism-flash 0.2s steps(2, end);
-}
-
-/* Offset grid layout */
-.brutalism-offset-grid {
-  display: grid;
-  gap: 0;
-}
-
-.brutalism-offset-grid > *:nth-child(even) {
-  transform: translateY(20px);
-}
-
-/* Diagonal stripes background */
-.brutalism-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(0, 0, 0, 0.1) 10px,
-    rgba(0, 0, 0, 0.1) 20px
-  );
-}
-
-/* Dots pattern background */
-.brutalism-dots {
-  background-image: radial-gradient(circle, black 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-/* Brutalism text styles */
-.brutalism-outline-text {
-  color: transparent;
-  -webkit-text-stroke: 3px black;
-  text-stroke: 3px black;
-  font-weight: 900;
+[data-theme="brutalism"] input::placeholder {
+  color: hsl(0, 0%, 50%);
+  opacity: 1;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
-.brutalism-split-text {
-  background: linear-gradient(to right, black 50%, hsl(45, 100%, 50%) 50%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* CHECKBOX FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-checkbox-root] {
+  border: 4px solid black;
+  border-radius: 0;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+[data-theme="brutalism"] [data-radix-checkbox-root]:hover:not([data-state="checked"]) {
+  background-color: hsl(0, 0%, 95%);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+[data-theme="brutalism"] [data-radix-checkbox-root][data-state="checked"] {
+  background-color: hsl(45, 100%, 60%);
+  border-color: black;
+  color: black;
+}
+
+[data-theme="brutalism"] [data-radix-checkbox-indicator] {
+  color: black;
+  stroke: black;
+  stroke-width: 4px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  fill: black;
+}
+
+[data-theme="brutalism"] [data-radix-checkbox-indicator] svg {
+  color: black;
+  stroke: black;
+  stroke-width: 4px;
+  width: 14px;
+  height: 14px;
+  fill: black;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* RADIO BUTTON FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-radio-group-item] {
+  border: 4px solid black;
+  border-radius: 50%;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  position: relative;
+  flex-shrink: 0;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+[data-theme="brutalism"] [data-radix-radio-group-item]:hover:not([data-state="checked"]) {
+  background-color: hsl(0, 0%, 95%);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+[data-theme="brutalism"] [data-radix-radio-group-item][data-state="checked"] {
+  background-color: hsl(45, 100%, 60%);
+  border-color: black;
+}
+
+[data-theme="brutalism"] [data-radix-radio-group-indicator] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+[data-theme="brutalism"] [data-radix-radio-group-indicator]:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+  display: block;
+}
+
+/* SWITCH FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-switch-root] {
+  background-color: hsl(0, 0%, 85%);
+  border: 4px solid black;
+  border-radius: 0;
+  width: 50px;
+  height: 26px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="brutalism"] [data-radix-switch-root][data-state="checked"] {
+  background-color: hsl(45, 100%, 60%);
+  border-color: black;
+}
+
+[data-theme="brutalism"] [data-radix-switch-thumb] {
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 0;
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: relative;
+  transform: translateX(1px) translateY(-50%);
+  top: 50%;
+  transition: transform 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  z-index: 2;
+}
+
+[data-theme="brutalism"] [data-radix-switch-root][data-state="checked"] [data-radix-switch-thumb] {
+  transform: translateX(23px) translateY(-50%);
+  background-color: black;
+  border-color: black;
+}
+
+[data-theme="brutalism"] [data-radix-switch-root]:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3), 3px 3px 0px rgba(0, 0, 0, 1);
+}
+
+/* SLIDER FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-slider-root] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  touch-action: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+[data-theme="brutalism"] [data-radix-slider-track] {
+  background-color: hsl(0, 0%, 85%);
+  border: 4px solid black;
+  border-radius: 0;
+  position: relative;
+  flex-grow: 1;
+  height: 16px;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+[data-theme="brutalism"] [data-radix-slider-range] {
+  background-color: hsl(45, 100%, 60%);
+  position: absolute;
+  height: 100%;
+  border-right: 3px solid black;
+}
+
+[data-theme="brutalism"] [data-radix-slider-thumb] {
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 0;
+  width: 24px;
+  height: 24px;
+  display: block;
+  cursor: grab;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  position: relative;
+  z-index: 10;
+  outline: none;
+}
+
+[data-theme="brutalism"] [data-radix-slider-thumb]:active,
+[data-theme="brutalism"] [data-radix-slider-thumb][data-state="active"] {
+  cursor: grabbing;
+  background-color: hsl(45, 100%, 60%);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+[data-theme="brutalism"] [data-radix-slider-thumb]:hover:not(:active):not([data-state="active"]) {
+  background-color: hsl(0, 0%, 95%);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
+}
+
+/* BUTTON FIXES - Surgical targeting */
+[data-theme="brutalism"] button {
+  border: 4px solid black;
+  border-radius: 0;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  color: black;
+  transition: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: fit-content;
+}
+
+[data-theme="brutalism"] button:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+}
+
+[data-theme="brutalism"] button:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+/* Primary button variant */
+[data-theme="brutalism"] button.bg-primary,
+[data-theme="brutalism"] [class*="bg-primary"] button {
+  background-color: hsl(45, 100%, 60%);
+  color: black;
+  border-color: black;
   font-weight: 900;
 }
 
-/* No rounded corners - but allow overrides for functionality */
-[data-theme="brutalism"] * {
+/* TAB FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-tabs-list] {
+  background-color: transparent;
+  border: none;
   border-radius: 0;
+  padding: 0;
+  gap: 4px;
+  display: flex;
+  box-shadow: none;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  min-height: 48px;
 }
 
-/* Harsh focus states - but don't block interactivity */
+[data-theme="brutalism"] [data-radix-tabs-trigger] {
+  background-color: hsl(0, 0%, 90%);
+  color: black;
+  border: 4px solid black;
+  border-radius: 0;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: fit-content;
+  flex-shrink: 0;
+  margin-right: 4px;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  line-height: 1.2;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="brutalism"] [data-radix-tabs-trigger]:last-child {
+  margin-right: 0;
+}
+
+[data-theme="brutalism"] [data-radix-tabs-trigger][data-state="active"] {
+  background-color: hsl(45, 100%, 60%);
+  color: black;
+  border-color: black;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transform: none;
+}
+
+[data-theme="brutalism"] [data-radix-tabs-trigger]:hover:not([data-state="active"]) {
+  background-color: white;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  z-index: 1;
+}
+
+[data-theme="brutalism"] [data-radix-tabs-content] {
+  background-color: white;
+  color: black;
+  border: 4px solid black;
+  border-radius: 0;
+  padding: 1.5rem;
+  margin-top: 8px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  min-height: 200px;
+}
+
+/* ALERT FIXES - Surgical targeting */
+[data-theme="brutalism"] .alert,
+[data-theme="brutalism"] [role="alert"] {
+  border: 4px solid black;
+  border-radius: 0;
+  padding: 1.25rem;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  position: relative;
+  margin: 1rem 0;
+}
+
+[data-theme="brutalism"] .alert * {
+  color: black;
+}
+
+[data-theme="brutalism"] .alert svg {
+  color: black;
+  stroke: black;
+  fill: black;
+  width: 20px;
+  height: 20px;
+}
+
+/* Alert variants */
+[data-theme="brutalism"] .alert[data-variant="warning"] {
+  background-color: hsl(45, 100%, 90%);
+  color: black;
+  border-color: hsl(45, 100%, 25%);
+  border-width: 5px;
+}
+
+[data-theme="brutalism"] .alert[data-variant="destructive"] {
+  background-color: hsl(0, 100%, 95%);
+  color: black;
+  border-color: hsl(0, 100%, 25%);
+  border-width: 5px;
+}
+
+[data-theme="brutalism"] .alert[data-variant="info"] {
+  background-color: hsl(210, 100%, 95%);
+  color: black;
+  border-color: hsl(210, 100%, 25%);
+  border-width: 5px;
+}
+
+/* DROPDOWN & SELECT FIXES - Surgical targeting */
+[data-theme="brutalism"] [data-radix-dropdown-menu-content],
+[data-theme="brutalism"] [data-radix-select-content],
+[data-theme="brutalism"] [data-radix-popover-content] {
+  background-color: white;
+  border: 4px solid black;
+  border-radius: 0;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  z-index: 50;
+}
+
+[data-theme="brutalism"] [data-radix-dropdown-menu-item],
+[data-theme="brutalism"] [data-radix-select-item] {
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  color: black;
+  cursor: pointer;
+}
+
+[data-theme="brutalism"] [data-radix-dropdown-menu-item]:hover,
+[data-theme="brutalism"] [data-radix-dropdown-menu-item][data-highlighted],
+[data-theme="brutalism"] [data-radix-select-item]:hover,
+[data-theme="brutalism"] [data-radix-select-item][data-highlighted] {
+  background-color: hsl(45, 100%, 50%);
+  color: black;
+  outline: none;
+}
+
+[data-theme="brutalism"] [data-radix-select-trigger] {
+  background-color: white;
+  color: black;
+  border: 4px solid black;
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+[data-theme="brutalism"] [data-radix-select-trigger]:focus {
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+}
+
+[data-theme="brutalism"] [data-radix-select-trigger] span {
+  color: black;
+}
+
+[data-theme="brutalism"] [data-radix-select-trigger] [data-placeholder] {
+  color: hsl(0, 0%, 40%);
+}
+
+[data-theme="brutalism"] [data-radix-select-trigger] svg {
+  color: black;
+  stroke-width: 3px;
+}
+
+/* CARD FIXES - Surgical targeting */
+[data-theme="brutalism"] .card {
+  border: 4px solid black;
+  border-radius: 0;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  color: black;
+  padding: 1.5rem;
+}
+
+[data-theme="brutalism"] .card * {
+  color: black;
+}
+
+/* ICON VISIBILITY FIXES - Surgical targeting */
+[data-theme="brutalism"]:not(.dark) svg {
+  color: hsl(0 0% 0%);
+  stroke: currentColor;
+}
+
+[data-theme="brutalism"]:not(.dark) button {
+  color: hsl(0 0% 0%);
+}
+
+[data-theme="brutalism"]:not(.dark) button svg {
+  color: inherit;
+}
+
+.dark [data-theme="brutalism"] svg {
+  color: hsl(0 0% 95%);
+  stroke: currentColor;
+}
+
+.dark [data-theme="brutalism"] button {
+  color: hsl(0 0% 95%);
+}
+
+.dark [data-theme="brutalism"] button svg {
+  color: inherit;
+}
+
+/* Dark mode specific fixes */
+.dark [data-theme="brutalism"] [data-radix-select-trigger] {
+  background-color: hsl(0 0% 15%);
+  color: hsl(0 0% 95%);
+  border-color: hsl(0 0% 95%);
+}
+
+.dark [data-theme="brutalism"] [data-radix-dropdown-menu-content],
+.dark [data-theme="brutalism"] [data-radix-select-content],
+.dark [data-theme="brutalism"] [data-radix-popover-content] {
+  background-color: hsl(0 0% 12%);
+  border-color: hsl(0 0% 95%);
+  color: hsl(0 0% 95%);
+}
+
+.dark [data-theme="brutalism"] [data-radix-dropdown-menu-item],
+.dark [data-theme="brutalism"] [data-radix-select-item] {
+  color: hsl(0 0% 95%);
+}
+
+.dark [data-theme="brutalism"] [data-radix-dropdown-menu-item]:hover,
+.dark [data-theme="brutalism"] [data-radix-select-item]:hover,
+.dark [data-theme="brutalism"] [data-radix-dropdown-menu-item][data-highlighted],
+.dark [data-theme="brutalism"] [data-radix-select-item][data-highlighted] {
+  background-color: hsl(45, 100%, 50%);
+  color: black;
+}
+
+/* === NO PURPLE HOVER FIXES === */
+[data-theme="brutalism"] * {
+  --tw-text-opacity: 1;
+}
+
+[data-theme="brutalism"] .text-purple-500,
+[data-theme="brutalism"] .text-purple-600,
+[data-theme="brutalism"] .text-purple-700,
+[data-theme="brutalism"] .text-violet-500,
+[data-theme="brutalism"] .text-violet-600,
+[data-theme="brutalism"] .text-violet-700,
+[data-theme="brutalism"] [class*="text-purple"],
+[data-theme="brutalism"] [class*="text-violet"] {
+  color: black;
+}
+
+[data-theme="brutalism"] .bg-purple-500,
+[data-theme="brutalism"] .bg-purple-600,
+[data-theme="brutalism"] .bg-purple-700,
+[data-theme="brutalism"] .bg-violet-500,
+[data-theme="brutalism"] .bg-violet-600,
+[data-theme="brutalism"] .bg-violet-700,
+[data-theme="brutalism"] [class*="bg-purple"],
+[data-theme="brutalism"] [class*="bg-violet"] {
+  background-color: white;
+  color: black;
+}
+
+/* === FOCUS STATES === */
 [data-theme="brutalism"] *:focus-visible {
   outline: 4px solid hsl(45, 100%, 50%);
   outline-offset: 4px;
   z-index: 10;
 }
 
+[data-theme="brutalism"] [data-radix-checkbox-root]:focus-visible,
+[data-theme="brutalism"] [data-radix-radio-group-item]:focus-visible,
+[data-theme="brutalism"] [data-radix-switch-root]:focus-visible {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+}
+
+[data-theme="brutalism"] [data-radix-slider-thumb]:focus-visible {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 3px;
+}
+
+[data-theme="brutalism"] [data-radix-tabs-trigger]:focus-visible {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+  z-index: 3;
+}
+
+/* === ADDITIONAL SURGICAL FIXES === */
+
+/* Textarea styling */
+[data-theme="brutalism"] textarea {
+  border: 3px solid black;
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  padding: 0.75rem;
+  background-color: white;
+  color: black;
+  cursor: text;
+  pointer-events: auto;
+  user-select: text;
+}
+
+[data-theme="brutalism"] textarea:focus {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Select element styling */
+[data-theme="brutalism"] select {
+  border: 3px solid black;
+  border-radius: 0;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  padding: 0.5rem;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+[data-theme="brutalism"] select:focus {
+  outline: 3px solid hsl(45, 100%, 50%);
+  outline-offset: 2px;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Badge styling */
+[data-theme="brutalism"] .badge {
+  border: 2px solid black;
+  border-radius: 0;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  background-color: white;
+  color: black;
+}
+
+/* Link styling */
+[data-theme="brutalism"] a {
+  color: hsl(210, 100%, 50%);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 2px;
+  font-weight: 900;
+}
+
+[data-theme="brutalism"] a:hover {
+  background-color: hsl(45, 100%, 50%);
+  color: black;
+  text-decoration: none;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  padding: 2px 4px;
+}
+
+/* Table styling */
+[data-theme="brutalism"] table {
+  border: 4px solid black;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+[data-theme="brutalism"] th {
+  border: 3px solid black;
+  background-color: hsl(45, 100%, 50%);
+  color: black;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+[data-theme="brutalism"] td {
+  border: 2px solid black;
+  padding: 0.75rem;
+  font-weight: 700;
+  background-color: white;
+  color: black;
+}
+
+/* Tooltip styling */
+[data-theme="brutalism"] [data-radix-tooltip-content] {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Dialog styling */
+[data-theme="brutalism"] [role="dialog"] {
+  border: 6px solid black;
+  border-radius: 0;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  background-color: white;
+  color: black;
+}
+
+/* Scrollbar styling */
+[data-theme="brutalism"] ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+[data-theme="brutalism"] ::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 80%);
+  border: 2px solid black;
+}
+
+[data-theme="brutalism"] ::-webkit-scrollbar-thumb {
+  background: hsl(45, 100%, 50%);
+  border: 2px solid black;
+}
+
+[data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 100%, 50%);
+}
+
 /* Disabled states */
 [data-theme="brutalism"] *:disabled {
-  opacity: 1 !important;
+  opacity: 1;
   background: repeating-linear-gradient(
     45deg,
     hsl(0, 0%, 80%),
     hsl(0, 0%, 80%) 10px,
     hsl(0, 0%, 70%) 10px,
     hsl(0, 0%, 70%) 20px
-  ) !important;
-  color: hsl(0, 0%, 40%) !important;
-  text-decoration: line-through !important;
-  text-decoration-thickness: 3px !important;
+  );
+  color: hsl(0, 0%, 40%);
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+}
+
+/* No rounded corners */
+[data-theme="brutalism"] * {
+  border-radius: 0;
+}
+
+/* Allow specific overrides for radio buttons */
+[data-theme="brutalism"] [data-radix-radio-group-item] {
+  border-radius: 50%;
 }
