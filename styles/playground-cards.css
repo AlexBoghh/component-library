@@ -6,8 +6,8 @@
 .playground-card-default,
 .playground-card-cyberpunk,
 .playground-card-brutalism {
-  /* Reset any problematic global hover effects */
-  box-shadow: none !important;
+  /* Reset any problematic global hover effects without breaking interactivity */
+  /* box-shadow handled by theme-specific rules below */
 }
 
 /* ================================

@@ -12,6 +12,7 @@
 @import "../styles/theme-transitions.css";
 @import "../styles/cyberpunk.css";
 @import "../styles/brutalism.css";
+@import "../styles/brutalism-fixes.css";
 @import "../styles/neubrutalism-utilities.css";
 @import "../styles/theme-system.css";
 @import "../styles/premium-effects.css";
@@ -571,19 +572,19 @@ html, body, #__next, #root {
   background: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Ensure all buttons are dark */
-button,
-[role="button"],
-[type="button"],
-[type="submit"],
-[type="reset"] {
+/* Ensure all buttons are dark - but allow theme overrides */
+button:not([data-theme="brutalism"] button),
+[role="button"]:not([data-theme="brutalism"] [role="button"]),
+[type="button"]:not([data-theme="brutalism"] [type="button"]),
+[type="submit"]:not([data-theme="brutalism"] [type="submit"]),
+[type="reset"]:not([data-theme="brutalism"] [type="reset"]) {
   background-color: #16161d !important;
   color: #f2f2f2 !important;
   border-color: #2a2a33 !important;
 }
 
-button:hover,
-[role="button"]:hover {
+button:hover:not([data-theme="brutalism"] button:hover),
+[role="button"]:hover:not([data-theme="brutalism"] [role="button"]:hover) {
   background-color: #1a1a22 !important;
 }
 

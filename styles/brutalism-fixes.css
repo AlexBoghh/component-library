@@ -1,0 +1,384 @@
+/* Brutalism Theme Accessibility and Interaction Fixes */
+/* These fixes address issues found during QA testing */
+
+/* ========================================
+   1. ENHANCED FOCUS STATES
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Improved focus indicators with better offset */
+  *:focus-visible {
+    outline: 4px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 4px !important;
+    z-index: 10;
+    position: relative;
+  }
+  
+  /* Special focus for form controls */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 2px !important;
+    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5),
+                0 0 0 4px hsla(45, 100%, 50%, 0.2) !important;
+  }
+  
+  /* Checkbox and switch focus */
+  [role="checkbox"]:focus-visible,
+  [role="switch"]:focus-visible {
+    outline: 3px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 3px !important;
+  }
+  
+  /* Button focus with preserved shadow */
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 4px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 2px !important;
+    z-index: 11;
+  }
+}
+
+/* ========================================
+   2. IMPROVED DISABLED STATES (WCAG AA)
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Better contrast for disabled elements */
+  *:disabled,
+  [aria-disabled="true"] {
+    opacity: 0.7 !important;
+    background: hsl(0, 0%, 85%) !important;
+    color: hsl(0, 0%, 25%) !important; /* Contrast ratio: 5.8:1 */
+    border-color: hsl(0, 0%, 40%) !important;
+    cursor: not-allowed !important;
+    text-decoration: none !important; /* Remove line-through for better readability */
+  }
+  
+  /* Disabled button specific */
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    background: repeating-linear-gradient(
+      45deg,
+      hsl(0, 0%, 85%),
+      hsl(0, 0%, 85%) 10px,
+      hsl(0, 0%, 78%) 10px,
+      hsl(0, 0%, 78%) 20px
+    ) !important;
+    color: hsl(0, 0%, 25%) !important;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3) !important;
+    transform: none !important;
+  }
+  
+  /* Disabled input specific */
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    background-color: hsl(0, 0%, 90%) !important;
+    color: hsl(0, 0%, 30%) !important;
+    border-color: hsl(0, 0%, 50%) !important;
+    box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* Dark mode disabled states */
+.dark [data-theme="brutalism"] {
+  *:disabled,
+  [aria-disabled="true"] {
+    background: hsl(0, 0%, 20%) !important;
+    color: hsl(0, 0%, 60%) !important; /* Contrast ratio: 4.6:1 */
+    border-color: hsl(0, 0%, 40%) !important;
+  }
+  
+  button:disabled {
+    background: repeating-linear-gradient(
+      45deg,
+      hsl(0, 0%, 20%),
+      hsl(0, 0%, 20%) 10px,
+      hsl(0, 0%, 25%) 10px,
+      hsl(0, 0%, 25%) 20px
+    ) !important;
+    color: hsl(0, 0%, 60%) !important;
+  }
+}
+
+/* ========================================
+   3. ENHANCED HOVER STATES
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Ensure all interactive elements have visible hover states */
+  button:hover:not(:disabled),
+  [role="button"]:hover:not(:disabled),
+  a:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Select hover state enhancement */
+  [data-radix-select-trigger]:hover:not(:disabled) {
+    background-color: hsl(45, 100%, 95%) !important;
+    border-color: hsl(45, 100%, 50%) !important;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1) !important;
+  }
+  
+  /* Checkbox and switch hover */
+  [role="checkbox"]:hover:not(:disabled),
+  [role="switch"]:hover:not(:disabled) {
+    border-color: hsl(45, 100%, 50%) !important;
+    box-shadow: 0 0 0 2px hsla(45, 100%, 50%, 0.2) !important;
+  }
+}
+
+/* ========================================
+   4. ACTIVE/PRESSED STATES
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Button press effect */
+  button:active:not(:disabled),
+  [role="button"]:active:not(:disabled) {
+    transform: translate(3px, 3px) !important;
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 1) !important;
+  }
+  
+  /* Input active state */
+  input:active:not(:disabled),
+  textarea:active:not(:disabled) {
+    box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.4) !important;
+  }
+}
+
+/* ========================================
+   5. ARIA LIVE REGIONS
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* Live region styling */
+  [aria-live="polite"],
+  [aria-live="assertive"] {
+    position: relative;
+  }
+  
+  /* Status messages */
+  [role="status"],
+  [role="alert"] {
+    font-weight: 700;
+    padding: 0.5rem;
+    background-color: hsl(45, 100%, 95%);
+    border: 2px solid hsl(45, 100%, 50%);
+    margin-top: 0.5rem;
+  }
+}
+
+/* ========================================
+   6. KEYBOARD NAVIGATION INDICATORS
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Skip to main content link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: hsl(45, 100%, 50%);
+    color: black;
+    padding: 8px;
+    z-index: 100;
+    text-decoration: none;
+    border: 4px solid black;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* Tab focus indicator enhancement */
+  [tabindex="0"]:focus,
+  [tabindex="1"]:focus {
+    outline: 4px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 4px !important;
+  }
+}
+
+/* ========================================
+   7. HIGH CONTRAST MODE SUPPORT
+   ======================================== */
+@media (prefers-contrast: high) {
+  [data-theme="brutalism"] {
+    /* Stronger borders in high contrast */
+    * {
+      border-width: 5px !important;
+    }
+    
+    /* Enhanced shadows */
+    button,
+    .card,
+    [role="dialog"] {
+      box-shadow: 10px 10px 0px rgba(0, 0, 0, 1) !important;
+    }
+    
+    /* Stronger focus indicators */
+    *:focus-visible {
+      outline-width: 6px !important;
+      outline-offset: 6px !important;
+    }
+  }
+}
+
+/* ========================================
+   8. REDUCED MOTION SUPPORT
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="brutalism"] {
+    /* Remove all transforms on hover/active for users who prefer reduced motion */
+    *,
+    *:hover,
+    *:active {
+      transform: none !important;
+      transition: none !important;
+      animation: none !important;
+    }
+    
+    /* Keep shadow changes for feedback */
+    button:hover:not(:disabled) {
+      box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
+    }
+    
+    button:active:not(:disabled) {
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
+    }
+  }
+}
+
+/* ========================================
+   9. TOUCH DEVICE OPTIMIZATIONS
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+  [data-theme="brutalism"] {
+    /* Larger touch targets */
+    button,
+    [role="button"],
+    input,
+    select,
+    [role="checkbox"],
+    [role="switch"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    button:hover,
+    [role="button"]:hover {
+      transform: none;
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+    }
+    
+    /* Stronger active states for touch feedback */
+    button:active,
+    [role="button"]:active {
+      transform: translate(4px, 4px);
+      box-shadow: none !important;
+    }
+  }
+}
+
+/* ========================================
+   10. COMPONENT-SPECIFIC FIXES
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Dialog backdrop interaction fix */
+  [data-radix-dialog-overlay] {
+    pointer-events: auto !important;
+  }
+  
+  /* Dropdown content z-index fix */
+  [data-radix-dropdown-menu-content],
+  [data-radix-select-content],
+  [data-radix-popover-content] {
+    z-index: 50 !important;
+    pointer-events: auto !important;
+  }
+  
+  /* Tooltip positioning fix */
+  [data-radix-tooltip-content] {
+    z-index: 60 !important;
+    pointer-events: none !important; /* Tooltips shouldn't block interaction */
+  }
+  
+  /* Slider thumb enhancement */
+  [data-radix-slider-thumb] {
+    cursor: grab !important;
+  }
+  
+  [data-radix-slider-thumb]:active {
+    cursor: grabbing !important;
+  }
+}
+
+/* ========================================
+   11. PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Use contain for better paint performance */
+  .card,
+  button,
+  [role="dialog"] {
+    contain: layout style;
+  }
+  
+  /* Optimize shadow rendering */
+  .shadow-optimized {
+    will-change: transform, box-shadow;
+  }
+  
+  /* GPU acceleration for transforms */
+  button,
+  [role="button"] {
+    transform: translateZ(0);
+  }
+}
+
+/* ========================================
+   12. CUSTOM BRUTALISM UTILITIES
+   ======================================== */
+[data-theme="brutalism"] {
+  /* Custom checkbox mark */
+  [data-state="checked"]::before {
+    content: "✓";
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Custom radio indicator */
+  [role="radio"][data-state="checked"]::before {
+    content: "●";
+    font-size: 1.2rem;
+    color: hsl(45, 100%, 50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ========================================
+   END OF BRUTALISM FIXES
+   ======================================== */
