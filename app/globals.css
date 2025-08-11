@@ -1,26 +1,667 @@
-@import "tailwindcss";
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Style imports */
+@import "../styles/animations.css";
+@import "../styles/glassmorphism-effects.css";
+@import "../styles/skeleton-loading.css";
+@import "../styles/particle-effects.css";
+@import "../styles/theme-transitions.css";
+@import "../styles/cyberpunk.css";
+@import "../styles/brutalism.css";
+@import "../styles/neubrutalism-utilities.css";
+@import "../styles/theme-system.css";
+@import "../styles/premium-effects.css";
+@import "../styles/playground-cards.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CRITICAL: Force dark mode globally on all elements */
+* {
+  color-scheme: dark !important;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body, #__next, #root {
+  background: #0a0a0f !important;
+  color: #f2f2f2 !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Theme transition animations */
+.theme-transitioning * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Enhanced theme transitions with smoother timing */
+.theme-transition-enhanced * {
+  transition: 
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Cyberpunk glitch transition effect */
+.theme-glitch-transition {
+  animation: glitch-transition 0.5s ease-in-out;
+}
+
+@keyframes glitch-transition {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, 2px); }
+  20% { transform: translate(2px, -2px); }
+  30% { transform: translate(-2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  50% { transform: translate(-2px, 2px); }
+  60% { transform: translate(2px, -2px); }
+  70% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+  90% { transform: translate(-2px, 2px); }
+}
+
+/* Cyberpunk theme specific effects */
+.cyberpunk-theme {
+  position: relative;
+}
+
+/* Scanlines effect for cyberpunk */
+.theme-scanlines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 255, 255, 0.03) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* Neon glow effects */
+.theme-neon .border,
+.theme-neon [class*="border-"] {
+  box-shadow: 0 0 5px currentColor;
+}
+
+.theme-neon button:not(.ghost),
+.theme-neon .card,
+.theme-neon .popover,
+.theme-neon input,
+.theme-neon select {
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3), inset 0 0 10px rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(255, 0, 255, 0.5);
+}
+
+.theme-neon button:hover:not(.ghost),
+.theme-neon .card:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), inset 0 0 20px rgba(0, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Text glow for cyberpunk headings */
+.cyberpunk-theme h1,
+.cyberpunk-theme h2,
+.cyberpunk-theme h3 {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Cyberpunk button effects */
+.cyberpunk-theme button {
+  position: relative;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.cyberpunk-theme button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cyberpunk-theme button:hover::before {
+  left: 100%;
+}
+
+/* Glitch effect for cyberpunk theme */
+.theme-glitch .glitchable {
+  position: relative;
+}
+
+.theme-glitch .glitchable::before,
+.theme-glitch .glitchable::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.theme-glitch .glitchable::before {
+  animation: glitch-1 0.5s infinite;
+  color: rgba(255, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.theme-glitch .glitchable::after {
+  animation: glitch-2 0.5s infinite;
+  color: rgba(0, 255, 255, 0.8);
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% {
+    transform: translate(0);
+  }
+  15%, 49% {
+    transform: translate(-2px, -2px);
+  }
+  50%, 99% {
+    transform: translate(2px, 1px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% {
+    transform: translate(0);
+  }
+  21%, 62% {
+    transform: translate(2px, -1px);
+  }
+  63%, 99% {
+    transform: translate(-1px, 2px);
+  }
+}
+
+/* Noise effect */
+.theme-noise::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZGVmcz48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii45IiBudW1PY3RhdmVzPSI0IiBzZWVkPSIyIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIwIDAgMCAwIDAuOTkgMCAwIDAgMCAwLjk5IDAgMCAwIDAgMC45OSAwIDAgMCAwLjI2IDAiLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIi8+PC9zdmc+');
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Ensure Radix UI portals are always on top */
+[data-radix-portal] {
+  z-index: 9999 !important;
+}
+
+/* Ensure dropdown menus are above sticky elements */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+/* UNIFIED COLOR SYSTEM - FORCED DARK MODE ONLY */
+@layer base {
+  /* Force dark mode colors globally - no light mode support */
+  :root,
+  .light,
+  .dark,
+  [data-theme="light"],
+  [data-theme="dark"] {
+    /* Deep dark background similar to #0a0a0f */
+    --background: 240 35% 4%;           /* #0a0a0f - Deep dark background */
+    --foreground: 0 0% 95%;             /* #f2f2f2 - Light text for contrast */
+    
+    /* Card hierarchy with subtle elevation */
+    --card: 240 25% 8%;                 /* #16161d - Slightly lighter than bg */
+    --card-foreground: 0 0% 94%;        /* #efefef - High contrast card text */
+    
+    /* Popover/dropdown surfaces */
+    --popover: 240 22% 10%;             /* #1a1a22 - Elevated surface */
+    --popover-foreground: 0 0% 94%;     /* #efefef - High contrast text */
+    
+    /* Interactive colors with good contrast */
+    --primary: 280 65% 60%;             /* #b366f7 - Purple accent */
+    --primary-foreground: 0 0% 100%;    /* #ffffff - Pure white on primary */
+    
+    --secondary: 240 20% 15%;           /* #242430 - Subtle secondary */
+    --secondary-foreground: 0 0% 90%;   /* #e5e5e5 - Light text */
+    
+    --muted: 240 20% 12%;               /* #1c1c24 - Muted background */
+    --muted-foreground: 240 5% 65%;     /* #a3a3a8 - Muted text */
+    
+    --accent: 280 60% 55%;              /* #a855f7 - Accent color */
+    --accent-foreground: 0 0% 100%;     /* #ffffff - White on accent */
+    
+    /* Status colors */
+    --destructive: 0 65% 55%;           /* #e85555 - Error red */
+    --destructive-foreground: 0 0% 98%; /* #fafafa - Light text */
+    
+    /* Borders and inputs */
+    --border: 240 20% 18%;              /* #2a2a33 - Subtle border */
+    --input: 240 25% 7%;                /* #121217 - Dark input bg */
+    --ring: 280 65% 60%;                /* #b366f7 - Focus ring */
+    
+    /* Chart colors */
+    --chart-1: 280 65% 60%;
+    --chart-2: 160 55% 50%;
+    --chart-3: 30 75% 55%;
+    --chart-4: 220 65% 55%;
+    --chart-5: 340 70% 55%;
+    
+    /* Layout variables */
+    --radius: 0.5rem;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+    --spacing: 0.5rem;
+    --padding: 1rem;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5rem;
+  }
+
+  /* Override any light mode attempts */
+  .light,
+  [data-theme="light"],
+  body.light,
+  html.light {
+    color-scheme: dark !important;
+  }
+}
+
+/* Apply consistent dark styling globally */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-size: 16px;
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    color-scheme: dark !important;
+    background: #0a0a0f !important;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #0a0a0f !important;
+    color: #f2f2f2 !important;
+  }
+
+  /* Ensure all page elements use dark colors */
+  #__next,
+  #root,
+  .app,
+  main,
+  .page-container,
+  .content-area {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    background: #0a0a0f !important;
+  }
+
+  /* Force dark colors on any light elements */
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-slate-50,
+  .bg-slate-100,
+  [class*="bg-white"],
+  [class*="bg-light"] {
+    background: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Ensure navigation is dark */
+  header,
+  nav,
+  .navigation,
+  [class*="nav"] {
+    background: #0a0a0f !important;
+    color: #f2f2f2 !important;
+  }
+
+  /* Ensure consistent card styling */
+  .card,
+  [class*="card"],
+  [class*="panel"],
+  [class*="container"] {
+    @apply bg-card text-card-foreground;
+    background: #16161d !important;
+    color: #efefef !important;
+    border-color: #2a2a33 !important;
+  }
+}
+
+/* Enhanced button styles */
+@layer components {
+  /* Primary button with gradient */
+  .btn-primary,
+  button[data-variant="default"],
+  button.primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    color: hsl(var(--primary-foreground));
+    border: none;
+    box-shadow: 0 2px 8px rgba(168, 85, 247, 0.25);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover,
+  button[data-variant="default"]:hover,
+  button.primary:hover {
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+  }
+  
+  /* Secondary button */
+  .btn-secondary,
+  button[data-variant="secondary"],
+  button.secondary {
+    @apply bg-secondary text-secondary-foreground border-border;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-secondary:hover,
+  button[data-variant="secondary"]:hover,
+  button.secondary:hover {
+    @apply bg-muted;
+    border-color: hsl(var(--border) / 0.8);
+  }
+  
+  /* Enhanced card elevation system - dark mode only */
+  .card {
+    background: #16161d !important;
+    color: #efefef !important;
+    border: 1px solid #2a2a33 !important;
+    box-shadow: 
+      0 2px 4px 0 rgb(0 0 0 / 0.6), 
+      0 1px 2px -1px rgb(0 0 0 / 0.5),
+      0 0 0 1px rgba(255 255 255 / 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+  }
+  
+  .card:hover:not(.playground-card-default):not(.playground-card-cyberpunk):not(.playground-card-brutalism) {
+    background: #1a1a22 !important;
+    box-shadow: 
+      0 8px 12px -2px rgb(0 0 0 / 0.7), 
+      0 4px 6px -2px rgb(0 0 0 / 0.5),
+      0 0 0 1px rgba(255 255 255 / 0.08),
+      0 0 20px rgba(179, 102, 247, 0.1);
+    border-color: #363640 !important;
+    transform: translateY(-2px);
+  }
+
+  /* Nested card hierarchy - dark mode only */
+  .card .card {
+    background: #1c1c24 !important;
+    border: 1px solid #2a2a33 !important;
+    box-shadow: 
+      0 1px 3px 0 rgb(0 0 0 / 0.5),
+      inset 0 1px 0 0 rgba(255 255 255 / 0.02);
+  }
+
+  /* Enhanced input focus states with improved accessibility */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none !important;
+    box-shadow: 
+      0 0 0 2px hsl(var(--background)), 
+      0 0 0 4px hsl(var(--primary)), 
+      0 0 25px rgba(179, 102, 247, 0.4) !important;
+    border-color: hsl(var(--primary)) !important;
+    background-color: hsl(var(--input)) !important;
+  }
+
+  /* Enhanced input hover states */
+  input:hover:not(:disabled):not(:focus-visible),
+  textarea:hover:not(:disabled):not(:focus-visible),
+  select:hover:not(:disabled):not(:focus-visible) {
+    border-color: hsl(var(--border) / 0.8);
+    background-color: hsl(var(--input) / 0.8);
+  }
+
+  /* Disabled states with proper visibility */
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    background-color: hsl(var(--muted) / 0.5) !important;
+    border-color: hsl(var(--border) / 0.3) !important;
+    color: hsl(var(--muted-foreground) / 0.6) !important;
+    cursor: not-allowed;
+  }
+
+  /* Placeholder styling for better contrast */
+  input::placeholder,
+  textarea::placeholder {
+    color: hsl(var(--muted-foreground) / 0.8);
+    opacity: 1;
+  }
+
+  /* Enhanced scroll behavior */
+  * {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+    color: hsl(var(--primary-foreground));
+  }
+
+  /* Enhanced scrollbar styling for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/50;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(var(--border)), hsl(var(--border) / 0.8));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+    transform: scale(1.1);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 8px rgba(179, 102, 247, 0.3);
+  }
+
+  /* Container hierarchy - dark mode only */
+  .container {
+    position: relative;
+    background: #0a0a0f !important;
+  }
+
+  /* Header and navigation - force dark theme */
+  header,
+  nav,
+  .sticky {
+    background: #0a0a0f !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #2a2a33 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Force dark background on navigation and sticky elements */
+  .sticky.top-0,
+  header.sticky,
+  nav.sticky,
+  [class*="navigation"],
+  [class*="navbar"],
+  [class*="header"] {
+    background: #0a0a0f !important;
+    color: #f2f2f2 !important;
+  }
+}
+
+/* Force dark mode on all Radix UI portals and overlays */
+[data-radix-portal],
+[data-radix-popper-content-wrapper],
+[data-radix-menu-content],
+[data-radix-select-content],
+[data-radix-dialog-content],
+[data-radix-popover-content],
+[data-radix-dropdown-menu-content],
+[data-radix-tooltip-content],
+[data-radix-context-menu-content] {
+  background: #1a1a22 !important;
+  color: #efefef !important;
+  border-color: #2a2a33 !important;
+}
+
+/* Force dark mode on all overlays */
+[data-radix-dialog-overlay],
+[data-radix-navigation-menu-viewport],
+[data-radix-select-viewport],
+[data-radix-popover-anchor] {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Ensure all buttons are dark */
+button,
+[role="button"],
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  background-color: #16161d !important;
+  color: #f2f2f2 !important;
+  border-color: #2a2a33 !important;
+}
+
+button:hover,
+[role="button"]:hover {
+  background-color: #1a1a22 !important;
+}
+
+/* Primary buttons override */
+button.primary,
+button[data-variant="default"],
+.btn-primary {
+  background: linear-gradient(135deg, #b366f7, #a855f7) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Ghost buttons */
+button[data-variant="ghost"],
+button.ghost {
+  background: transparent !important;
+  color: #f2f2f2 !important;
+}
+
+button[data-variant="ghost"]:hover,
+button.ghost:hover {
+  background: #1a1a22 !important;
+}
+
+/* Force dark inputs */
+input,
+textarea,
+select {
+  background: #121217 !important;
+  color: #f2f2f2 !important;
+  border-color: #2a2a33 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666 !important;
+}
+
+/* Force dark dropdowns and selects */
+select option,
+datalist option {
+  background: #1a1a22 !important;
+  color: #f2f2f2 !important;
+}
+
+/* Override any inline styles trying to set white backgrounds */
+[style*="background: white"],
+[style*="background-color: white"],
+[style*="background:white"],
+[style*="background-color:white"],
+[style*="background: rgb(255"],
+[style*="background-color: rgb(255"] {
+  background: #0a0a0f !important;
+}
+
+/* Override any white text on dark backgrounds */
+.text-white {
+  color: #f2f2f2 !important;
+}
+
+.text-black,
+.text-gray-900,
+.text-slate-900 {
+  color: #f2f2f2 !important;
+}
+
+/* Density-specific adjustments */
+.density-compact {
+  --spacing: 0.25rem;
+  --padding: 0.375rem;
+}
+
+.density-comfortable {
+  --spacing: 0.375rem;
+  --padding: 0.5rem;
+}
+
+.density-spacious {
+  --spacing: 0.5rem;
+  --padding: 0.75rem;
 }

@@ -1,0 +1,513 @@
+/* Cyberpunk Button Animations and Effects */
+
+/* Glitch Animations */
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(1px, -1px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(1px, 1px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes glitch-hover {
+  0%, 100% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(-2px, 2px) skew(1deg);
+  }
+  20% {
+    transform: translate(2px, -2px) skew(-1deg);
+  }
+  30% {
+    transform: translate(-2px, -2px) skew(1deg);
+  }
+  40% {
+    transform: translate(2px, 2px) skew(-1deg);
+  }
+  50% {
+    transform: translate(0) skew(0);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  20%, 25% {
+    transform: translate(-2px, -2px);
+    opacity: 0.8;
+  }
+  26%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  50%, 55% {
+    transform: translate(2px, 2px);
+    opacity: 0.8;
+  }
+  56%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Gradient Shift Animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Scanning Animation */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* LED Blink Animation */
+@keyframes led-blink {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Flicker Effect */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 1;
+  }
+}
+
+/* Pulse Neon Animation */
+@keyframes pulse-neon {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+/* Pulse Click Animation */
+@keyframes pulse-click {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Clip Path for Cyber Corners */
+.clip-path-cyber {
+  clip-path: polygon(
+    0 10px,
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+/* Data Augmented Effect */
+[data-augmented] {
+  position: relative;
+  overflow: visible;
+}
+
+[data-augmented]::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 255, 255, 0.1) 30%,
+    rgba(0, 255, 255, 0.1) 70%,
+    transparent 70%
+  );
+  background-size: 10px 10px;
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Scanline Overlay */
+.scanline-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scan 8s linear infinite;
+}
+
+/* Circuit Pattern for Success Variant */
+.circuit-pattern {
+  position: relative;
+}
+
+.circuit-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, transparent 95%, rgba(0, 255, 0, 0.1) 95%),
+    linear-gradient(transparent 95%, rgba(0, 255, 0, 0.1) 95%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.2) 0%, transparent 2%);
+  background-size: 20px 20px, 20px 20px, 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Optimized Animation Classes */
+.animate-glitch {
+  animation: glitch 2s infinite;
+}
+
+.animate-glitch-hover {
+  animation: glitch-hover 0.5s;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 6s ease infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-led-blink {
+  animation: led-blink 2s infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}
+
+.animate-flicker {
+  animation: flicker 3s infinite;
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 3s infinite;
+}
+
+.animate-pulse-click {
+  animation: pulse-click 0.2s ease;
+}
+
+/* Hover Glow Intensification */
+.hover-glow-intense {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-intense:hover {
+  filter: brightness(1.2) contrast(1.1);
+  transform: translateY(-2px);
+}
+
+/* Cyberpunk Text Effects */
+.text-glow-cyan {
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.8),
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 15px rgba(0, 255, 255, 0.4);
+}
+
+.text-glow-red {
+  text-shadow: 
+    0 0 5px rgba(255, 0, 100, 0.8),
+    0 0 10px rgba(255, 0, 100, 0.6),
+    0 0 15px rgba(255, 0, 100, 0.4);
+}
+
+.text-glow-green {
+  text-shadow: 
+    0 0 5px rgba(0, 255, 0, 0.8),
+    0 0 10px rgba(0, 255, 0, 0.6),
+    0 0 15px rgba(0, 255, 0, 0.4);
+}
+
+/* Form Component Animations */
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes scan-horizontal {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes text-glitch {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-2px);
+  }
+  20% {
+    transform: translateX(2px);
+  }
+  30% {
+    transform: translateX(-1px);
+  }
+  40% {
+    transform: translateX(1px);
+  }
+  50% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitch-text {
+  0%, 100% {
+    transform: translateX(0);
+    filter: none;
+  }
+  20% {
+    transform: translateX(-2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translateX(2px);
+    filter: hue-rotate(-90deg);
+  }
+  60% {
+    transform: translateX(-1px);
+    filter: contrast(2);
+  }
+  80% {
+    transform: translateX(1px);
+    filter: saturate(2);
+  }
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes spark {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Animation classes */
+.animate-scan-vertical {
+  animation: scan-vertical 1s ease-out;
+}
+
+.animate-scan-horizontal {
+  animation: scan-horizontal 1s linear infinite;
+}
+
+.animate-text-glitch {
+  animation: text-glitch 0.3s ease;
+}
+
+.animate-glitch-text {
+  animation: glitch-text 0.5s ease;
+}
+
+.animate-type {
+  animation: type 0.5s steps(20, end);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Additional Cyberpunk Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes tv-static {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-1px, -1px);
+  }
+  20% {
+    transform: translate(1px, 1px);
+  }
+  30% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes scan-quick {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Animation Classes */
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-matrix-fall {
+  animation: matrix-fall linear infinite;
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 2s ease-in-out infinite;
+}
+
+.animate-tv-static {
+  animation: tv-static 0.3s linear infinite;
+}
+
+.animate-scan-quick {
+  animation: scan-quick 2s linear infinite;
+}

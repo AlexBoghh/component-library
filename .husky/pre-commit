@@ -1,0 +1,30 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run quality checks before commit
+echo "🚀 Running pre-commit quality checks..."
+
+# Run TypeScript type checking
+echo "📝 Checking TypeScript types..."
+npx tsc --noEmit || {
+  echo "❌ TypeScript errors found. Please fix before committing."
+  exit 1
+}
+
+# Run ESLint
+echo "🔍 Running ESLint..."
+npm run lint || {
+  echo "❌ ESLint errors found. Please fix before committing."
+  exit 1
+}
+
+# Run tests if they exist
+if [ -f "package.json" ] && grep -q "\"test\"" package.json; then
+  echo "🧪 Running tests..."
+  npm test --passWithNoTests || {
+    echo "❌ Tests failed. Please fix before committing."
+    exit 1
+  }
+fi
+
+echo "✅ All pre-commit checks passed!"

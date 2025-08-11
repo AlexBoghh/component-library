@@ -1,0 +1,625 @@
+/* Brutalism Theme Styles */
+
+/* Base brutalism theme */
+[data-theme="brutalism"] {
+  /* Remove all transitions - brutalism is immediate */
+  * {
+    transition: none !important;
+    animation-timing-function: step-end !important;
+  }
+
+  /* Typography */
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Arial Black", "Helvetica Bold", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Backgrounds */
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
+}
+
+/* Brutalism color variables - Better Contrast */
+[data-theme="brutalism"] {
+  --background: 0 0% 98%;
+  --foreground: 0 0% 5%;
+  
+  --muted: 0 0% 85%;
+  --muted-foreground: 0 0% 25%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 5%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 5%;
+  
+  --border: 0 0% 0%;
+  --input: 0 0% 0%;
+  
+  --primary: 45 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  
+  --secondary: 0 100% 50%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --accent: 210 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 350 80% 55%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --ring: 45 100% 50%;
+  
+  --radius: 0rem;
+}
+
+/* Dark mode brutalism */
+.dark [data-theme="brutalism"] {
+  --background: 0 0% 8%;
+  --foreground: 0 0% 95%;
+  
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 70%;
+  
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 95%;
+  
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 95%;
+  
+  --border: 0 0% 100%;
+  --input: 0 0% 100%;
+  
+  --primary: 45 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  
+  --secondary: 0 100% 50%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --accent: 210 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 350 80% 60%;
+  --destructive-foreground: 0 0% 0%;
+  
+  --ring: 45 100% 50%;
+}
+
+/* Fix icon visibility in brutalism theme - LIGHT MODE */
+[data-theme="brutalism"]:not(.dark) {
+  /* All icons should be black in light mode */
+  svg {
+    color: hsl(0 0% 0%) !important;
+    stroke: currentColor !important;
+  }
+  
+  /* Buttons and their icons */
+  button {
+    color: hsl(0 0% 0%) !important;
+  }
+  
+  button svg {
+    color: inherit !important;
+  }
+}
+
+/* Fix icon visibility in brutalism theme - DARK MODE */
+.dark [data-theme="brutalism"] {
+  /* All icons should be white/light in dark mode */
+  svg {
+    color: hsl(0 0% 95%) !important;
+    stroke: currentColor !important;
+  }
+  
+  /* Ensure all lucide icons are visible */
+  .lucide,
+  svg.lucide {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  /* Navigation and header specific */
+  nav svg,
+  header svg {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  /* Buttons and their icons in dark mode */
+  button {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  button svg {
+    color: inherit !important;
+  }
+  
+  /* Theme customizer and settings icons */
+  .absolute svg,
+  [class*="z-"] svg {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  /* Icons in cards and components */
+  .card svg,
+  [data-card] svg {
+    color: hsl(0 0% 95%) !important;
+  }
+}
+
+/* System dark mode support */
+@media (prefers-color-scheme: dark) {
+  [data-theme="brutalism"]:not(.light) svg {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  [data-theme="brutalism"]:not(.light) button {
+    color: hsl(0 0% 95%) !important;
+  }
+}
+  
+  /* Select and dropdown icons in dark mode */
+  [data-radix-select-trigger] {
+    background-color: hsl(0 0% 15%) !important;
+    color: hsl(0 0% 95%) !important;
+    border-color: hsl(0 0% 95%) !important;
+  }
+  
+  [data-radix-select-trigger] span,
+  [data-radix-select-trigger] svg {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  [data-radix-select-trigger] [data-placeholder] {
+    color: hsl(0 0% 60%) !important;
+  }
+  
+  /* Dropdown content in dark mode */
+  [data-radix-dropdown-menu-content],
+  [data-radix-select-content],
+  [data-radix-popover-content],
+  [role="menu"],
+  [role="listbox"] {
+    background-color: hsl(0 0% 12%) !important;
+    border-color: hsl(0 0% 95%) !important;
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  [data-radix-dropdown-menu-item],
+  [data-radix-select-item],
+  [role="menuitem"],
+  [role="option"] {
+    color: hsl(0 0% 95%) !important;
+  }
+  
+  [data-radix-dropdown-menu-item]:hover,
+  [data-radix-select-item]:hover,
+  [data-radix-dropdown-menu-item][data-highlighted],
+  [data-radix-select-item][data-highlighted],
+  [role="menuitem"]:hover,
+  [role="option"]:hover {
+    background-color: hsl(45, 100%, 50%) !important;
+    color: black !important;
+  }
+
+/* Brutalism components */
+[data-theme="brutalism"] {
+  /* === DROPDOWN & POPOVER FIXES === */
+  
+  /* All Radix dropdown content */
+  [data-radix-dropdown-menu-content],
+  [data-radix-select-content],
+  [data-radix-popover-content],
+  [data-radix-context-menu-content],
+  [role="menu"],
+  [role="listbox"] {
+    background-color: white !important;
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
+    z-index: 50 !important;
+    overflow: visible !important;
+  }
+  
+  /* Dropdown menu items */
+  [data-radix-dropdown-menu-item],
+  [data-radix-select-item],
+  [data-radix-context-menu-item],
+  [role="menuitem"],
+  [role="option"] {
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 0.5rem 1rem !important;
+    color: black !important;
+    cursor: pointer !important;
+    transition: none !important;
+  }
+  
+  /* Hover states for menu items */
+  [data-radix-dropdown-menu-item]:hover,
+  [data-radix-dropdown-menu-item][data-highlighted],
+  [data-radix-select-item]:hover,
+  [data-radix-select-item][data-highlighted],
+  [data-radix-context-menu-item]:hover,
+  [data-radix-context-menu-item][data-highlighted],
+  [role="menuitem"]:hover,
+  [role="option"]:hover,
+  [role="option"][data-highlighted] {
+    background-color: hsl(45, 100%, 50%) !important;
+    color: black !important;
+    outline: none !important;
+  }
+  
+  /* Select trigger specific */
+  [data-radix-select-trigger] {
+    background-color: white !important;
+    color: black !important;
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1) !important;
+  }
+  
+  [data-radix-select-trigger]:focus {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1) !important;
+    outline: 3px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 2px !important;
+  }
+  
+  /* Select value and placeholder */
+  [data-radix-select-trigger] span {
+    color: black !important;
+  }
+  
+  [data-radix-select-trigger] [data-placeholder] {
+    color: hsl(0, 0%, 40%) !important;
+  }
+  
+  /* Select icon (chevron) */
+  [data-radix-select-trigger] svg {
+    color: black !important;
+    stroke-width: 3px !important;
+  }
+  
+  /* Select viewport */
+  [data-radix-select-viewport] {
+    padding: 0 !important;
+  }
+  
+  /* Dropdown separators */
+  [data-radix-dropdown-menu-separator],
+  [data-radix-context-menu-separator] {
+    height: 4px !important;
+    background-color: black !important;
+    margin: 0 !important;
+  }
+  
+  /* Buttons */
+  button,
+  .btn,
+  [role="button"] {
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  button:hover,
+  .btn:hover,
+  [role="button"]:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  }
+  
+  button:active,
+  .btn:active,
+  [role="button"]:active {
+    transform: translate(4px, 4px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  }
+  
+  /* Cards */
+  .card,
+  [data-card] {
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+    background-color: white;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Inputs */
+  input,
+  textarea,
+  select {
+    border: 3px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    padding: 0.5rem;
+    background-color: white;
+  }
+  
+  /* Fix search input with icon */
+  .relative input {
+    padding-left: 2.5rem !important;
+  }
+  
+  /* Ensure icons don't overlap text */
+  .relative > svg:first-child + input {
+    padding-left: 2.5rem !important;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 3px solid hsl(45, 100%, 50%) !important;
+    outline-offset: 2px;
+    box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Badges */
+  .badge {
+    border: 2px solid black !important;
+    border-radius: 0 !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+  }
+  
+  /* Dialogs/Modals */
+  [role="dialog"],
+  .modal,
+  .dialog {
+    border: 6px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  }
+  
+  /* Tables */
+  table {
+    border: 4px solid black !important;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  th {
+    border: 3px solid black !important;
+    background-color: hsl(45, 100%, 50%);
+    color: black;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 1rem;
+  }
+  
+  td {
+    border: 2px solid black !important;
+    padding: 0.75rem;
+    font-weight: 700;
+  }
+  
+  /* Links */
+  a {
+    color: hsl(210, 100%, 50%);
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 2px;
+    font-weight: 900;
+  }
+  
+  a:hover {
+    background-color: hsl(45, 100%, 50%);
+    color: black;
+    text-decoration: none;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  }
+  
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(0, 0%, 80%);
+    border: 2px solid black;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(45, 100%, 50%);
+    border: 2px solid black;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 100%, 50%);
+  }
+  
+  /* === POPOVER SPECIFIC === */
+  [data-radix-popover-content] {
+    background-color: white !important;
+    border: 4px solid black !important;
+    border-radius: 0 !important;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 1) !important;
+    padding: 1rem !important;
+  }
+  
+  /* === TOOLTIP SPECIFIC === */
+  [data-radix-tooltip-content] {
+    background-color: black !important;
+    color: white !important;
+    border: 2px solid black !important;
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    padding: 0.5rem 0.75rem !important;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5) !important;
+  }
+}
+
+/* Brutalism animations - harsh and immediate */
+@keyframes brutalism-slam {
+  0% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes brutalism-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes brutalism-flash {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: hsl(45, 100%, 50%);
+  }
+}
+
+@keyframes brutalism-glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-4px, 4px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(4px, -4px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(-4px, -4px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(4px, 4px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Utility classes for brutalism */
+.brutalism-slam {
+  animation: brutalism-slam 0.3s steps(4, end);
+}
+
+.brutalism-shake {
+  animation: brutalism-shake 0.2s steps(3, end);
+}
+
+.brutalism-flash {
+  animation: brutalism-flash 0.3s steps(2, end);
+}
+
+.brutalism-glitch {
+  animation: brutalism-glitch 0.5s steps(5, end) infinite;
+}
+
+/* Brutalism hover effects */
+.brutalism-hover-slam:hover {
+  animation: brutalism-slam 0.2s steps(3, end);
+}
+
+.brutalism-hover-shake:hover {
+  animation: brutalism-shake 0.15s steps(2, end);
+}
+
+.brutalism-hover-flash:hover {
+  animation: brutalism-flash 0.2s steps(2, end);
+}
+
+/* Offset grid layout */
+.brutalism-offset-grid {
+  display: grid;
+  gap: 0;
+}
+
+.brutalism-offset-grid > *:nth-child(even) {
+  transform: translateY(20px);
+}
+
+/* Diagonal stripes background */
+.brutalism-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.1) 10px,
+    rgba(0, 0, 0, 0.1) 20px
+  );
+}
+
+/* Dots pattern background */
+.brutalism-dots {
+  background-image: radial-gradient(circle, black 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Brutalism text styles */
+.brutalism-outline-text {
+  color: transparent;
+  -webkit-text-stroke: 3px black;
+  text-stroke: 3px black;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.brutalism-split-text {
+  background: linear-gradient(to right, black 50%, hsl(45, 100%, 50%) 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+/* No rounded corners ever */
+[data-theme="brutalism"] * {
+  border-radius: 0 !important;
+}
+
+/* Harsh focus states */
+[data-theme="brutalism"] *:focus-visible {
+  outline: 4px solid hsl(45, 100%, 50%) !important;
+  outline-offset: 4px !important;
+}
+
+/* Disabled states */
+[data-theme="brutalism"] *:disabled {
+  opacity: 1 !important;
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(0, 0%, 80%),
+    hsl(0, 0%, 80%) 10px,
+    hsl(0, 0%, 70%) 10px,
+    hsl(0, 0%, 70%) 20px
+  ) !important;
+  color: hsl(0, 0%, 40%) !important;
+  text-decoration: line-through !important;
+  text-decoration-thickness: 3px !important;
+}

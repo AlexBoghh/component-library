@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+!.env.development
+!.env.production
 
 # vercel
 .vercel
@@ -39,3 +42,25 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build analysis
+.next/analyze
+analyze
+lighthouse-report.html
+bundle-stats.json
+
+# performance reports
+public/build-info.json
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Logs
+*.log

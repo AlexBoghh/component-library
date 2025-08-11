@@ -1,0 +1,339 @@
+/* ================================
+   THEME-SPECIFIC PLAYGROUND CARD HOVER EFFECTS
+   ================================ */
+
+/* Remove any existing purple glow effects */
+.playground-card-default,
+.playground-card-cyberpunk,
+.playground-card-brutalism {
+  /* Reset any problematic global hover effects */
+  box-shadow: none !important;
+}
+
+/* ================================
+   DEFAULT/STANDARD THEME HOVER EFFECTS
+   ================================ */
+
+.playground-card-default {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-width: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-card-default::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)) 0%, 
+    hsl(var(--primary) / 0.8) 25%,
+    hsl(var(--accent)) 50%,
+    hsl(var(--primary) / 0.8) 75%,
+    hsl(var(--primary)) 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.playground-card-default:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow: 
+    0 8px 25px -8px hsl(var(--primary) / 0.3),
+    0 0 0 1px hsl(var(--primary) / 0.2),
+    0 0 20px hsl(var(--primary) / 0.15);
+}
+
+.playground-card-default:hover::before {
+  opacity: 1;
+}
+
+/* Add subtle glow animation */
+.playground-card-default:hover {
+  animation: subtle-glow 2s ease-in-out infinite;
+}
+
+@keyframes subtle-glow {
+  0%, 100% {
+    box-shadow: 
+      0 8px 25px -8px hsl(var(--primary) / 0.3),
+      0 0 0 1px hsl(var(--primary) / 0.2),
+      0 0 20px hsl(var(--primary) / 0.15);
+  }
+  50% {
+    box-shadow: 
+      0 8px 25px -8px hsl(var(--primary) / 0.4),
+      0 0 0 1px hsl(var(--primary) / 0.3),
+      0 0 25px hsl(var(--primary) / 0.2);
+  }
+}
+
+/* ================================
+   CYBERPUNK THEME HOVER EFFECTS
+   ================================ */
+
+.playground-card-cyberpunk {
+  position: relative;
+  transition: all 0.2s ease;
+  border-width: 1px;
+  overflow: hidden;
+}
+
+/* Corner accent lights */
+.playground-card-cyberpunk::before,
+.playground-card-cyberpunk::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.playground-card-cyberpunk::before {
+  top: -1px;
+  left: -1px;
+  border-top-color: #00ffff;
+  border-left-color: #00ffff;
+  border-top-left-radius: inherit;
+}
+
+.playground-card-cyberpunk::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-color: #ff00ff;
+  border-right-color: #ff00ff;
+  border-bottom-right-radius: inherit;
+}
+
+/* Scanning line effect */
+.playground-card-cyberpunk {
+  background: 
+    linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.1) 50%, transparent 100%),
+    rgba(0, 0, 0, 0.6);
+  background-size: 200% 100%, 100% 100%;
+  background-position: -100% 0, 0 0;
+  background-repeat: no-repeat;
+}
+
+.playground-card-cyberpunk:hover {
+  border-color: #00ffff;
+  border-width: 2px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.4),
+    0 0 40px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(255, 0, 255, 0.1);
+  background-position: 100% 0, 0 0;
+  animation: cyberpunk-pulse 1.5s ease-in-out infinite;
+}
+
+.playground-card-cyberpunk:hover::before,
+.playground-card-cyberpunk:hover::after {
+  opacity: 1;
+  animation: corner-flicker 0.1s ease-in-out infinite;
+}
+
+/* Electric pulse effect along border */
+@keyframes cyberpunk-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(0, 255, 255, 0.4),
+      0 0 40px rgba(0, 255, 255, 0.2),
+      inset 0 0 20px rgba(255, 0, 255, 0.1);
+  }
+  25% {
+    box-shadow: 
+      0 0 25px rgba(255, 0, 255, 0.4),
+      0 0 45px rgba(255, 0, 255, 0.2),
+      inset 0 0 25px rgba(0, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.5),
+      0 0 50px rgba(0, 255, 255, 0.3),
+      inset 0 0 30px rgba(255, 0, 255, 0.15);
+  }
+  75% {
+    box-shadow: 
+      0 0 25px rgba(255, 0, 255, 0.4),
+      0 0 45px rgba(255, 0, 255, 0.2),
+      inset 0 0 25px rgba(0, 255, 255, 0.1);
+  }
+}
+
+@keyframes corner-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Glitch effect on hover */
+.playground-card-cyberpunk:hover {
+  animation: 
+    cyberpunk-pulse 1.5s ease-in-out infinite,
+    glitch-card 0.3s ease-in-out 0.5s;
+}
+
+@keyframes glitch-card {
+  0%, 90%, 100% { transform: translateY(-2px); }
+  20% { transform: translateY(-2px) translateX(2px); }
+  40% { transform: translateY(-2px) translateX(-1px); }
+  60% { transform: translateY(-2px) translateX(1px); }
+  80% { transform: translateY(-2px) translateX(-2px); }
+}
+
+/* ================================
+   BRUTALISM THEME HOVER EFFECTS
+   ================================ */
+
+.playground-card-brutalism {
+  transition: none; /* Brutalism = no smooth transitions */
+  border-width: 4px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 0 !important;
+  background-color: hsl(var(--card));
+  position: relative;
+}
+
+/* Double border effect */
+.playground-card-brutalism::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid #000;
+  border-radius: 0;
+  opacity: 0;
+  transition: none;
+}
+
+.playground-card-brutalism:hover {
+  /* Instant harsh transition - no smooth animations */
+  border-width: 6px;
+  transform: translateX(-3px) translateY(-3px);
+  box-shadow: 
+    6px 6px 0px 0px rgba(0, 0, 0, 1),
+    12px 12px 0px 0px rgba(0, 0, 0, 0.3);
+  background-color: hsl(var(--card));
+}
+
+.playground-card-brutalism:hover::before {
+  opacity: 1;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+}
+
+/* Triple border effect for extra brutalism */
+.playground-card-brutalism::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid #000;
+  border-radius: 0;
+  opacity: 0;
+  transition: none;
+}
+
+.playground-card-brutalism:hover::after {
+  opacity: 1;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+}
+
+/* Offset shadow that moves on hover - brutal and immediate */
+.playground-card-brutalism {
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Active state for extra brutal feedback */
+.playground-card-brutalism:active {
+  transform: translateX(0) translateY(0) !important;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1) !important;
+}
+
+/* ================================
+   DARK MODE COMPATIBILITY
+   ================================ */
+
+/* Ensure effects work properly in dark mode */
+.dark .playground-card-default:hover {
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow: 
+    0 8px 25px -8px hsl(var(--primary) / 0.4),
+    0 0 0 1px hsl(var(--primary) / 0.3),
+    0 0 20px hsl(var(--primary) / 0.25);
+}
+
+.dark .playground-card-cyberpunk:hover {
+  box-shadow: 
+    0 0 25px rgba(0, 255, 255, 0.5),
+    0 0 45px rgba(0, 255, 255, 0.3),
+    inset 0 0 25px rgba(255, 0, 255, 0.15);
+}
+
+/* ================================
+   ACCESSIBILITY & PERFORMANCE
+   ================================ */
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .playground-card-default,
+  .playground-card-cyberpunk {
+    transition: none;
+  }
+  
+  .playground-card-default:hover,
+  .playground-card-cyberpunk:hover {
+    animation: none;
+  }
+  
+  .playground-card-default::before,
+  .playground-card-cyberpunk::before,
+  .playground-card-cyberpunk::after {
+    animation: none;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.playground-card-default,
+.playground-card-cyberpunk {
+  transform: translateZ(0);
+}
+
+/* Add will-change only on hover for optimal performance */
+.playground-card-default:hover,
+.playground-card-cyberpunk:hover {
+  will-change: transform, box-shadow, border-color;
+}
+
+/* Brutalism cards don't need GPU acceleration (no smooth animations) */
+.playground-card-brutalism {
+  will-change: auto;
+}
+
+/* Focus states for accessibility */
+.playground-card-default:focus-visible,
+.playground-card-cyberpunk:focus-visible,
+.playground-card-brutalism:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}

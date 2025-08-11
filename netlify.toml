@@ -1,0 +1,69 @@
+# Netlify Configuration
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_ENV = "production"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Development context
+[context.development]
+  command = "npm run build"
+  environment = { NODE_ENV = "development" }
+
+# Preview context
+[context.deploy-preview]
+  command = "npm run build"
+  environment = { NEXT_PUBLIC_APP_ENV = "preview" }
+
+# Production context
+[context.production]
+  command = "npm run build"
+  environment = { NEXT_PUBLIC_APP_ENV = "production" }
+
+# Headers configuration
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, immutable, max-age=31536000"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, immutable, max-age=31536000"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Redirects
+[[redirects]]
+  from = "/old-path"
+  to = "/new-path"
+  status = 301
+  force = false
+
+# Edge Functions
+[[edge_functions]]
+  path = "/api/*"
+  function = "api-handler"
+
+# Plugins
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+  package = "netlify-plugin-cache-nextjs"

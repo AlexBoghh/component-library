@@ -1,0 +1,1 @@
+/**\n * Integration Layer\n * \n * Provides seamless integration capabilities between components, themes,\n * and application state management.\n */\n\nexport * from './component-registry'\nexport * from './theme-integration'\n\n// Re-export for convenience\nexport { useTheme } from '@/lib/hooks/use-theme'\nexport { useConfiguration } from '@/lib/config/use-configuration'

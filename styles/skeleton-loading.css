@@ -1,0 +1,634 @@
+/* ============================================
+ * SKELETON SCREENS & LOADING ANIMATIONS
+ * High-performance loading states with smooth animations
+ * ============================================ */
+
+/* ============================================
+ * SKELETON KEYFRAMES
+ * ============================================ */
+
+/* Enhanced Shimmer Effect */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Wave Loading Animation */
+@keyframes skeleton-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Pulse Breathing Effect */
+@keyframes skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Gradient Sweep */
+@keyframes skeleton-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+/* Loading Dots Animation */
+@keyframes skeleton-dots {
+  0%, 20% {
+    color: currentColor;
+    transform: scale(1);
+  }
+  50% {
+    color: transparent;
+    transform: scale(1.2);
+  }
+  80%, 100% {
+    color: currentColor;
+    transform: scale(1);
+  }
+}
+
+/* Progressive Loading Bar */
+@keyframes skeleton-progress {
+  0% {
+    width: 0%;
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0.8;
+  }
+}
+
+/* Content Reveal Animation */
+@keyframes skeleton-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+/* Typewriter Loading Effect */
+@keyframes skeleton-typewriter {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Spinning Loader */
+@keyframes skeleton-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bouncing Balls */
+@keyframes skeleton-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+ * BASE SKELETON STYLES
+ * ============================================ */
+
+/* Core Skeleton Element */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.1) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius, 0.375rem);
+  animation: skeleton-shimmer 2s ease-in-out infinite;
+  will-change: background-position;
+}
+
+/* Skeleton Variants */
+.skeleton-pulse {
+  background: hsl(var(--muted));
+  animation: skeleton-pulse 2s ease-in-out infinite;
+}
+
+.skeleton-wave {
+  position: relative;
+  background: hsl(var(--muted));
+  overflow: hidden;
+}
+
+.skeleton-wave::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: skeleton-wave 1.8s ease-in-out infinite;
+}
+
+/* Theme-specific Skeletons */
+[data-theme="cyberpunk"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 0.1) 25%,
+    rgba(255, 0, 255, 0.2) 50%,
+    rgba(0, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+[data-theme="glassmorphism"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="brutalism"] .skeleton {
+  background: repeating-linear-gradient(
+    45deg,
+    hsl(var(--muted)),
+    hsl(var(--muted)) 10px,
+    hsl(var(--muted-foreground) / 0.2) 10px,
+    hsl(var(--muted-foreground) / 0.2) 20px
+  );
+  border: 3px solid hsl(var(--border));
+  border-radius: 0 !important;
+  animation: none;
+}
+
+/* ============================================
+ * SKELETON COMPONENTS
+ * ============================================ */
+
+/* Text Skeletons */
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-text-sm {
+  height: 0.75em;
+  margin-bottom: 0.375em;
+}
+
+.skeleton-text-lg {
+  height: 1.25em;
+  margin-bottom: 0.625em;
+}
+
+.skeleton-text-xl {
+  height: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+/* Heading Skeletons */
+.skeleton-heading {
+  height: 2em;
+  width: 60%;
+  margin-bottom: 1em;
+}
+
+.skeleton-heading-sm {
+  height: 1.5em;
+  width: 50%;
+  margin-bottom: 0.75em;
+}
+
+.skeleton-heading-lg {
+  height: 2.5em;
+  width: 70%;
+  margin-bottom: 1.25em;
+}
+
+/* Avatar/Circle Skeletons */
+.skeleton-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.skeleton-avatar-sm {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.skeleton-avatar-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+/* Button Skeletons */
+.skeleton-button {
+  height: 2.5rem;
+  width: 6rem;
+  border-radius: var(--radius, 0.375rem);
+}
+
+.skeleton-button-sm {
+  height: 2rem;
+  width: 4rem;
+}
+
+.skeleton-button-lg {
+  height: 3rem;
+  width: 8rem;
+}
+
+/* Card Skeletons */
+.skeleton-card {
+  width: 100%;
+  min-height: 12rem;
+  border-radius: var(--radius, 0.375rem);
+  padding: 1rem;
+}
+
+/* Image Skeletons */
+.skeleton-image {
+  width: 100%;
+  height: 12rem;
+  border-radius: var(--radius, 0.375rem);
+}
+
+.skeleton-image-sm {
+  height: 8rem;
+}
+
+.skeleton-image-lg {
+  height: 16rem;
+}
+
+.skeleton-image-square {
+  aspect-ratio: 1;
+  height: auto;
+}
+
+/* ============================================
+ * SKELETON LAYOUTS
+ * ============================================ */
+
+/* Article/Post Skeleton */
+.skeleton-article {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skeleton-article-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.skeleton-article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* List Item Skeleton */
+.skeleton-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+/* Table Row Skeleton */
+.skeleton-table-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+/* Form Field Skeleton */
+.skeleton-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Navigation Skeleton */
+.skeleton-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* ============================================
+ * LOADING STATES
+ * ============================================ */
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid hsl(var(--muted));
+  border-top: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  animation: skeleton-spin 1s linear infinite;
+}
+
+.loading-spinner-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 1px;
+}
+
+.loading-spinner-lg {
+  width: 2rem;
+  height: 2rem;
+  border-width: 3px;
+}
+
+/* Loading Dots */
+.loading-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.loading-dots span {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: hsl(var(--primary));
+  border-radius: 50%;
+  animation: skeleton-bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+/* Loading Bar */
+.loading-bar {
+  width: 100%;
+  height: 0.25rem;
+  background: hsl(var(--muted));
+  border-radius: 0.125rem;
+  overflow: hidden;
+}
+
+.loading-bar::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: hsl(var(--primary));
+  border-radius: 0.125rem;
+  animation: skeleton-progress 2s ease-out infinite;
+}
+
+/* Indeterminate Progress Bar */
+.loading-progress {
+  width: 100%;
+  height: 0.25rem;
+  background: hsl(var(--muted));
+  border-radius: 0.125rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: hsl(var(--primary));
+  border-radius: 0.125rem;
+  animation: skeleton-wave 2s ease-in-out infinite;
+}
+
+/* ============================================
+ * STAGGERED SKELETON ANIMATIONS
+ * ============================================ */
+
+/* Stagger Animation Delays */
+.skeleton-stagger > *:nth-child(1) { animation-delay: 0s; }
+.skeleton-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.skeleton-stagger > *:nth-child(3) { animation-delay: 0.2s; }
+.skeleton-stagger > *:nth-child(4) { animation-delay: 0.3s; }
+.skeleton-stagger > *:nth-child(5) { animation-delay: 0.4s; }
+.skeleton-stagger > *:nth-child(6) { animation-delay: 0.5s; }
+.skeleton-stagger > *:nth-child(7) { animation-delay: 0.6s; }
+.skeleton-stagger > *:nth-child(8) { animation-delay: 0.7s; }
+
+/* Progressive Content Loading */
+.skeleton-progressive {
+  animation: skeleton-reveal 1s ease-out forwards;
+}
+
+.skeleton-progressive-delay-1 { animation-delay: 0.2s; }
+.skeleton-progressive-delay-2 { animation-delay: 0.4s; }
+.skeleton-progressive-delay-3 { animation-delay: 0.6s; }
+.skeleton-progressive-delay-4 { animation-delay: 0.8s; }
+
+/* ============================================
+ * INTERACTIVE LOADING STATES
+ * ============================================ */
+
+/* Button Loading State */
+.button-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.button-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border: 2px solid currentColor;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: skeleton-spin 1s linear infinite;
+}
+
+/* Input Loading State */
+.input-loading {
+  position: relative;
+}
+
+.input-loading::after {
+  content: '';
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
+  border: 2px solid hsl(var(--muted-foreground));
+  border-top: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  animation: skeleton-spin 1s linear infinite;
+}
+
+/* ============================================
+ * ACCESSIBILITY & PERFORMANCE
+ * ============================================ */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .skeleton-wave::after,
+  .loading-spinner,
+  .loading-dots span,
+  .loading-bar::after,
+  .loading-progress::after,
+  .button-loading::after,
+  .input-loading::after {
+    animation: none !important;
+  }
+  
+  .skeleton {
+    background: hsl(var(--muted));
+  }
+  
+  .loading-dots span {
+    opacity: 0.6;
+  }
+  
+  .loading-bar::after {
+    width: 30%;
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .skeleton {
+    background: hsl(var(--foreground) / 0.1);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .loading-spinner {
+    border-color: hsl(var(--foreground));
+    border-top-color: hsl(var(--primary));
+  }
+  
+  .loading-dots span {
+    background: hsl(var(--foreground));
+  }
+}
+
+/* Performance optimizations */
+.skeleton,
+.skeleton-wave,
+.loading-spinner,
+.loading-progress {
+  contain: paint;
+  will-change: transform, background-position;
+}
+
+/* GPU acceleration for smooth animations */
+.skeleton,
+.loading-spinner,
+.button-loading::after,
+.input-loading::after {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ============================================
+ * UTILITY CLASSES
+ * ============================================ */
+
+/* Width utilities for skeletons */
+.skeleton-w-1\/4 { width: 25%; }
+.skeleton-w-1\/2 { width: 50%; }
+.skeleton-w-3\/4 { width: 75%; }
+.skeleton-w-full { width: 100%; }
+
+/* Height utilities for skeletons */
+.skeleton-h-4 { height: 1rem; }
+.skeleton-h-6 { height: 1.5rem; }
+.skeleton-h-8 { height: 2rem; }
+.skeleton-h-12 { height: 3rem; }
+.skeleton-h-16 { height: 4rem; }
+.skeleton-h-20 { height: 5rem; }
+
+/* Rounded variants */
+.skeleton-rounded-none { border-radius: 0; }
+.skeleton-rounded-sm { border-radius: 0.125rem; }
+.skeleton-rounded { border-radius: 0.25rem; }
+.skeleton-rounded-md { border-radius: 0.375rem; }
+.skeleton-rounded-lg { border-radius: 0.5rem; }
+.skeleton-rounded-xl { border-radius: 0.75rem; }
+.skeleton-rounded-full { border-radius: 9999px; }

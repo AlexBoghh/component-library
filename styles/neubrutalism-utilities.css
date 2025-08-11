@@ -1,0 +1,362 @@
+/* Neubrutalism Utility Classes */
+
+/* Shadows */
+.brutal-shadow-sm {
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow-lg {
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow-xl {
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-shadow-2xl {
+  box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Colored Shadows */
+.brutal-shadow-yellow {
+  box-shadow: 6px 6px 0px 0px hsl(45, 100%, 51%);
+}
+
+.brutal-shadow-purple {
+  box-shadow: 6px 6px 0px 0px hsl(260, 100%, 65%);
+}
+
+.brutal-shadow-cyan {
+  box-shadow: 6px 6px 0px 0px hsl(180, 100%, 40%);
+}
+
+/* Hover Effects */
+.brutal-hover:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-hover-sm:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-hover-lg:hover {
+  transform: translate(-6px, -6px);
+  box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+}
+
+/* Active/Pressed Effects */
+.brutal-active:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.brutal-pressed {
+  transform: translate(4px, 4px);
+  box-shadow: inset 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Borders */
+.brutal-border {
+  border: 4px solid black;
+}
+
+.brutal-border-sm {
+  border: 2px solid black;
+}
+
+.brutal-border-lg {
+  border: 6px solid black;
+}
+
+.brutal-border-xl {
+  border: 8px solid black;
+}
+
+/* Text Effects */
+.brutal-text-shadow {
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.brutal-text-shadow-sm {
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.brutal-text-shadow-lg {
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+}
+
+.brutal-text-shadow-white {
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* Text Contrast Helpers */
+.brutal-text-black {
+  color: black !important;
+}
+
+.brutal-text-white {
+  color: white !important;
+}
+
+.brutal-text-shadow-colored {
+  text-shadow: 
+    3px 3px 0px hsl(45, 100%, 51%),
+    6px 6px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-text-outline {
+  color: transparent;
+  -webkit-text-stroke: 3px black;
+  text-stroke: 3px black;
+}
+
+.brutal-text-outline-white {
+  color: transparent;
+  -webkit-text-stroke: 3px white;
+  text-stroke: 3px white;
+}
+
+/* Backgrounds */
+.brutal-bg-dots {
+  background-image: radial-gradient(circle, black 2px, transparent 2px);
+  background-size: 20px 20px;
+}
+
+.brutal-bg-grid {
+  background-image: 
+    linear-gradient(black 2px, transparent 2px),
+    linear-gradient(90deg, black 2px, transparent 2px);
+  background-size: 30px 30px;
+}
+
+.brutal-bg-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.1) 10px,
+    rgba(0, 0, 0, 0.1) 20px
+  );
+}
+
+.brutal-bg-zigzag {
+  background-image: linear-gradient(135deg, transparent 25%, black 25%, black 50%, transparent 50%, transparent 75%, black 75%, black);
+  background-size: 20px 20px;
+}
+
+/* Animations */
+@keyframes brutal-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes brutal-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes brutal-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes brutal-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+}
+
+@keyframes brutal-slam {
+  0% {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(90deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.brutal-shake {
+  animation: brutal-shake 0.3s ease-in-out;
+}
+
+.brutal-bounce {
+  animation: brutal-bounce 0.5s ease-in-out;
+}
+
+.brutal-rotate {
+  animation: brutal-rotate 0.5s linear;
+}
+
+.brutal-pulse {
+  animation: brutal-pulse 1s ease-in-out infinite;
+}
+
+.brutal-slam {
+  animation: brutal-slam 0.3s ease-out;
+}
+
+/* Color Blocks */
+.brutal-yellow {
+  background-color: hsl(45, 100%, 50%);
+  color: black;
+}
+
+.brutal-purple {
+  background-color: hsl(260, 80%, 60%);
+  color: white;
+}
+
+.brutal-cyan {
+  background-color: hsl(180, 70%, 45%);
+  color: white;
+}
+
+.brutal-pink {
+  background-color: hsl(350, 80%, 60%);
+  color: white;
+}
+
+.brutal-green {
+  background-color: hsl(120, 60%, 40%);
+  color: white;
+}
+
+.brutal-orange {
+  background-color: hsl(30, 90%, 50%);
+  color: black;
+}
+
+/* Gradient Backgrounds */
+.brutal-gradient-yellow {
+  background: linear-gradient(135deg, hsl(45, 100%, 51%) 0%, hsl(35, 100%, 50%) 100%);
+}
+
+.brutal-gradient-purple {
+  background: linear-gradient(135deg, hsl(260, 100%, 65%) 0%, hsl(280, 100%, 60%) 100%);
+}
+
+.brutal-gradient-cyan {
+  background: linear-gradient(135deg, hsl(180, 100%, 40%) 0%, hsl(200, 100%, 45%) 100%);
+}
+
+.brutal-gradient-rainbow {
+  background: linear-gradient(135deg, 
+    hsl(45, 100%, 51%) 0%,
+    hsl(260, 100%, 65%) 33%,
+    hsl(180, 100%, 40%) 66%,
+    hsl(120, 100%, 40%) 100%
+  );
+}
+
+/* Offset Grid Layout */
+.brutal-offset-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.brutal-offset-grid > *:nth-child(even) {
+  transform: translateY(20px);
+}
+
+/* Sticker Effect */
+.brutal-sticker {
+  position: relative;
+  transform: rotate(-2deg);
+  transition: transform 0.2s;
+}
+
+.brutal-sticker:hover {
+  transform: rotate(2deg) scale(1.05);
+}
+
+.brutal-sticker-alt {
+  position: relative;
+  transform: rotate(2deg);
+  transition: transform 0.2s;
+}
+
+.brutal-sticker-alt:hover {
+  transform: rotate(-2deg) scale(1.05);
+}
+
+/* Paper Effect */
+.brutal-paper {
+  position: relative;
+  background: white;
+  border: 4px solid black;
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.brutal-paper::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.05) 10px,
+    rgba(0, 0, 0, 0.05) 20px
+  );
+  z-index: -1;
+}
+
+/* Tape Effect */
+.brutal-tape {
+  position: relative;
+}
+
+.brutal-tape::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  width: 80px;
+  height: 30px;
+  background: hsla(45, 100%, 51%, 0.8);
+  border: 2px solid black;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Stamp Effect */
+.brutal-stamp {
+  position: relative;
+  padding: 1rem;
+  border: 4px dashed black;
+  background: white;
+  transform: rotate(-5deg);
+}
+
+.brutal-stamp::after {
+  content: 'APPROVED';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  font-size: 2rem;
+  font-weight: 900;
+  color: hsl(0, 100%, 50%);
+  opacity: 0.5;
+  pointer-events: none;
+}

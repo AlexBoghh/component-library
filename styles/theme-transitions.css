@@ -1,0 +1,298 @@
+/* ============================================
+ * SMOOTH THEME TRANSITION ANIMATIONS
+ * Advanced CSS animations for seamless theme switching
+ * ============================================ */
+
+/* ============================================
+ * THEME TRANSITION KEYFRAMES
+ * ============================================ */
+
+/* Smooth Color Transition */
+@keyframes theme-color-shift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1) contrast(1);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1.1) contrast(1.1);
+  }
+  100% {
+    filter: hue-rotate(360deg) brightness(1) contrast(1);
+  }
+}
+
+/* Page Flip Transition */
+@keyframes theme-flip {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(800px) rotateY(-90deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+}
+
+/* Slide Transition */
+@keyframes theme-slide-left {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes theme-slide-right {
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Fade Scale Transition */
+@keyframes theme-fade-scale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ripple Transition */
+@keyframes theme-ripple {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+/* Curtain Transition */
+@keyframes theme-curtain-left {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes theme-curtain-right {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Glitch Transition */
+@keyframes theme-glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  30% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(270deg);
+  }
+  40% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(360deg);
+  }
+  50% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg) contrast(1.5);
+  }
+  60% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(180deg) saturate(2);
+  }
+  70% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(270deg) brightness(1.2);
+  }
+  80% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(360deg);
+  }
+  90% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(45deg);
+  }
+}
+
+/* Morphing Transition */
+@keyframes theme-morph {
+  0% {
+    border-radius: 0%;
+    transform: scale(1);
+  }
+  25% {
+    border-radius: 25%;
+    transform: scale(1.05);
+  }
+  50% {
+    border-radius: 50%;
+    transform: scale(0.95);
+  }
+  75% {
+    border-radius: 25%;
+    transform: scale(1.05);
+  }
+  100% {
+    border-radius: 0%;
+    transform: scale(1);
+  }
+}
+
+/* Vortex Transition */
+@keyframes theme-vortex {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: blur(0px);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.8);
+    filter: blur(2px);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* ============================================
+ * THEME TRANSITION CLASSES
+ * ============================================ */
+
+/* Base Theme Transition Container */
+.theme-transition {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Smooth Color Transitions */
+.theme-transition-colors {
+  transition: 
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-transition-fast {
+  transition-duration: 0.3s;
+}
+
+.theme-transition-slow {
+  transition-duration: 0.8s;
+}
+
+/* Animated Transitions */
+.theme-flip {
+  animation: theme-flip 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-slide-left {
+  animation: theme-slide-left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-slide-right {
+  animation: theme-slide-right 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-fade-scale {
+  animation: theme-fade-scale 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-ripple {
+  animation: theme-ripple 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-glitch {
+  animation: theme-glitch 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-morph {
+  animation: theme-morph 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-vortex {
+  animation: theme-vortex 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+ * THEME-SPECIFIC TRANSITION EFFECTS
+ * ============================================ */
+
+/* Cyberpunk Theme Transitions */
+[data-theme="cyberpunk"] .theme-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: theme-slide-right 0.6s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Glassmorphism Theme Transitions */
+[data-theme="glassmorphism"] .theme-transition {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: 
+    backdrop-filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="glassmorphism"] .theme-transition.active {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Brutalism Theme Transitions */
+[data-theme="brutalism"] .theme-transition {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-theme="brutalism"] .theme-transition.active {
+  transform: translate(4px, 4px);
+  box-shadow: -4px -4px 0px rgba(0, 0, 0, 1);
+}

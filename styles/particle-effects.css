@@ -1,0 +1,677 @@
+/* ============================================
+ * PARTICLE EFFECTS & MAGICAL ANIMATIONS
+ * Advanced CSS-only particle systems and special effects
+ * ============================================ */
+
+/* ============================================
+ * PARTICLE KEYFRAMES
+ * ============================================ */
+
+/* Floating Particles */
+@keyframes particle-float-up {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(200px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes particle-float-diagonal {
+  0% {
+    transform: translate(0, 100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, -100vh) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Orbiting Particles */
+@keyframes particle-orbit {
+  0% {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes particle-orbit-reverse {
+  0% {
+    transform: rotate(0deg) translateX(30px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(30px) rotate(360deg);
+  }
+}
+
+/* Sparkling Particles */
+@keyframes particle-sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(1) rotate(720deg);
+    opacity: 1;
+  }
+}
+
+@keyframes particle-twinkle {
+  0%, 50%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  25%, 75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Magical Dust */
+@keyframes magic-dust {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) translateX(30px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Energy Pulse */
+@keyframes energy-pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Matrix Rain Effect */
+@keyframes matrix-drop {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotateX(720deg) rotateY(360deg);
+  }
+}
+
+/* Bubble Float */
+@keyframes bubble-float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Firefly Glow */
+@keyframes firefly-glow {
+  0%, 100% {
+    opacity: 0.3;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes firefly-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20px, -10px);
+  }
+  50% {
+    transform: translate(-15px, -20px);
+  }
+  75% {
+    transform: translate(-10px, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ============================================
+ * PARTICLE SYSTEMS
+ * ============================================ */
+
+/* Floating Particles Container */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Individual Particle Base */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Floating Particles */
+.particle-float {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  animation: particle-float-up 8s linear infinite;
+}
+
+.particle-float-sm {
+  width: 2px;
+  height: 2px;
+  animation-duration: 6s;
+}
+
+.particle-float-lg {
+  width: 6px;
+  height: 6px;
+  animation-duration: 10s;
+}
+
+/* Diagonal Floating Particles */
+.particle-diagonal {
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%);
+  animation: particle-float-diagonal 12s linear infinite;
+}
+
+/* Orbiting Particles */
+.particle-orbit-container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.particle-orbit {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.9) 0%, transparent 60%);
+  animation: particle-orbit 4s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+}
+
+.particle-orbit-reverse {
+  animation: particle-orbit-reverse 6s linear infinite;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.9) 0%, transparent 60%);
+}
+
+/* Sparkling Effects */
+.particle-sparkle {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 1) 0%,
+    rgba(255, 215, 0, 0.8) 30%,
+    transparent 70%
+  );
+  animation: particle-sparkle 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+}
+
+.particle-twinkle {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.8) 40%,
+    transparent 70%
+  );
+  animation: particle-twinkle 3s ease-in-out infinite;
+}
+
+/* Magic Dust Particles */
+.particle-magic {
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 1) 0%,
+    rgba(139, 92, 246, 0.6) 50%,
+    transparent 100%
+  );
+  animation: magic-dust 1.5s ease-out;
+  filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.8));
+}
+
+/* Energy Pulse Particles */
+.particle-energy {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.8) 0%,
+    rgba(0, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: energy-pulse 1s ease-out;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.6));
+}
+
+/* Matrix Particles */
+.particle-matrix {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 1) 0%,
+    rgba(0, 255, 0, 0.8) 30%,
+    transparent 100%
+  );
+  animation: matrix-drop linear infinite;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.8));
+}
+
+/* Confetti Particles */
+.particle-confetti {
+  width: 8px;
+  height: 8px;
+  animation: confetti-fall 3s linear infinite;
+}
+
+.particle-confetti-red {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a5a);
+}
+
+.particle-confetti-blue {
+  background: linear-gradient(45deg, #4ecdc4, #44a3a3);
+}
+
+.particle-confetti-yellow {
+  background: linear-gradient(45deg, #ffe66d, #ffdd44);
+}
+
+.particle-confetti-green {
+  background: linear-gradient(45deg, #95e1d3, #7dd3c0);
+}
+
+.particle-confetti-purple {
+  background: linear-gradient(45deg, #a8e6cf, #88c999);
+}
+
+/* Bubble Particles */
+.particle-bubble {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    rgba(255, 255, 255, 0.1) 70%,
+    transparent 100%
+  );
+  animation: bubble-float 6s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Firefly Particles */
+.particle-firefly {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 0, 1) 0%,
+    rgba(255, 255, 0, 0.8) 40%,
+    rgba(255, 215, 0, 0.4) 70%,
+    transparent 100%
+  );
+  animation: 
+    firefly-glow 2s ease-in-out infinite,
+    firefly-move 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 0, 0.6));
+}
+
+/* ============================================
+ * THEMED PARTICLE EFFECTS
+ * ============================================ */
+
+/* Cyberpunk Particles */
+[data-theme="cyberpunk"] .particle-float {
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, transparent 70%);
+  filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.6));
+}
+
+[data-theme="cyberpunk"] .particle-sparkle {
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 1) 0%,
+    rgba(255, 0, 255, 0.8) 30%,
+    transparent 70%
+  );
+  filter: drop-shadow(0 0 6px rgba(255, 0, 255, 0.8));
+}
+
+/* Glassmorphism Particles */
+[data-theme="glassmorphism"] .particle-float {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 80%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="glassmorphism"] .particle-sparkle {
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.8) 0%,
+    rgba(139, 92, 246, 0.4) 40%,
+    transparent 80%
+  );
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* Brutalism Particles */
+[data-theme="brutalism"] .particle-float {
+  background: hsl(45, 100%, 50%);
+  border: 2px solid black;
+  border-radius: 0 !important;
+  animation: none;
+  opacity: 1;
+}
+
+[data-theme="brutalism"] .particle-sparkle {
+  background: hsl(0, 100%, 50%);
+  border: 2px solid black;
+  border-radius: 0 !important;
+  width: 12px;
+  height: 12px;
+  animation: none;
+  transform: rotate(45deg);
+}
+
+/* ============================================
+ * PARTICLE TRIGGER EFFECTS
+ * ============================================ */
+
+/* Button Click Particles */
+.particle-burst {
+  position: relative;
+  overflow: visible;
+}
+
+.particle-burst::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.8) 0%,
+    rgba(139, 92, 246, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.particle-burst:active::after {
+  animation: energy-pulse 0.6s ease-out;
+}
+
+/* Hover Particle Trail */
+.particle-trail {
+  position: relative;
+}
+
+.particle-trail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.4) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.particle-trail:hover::before {
+  opacity: 1;
+}
+
+/* Success Celebration Particles */
+.particle-celebration {
+  position: relative;
+}
+
+.particle-celebration.active::after {
+  content: '✨🎉✨';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2em;
+  animation: magic-dust 2s ease-out;
+  pointer-events: none;
+}
+
+/* ============================================
+ * INTERACTIVE PARTICLE ZONES
+ * ============================================ */
+
+/* Mouse Follow Particles */
+.particle-zone {
+  position: relative;
+  overflow: hidden;
+}
+
+.particle-zone:hover .particle-mouse {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+.particle-mouse {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float-up 3s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Scroll-triggered Particles */
+.particle-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle-scroll.active .particle {
+  animation-play-state: running;
+}
+
+.particle-scroll:not(.active) .particle {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+/* ============================================
+ * PERFORMANCE OPTIMIZATIONS
+ * ============================================ */
+
+/* GPU Acceleration */
+.particle,
+.particle-orbit-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Contain paint for better performance */
+.particles-container {
+  contain: paint;
+}
+
+/* Optimize animations */
+.particle {
+  animation-fill-mode: both;
+}
+
+/* ============================================
+ * ACCESSIBILITY & REDUCED MOTION
+ * ============================================ */
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .particles-container,
+  .particle,
+  .particle-orbit,
+  .particle-sparkle,
+  .particle-magic,
+  .particle-energy,
+  .particle-matrix,
+  .particle-confetti,
+  .particle-bubble,
+  .particle-firefly {
+    animation: none !important;
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  .particle-burst::after,
+  .particle-trail::before {
+    display: none !important;
+  }
+}
+
+/* Allow users to control particle density */
+@media (prefers-reduced-motion: no-preference) {
+  .particles-low-density .particle:nth-child(n+6) {
+    display: none;
+  }
+  
+  .particles-high-density {
+    /* Show all particles in high density mode */
+  }
+}
+
+/* Battery-conscious mode */
+@media (max-width: 768px) {
+  .particles-container {
+    display: none; /* Hide particles on mobile to save battery */
+  }
+}
+
+/* ============================================
+ * UTILITY CLASSES
+ * ============================================ */
+
+/* Particle Colors */
+.particle-primary {
+  background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%);
+}
+
+.particle-secondary {
+  background: radial-gradient(circle, hsl(var(--secondary)) 0%, transparent 70%);
+}
+
+.particle-accent {
+  background: radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%);
+}
+
+.particle-success {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.8) 0%, transparent 70%);
+}
+
+.particle-warning {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.8) 0%, transparent 70%);
+}
+
+.particle-error {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.8) 0%, transparent 70%);
+}
+
+/* Particle Sizes */
+.particle-xs { width: 2px; height: 2px; }
+.particle-sm { width: 4px; height: 4px; }
+.particle-md { width: 6px; height: 6px; }
+.particle-lg { width: 8px; height: 8px; }
+.particle-xl { width: 12px; height: 12px; }
+
+/* Animation Speeds */
+.particle-slow { animation-duration: 12s; }
+.particle-normal { animation-duration: 8s; }
+.particle-fast { animation-duration: 4s; }
+.particle-very-fast { animation-duration: 2s; }

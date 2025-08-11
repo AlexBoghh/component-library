@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Main App Bundle",
+    "path": ".next/static/chunks/main-*.js",
+    "limit": "100 KB",
+    "gzip": true,
+    "brotli": false
+  },
+  {
+    "name": "Framework Bundle",
+    "path": ".next/static/chunks/framework-*.js",
+    "limit": "45 KB",
+    "gzip": true
+  },
+  {
+    "name": "Radix UI Bundle",
+    "path": ".next/static/chunks/radix-*.js",
+    "limit": "80 KB",
+    "gzip": true
+  },
+  {
+    "name": "Pages Total",
+    "path": ".next/static/chunks/pages/**/*.js",
+    "limit": "200 KB",
+    "gzip": true
+  },
+  {
+    "name": "CSS Bundle",
+    "path": ".next/static/css/*.css",
+    "limit": "50 KB",
+    "gzip": true
+  },
+  {
+    "name": "Total App Size",
+    "path": [
+      ".next/static/chunks/**/*.js",
+      ".next/static/css/*.css"
+    ],
+    "limit": "500 KB",
+    "gzip": true,
+    "brotli": true
+  }
+]
