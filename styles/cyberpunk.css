@@ -511,3 +511,210 @@
 .animate-scan-quick {
   animation: scan-quick 2s linear infinite;
 }
+
+/* Cyberpunk Form Component Styles */
+/* Enhanced Checkbox Styles for Better Visibility */
+.cyberpunk-checkbox {
+  position: relative;
+}
+
+.cyberpunk-checkbox[data-state=checked] {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.1));
+  border-color: #00ffff !important;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.6),
+    inset 0 0 10px rgba(0, 255, 255, 0.2);
+  animation: pulse-neon 2s infinite;
+}
+
+.cyberpunk-checkbox[data-state=checked]::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.cyberpunk-checkbox:hover {
+  border-color: rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Enhanced Radio Button Styles */
+.cyberpunk-radio {
+  position: relative;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cyberpunk-radio[data-state=checked] {
+  border-color: #00ffff;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.2), rgba(0, 0, 0, 0.8));
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.7),
+    inset 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.cyberpunk-radio[data-state=checked]::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  border-radius: inherit;
+  animation: pulse-neon 3s infinite;
+}
+
+.cyberpunk-radio:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Enhanced Switch Styles */
+.cyberpunk-switch {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.9));
+  border: 2px solid rgba(100, 100, 100, 0.5);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.cyberpunk-switch[data-state=checked] {
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(0, 200, 200, 0.2));
+  border-color: #00ffff;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.6),
+    inset 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.cyberpunk-switch-thumb {
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.9), rgba(150, 150, 150, 0.9));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.cyberpunk-switch[data-state=checked] .cyberpunk-switch-thumb {
+  background: linear-gradient(135deg, #00ffff, #00cccc);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.6);
+  border-color: rgba(0, 255, 255, 0.8);
+}
+
+.cyberpunk-switch:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Cyberpunk Tabs Enhanced Spacing */
+.cyberpunk-tabs-list {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.8));
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  padding: 6px;
+  gap: 8px; /* Increased spacing between tabs */
+}
+
+.cyberpunk-tabs-trigger {
+  padding: 12px 20px; /* Increased padding for better spacing */
+  margin: 0 4px; /* Additional margin for spacing */
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  color: rgba(0, 255, 255, 0.7);
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cyberpunk-tabs-trigger:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  color: #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.cyberpunk-tabs-trigger[data-state=active] {
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.1));
+  border-color: #00ffff;
+  color: #ffffff;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.6),
+    inset 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+.cyberpunk-tabs-trigger[data-state=active]::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Category Selector Fix */
+.cyberpunk-select-trigger {
+  min-width: 180px; /* Ensure minimum width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cyberpunk-select-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Enhanced Switch Thumb Visibility */
+.cyberpunk-switch [data-state=unchecked] .switch-thumb,
+.cyberpunk-switch [data-state=unchecked] > div:last-child {
+  background: linear-gradient(135deg, rgba(150, 150, 150, 0.9), rgba(100, 100, 100, 0.8));
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.cyberpunk-switch [data-state=checked] .switch-thumb,
+.cyberpunk-switch [data-state=checked] > div:last-child {
+  background: linear-gradient(135deg, #00ffff, #00cccc);
+  border: 1px solid rgba(0, 255, 255, 0.8);
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Form Element Focus States */
+.cyberpunk-checkbox:focus-visible,
+.cyberpunk-radio:focus-visible,
+.cyberpunk-switch:focus-visible {
+  outline: none;
+  box-shadow: 
+    0 0 0 2px rgba(0, 255, 255, 0.4),
+    0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/* Cyberpunk Animation Enhancements */
+@keyframes cyberpunk-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.cyberpunk-checkbox[data-state=checked],
+.cyberpunk-radio[data-state=checked],
+.cyberpunk-switch[data-state=checked] {
+  animation: cyberpunk-pulse 3s ease-in-out infinite;
+}

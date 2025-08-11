@@ -185,14 +185,14 @@ const componentExamples = {
       </div>
     ),
     cyberpunk: (
-      <div className="space-y-3">
+      <div className="space-y-4">
         <div className="flex items-center space-x-3">
-          <Switch className="h-6 w-11 data-[state=checked]:bg-cyan-500" />
-          <Label className="text-sm font-medium text-cyan-400">Neural link</Label>
+          <Switch className="h-7 w-14 cyberpunk-switch bg-black/80 border-2 border-cyan-500/50 data-[state=unchecked]:bg-black/90 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-cyan-900/50 data-[state=checked]:to-cyan-800/50 data-[state=checked]:border-cyan-400 data-[state=checked]:shadow-[0_0_20px_rgba(0,255,255,0.6)] transition-all duration-300" />
+          <Label className="text-sm font-medium text-cyan-400 font-mono">Neural Link</Label>
         </div>
         <div className="flex items-center space-x-3">
-          <Switch defaultChecked className="h-6 w-11 data-[state=checked]:bg-pink-500" />
-          <Label className="text-sm font-medium text-pink-400">Enhance</Label>
+          <Switch defaultChecked className="h-7 w-14 cyberpunk-switch bg-black/80 border-2 border-pink-500/50 data-[state=unchecked]:bg-black/90 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-pink-900/50 data-[state=checked]:to-pink-800/50 data-[state=checked]:border-pink-400 data-[state=checked]:shadow-[0_0_20px_rgba(236,72,153,0.6)] transition-all duration-300" />
+          <Label className="text-sm font-medium text-pink-400 font-mono">Combat Mode</Label>
         </div>
       </div>
     )
@@ -213,12 +213,12 @@ const componentExamples = {
     cyberpunk: (
       <div className="space-y-3">
         <div className="flex items-center space-x-3">
-          <Checkbox className="h-5 w-5 border-cyan-500 data-[state=checked]:bg-cyan-500 data-[state=checked]:border-cyan-500" />
-          <Label className="text-sm font-medium text-cyan-400 cursor-pointer">Neural link</Label>
+          <Checkbox className="h-5 w-5 cyberpunk-checkbox border-cyan-500/50 bg-black/80 data-[state=checked]:bg-cyan-500/20 data-[state=checked]:border-cyan-400 data-[state=checked]:shadow-[0_0_15px_rgba(0,255,255,0.6)] hover:border-cyan-400/70 transition-all duration-300" />
+          <Label className="text-sm font-medium text-cyan-400 cursor-pointer font-mono">Neural Link</Label>
         </div>
         <div className="flex items-center space-x-3">
-          <Checkbox defaultChecked className="h-5 w-5 border-pink-500 data-[state=checked]:bg-pink-500 data-[state=checked]:border-pink-500" />
-          <Label className="text-sm font-medium text-pink-400 cursor-pointer">Auto-enhance</Label>
+          <Checkbox defaultChecked className="h-5 w-5 cyberpunk-checkbox border-pink-500/50 bg-black/80 data-[state=checked]:bg-pink-500/20 data-[state=checked]:border-pink-400 data-[state=checked]:shadow-[0_0_15px_rgba(236,72,153,0.6)] hover:border-pink-400/70 transition-all duration-300" />
+          <Label className="text-sm font-medium text-pink-400 cursor-pointer font-mono">Auto-Enhance</Label>
         </div>
       </div>
     )
@@ -237,14 +237,14 @@ const componentExamples = {
       </RadioGroup>
     ),
     cyberpunk: (
-      <RadioGroup defaultValue="quantum" className="space-y-3">
+      <RadioGroup defaultValue="quantum" className="space-y-4">
         <div className="flex items-center space-x-3">
-          <RadioGroupItem value="quantum" className="h-5 w-5 border-cyan-500 text-cyan-500" />
-          <Label className="text-sm font-medium text-cyan-400 cursor-pointer">Quantum</Label>
+          <RadioGroupItem value="quantum" className="h-5 w-5 cyberpunk-radio border-cyan-500/50 bg-black/80 data-[state=checked]:border-cyan-400 data-[state=checked]:bg-cyan-500/10 data-[state=checked]:shadow-[0_0_15px_rgba(0,255,255,0.7)] hover:border-cyan-400/70 transition-all duration-300" />
+          <Label className="text-sm font-medium text-cyan-400 cursor-pointer font-mono">Quantum Protocol</Label>
         </div>
         <div className="flex items-center space-x-3">
-          <RadioGroupItem value="neural" className="h-5 w-5 border-pink-500 text-pink-500" />
-          <Label className="text-sm font-medium text-pink-400 cursor-pointer">Neural</Label>
+          <RadioGroupItem value="neural" className="h-5 w-5 cyberpunk-radio border-pink-500/50 bg-black/80 data-[state=checked]:border-pink-400 data-[state=checked]:bg-pink-500/10 data-[state=checked]:shadow-[0_0_15px_rgba(236,72,153,0.7)] hover:border-pink-400/70 transition-all duration-300" />
+          <Label className="text-sm font-medium text-pink-400 cursor-pointer font-mono">Neural Network</Label>
         </div>
       </RadioGroup>
     )
@@ -264,13 +264,13 @@ const componentExamples = {
     ),
     cyberpunk: (
       <Select>
-        <SelectTrigger className="w-full h-10 text-sm bg-black/50 border-cyan-500/50 text-cyan-100 focus:border-cyan-400">
-          <SelectValue placeholder="Select mode..." />
+        <SelectTrigger className="w-full h-10 text-sm cyberpunk-select-trigger bg-black/80 border-2 border-cyan-500/50 text-cyan-100 focus:border-cyan-400 hover:border-cyan-400/70 transition-all duration-300 shadow-[inset_0_0_10px_rgba(0,0,0,0.8)]">
+          <SelectValue placeholder="Select protocol..." className="cyberpunk-select-value font-mono" />
         </SelectTrigger>
-        <SelectContent className="bg-black/90 border-cyan-500/50">
-          <SelectItem value="stealth" className="text-sm text-cyan-400 focus:bg-cyan-500/20">Stealth</SelectItem>
-          <SelectItem value="combat" className="text-sm text-pink-400 focus:bg-pink-500/20">Combat</SelectItem>
-          <SelectItem value="recon" className="text-sm text-yellow-400 focus:bg-yellow-500/20">Recon</SelectItem>
+        <SelectContent className="bg-black/95 border-2 border-cyan-500/50 backdrop-blur-md">
+          <SelectItem value="stealth" className="text-sm text-cyan-400 font-mono hover:bg-cyan-500/20 focus:bg-cyan-500/20 focus:text-cyan-300">Stealth Mode</SelectItem>
+          <SelectItem value="combat" className="text-sm text-pink-400 font-mono hover:bg-pink-500/20 focus:bg-pink-500/20 focus:text-pink-300">Combat Ready</SelectItem>
+          <SelectItem value="recon" className="text-sm text-yellow-400 font-mono hover:bg-yellow-500/20 focus:bg-yellow-500/20 focus:text-yellow-300">Recon Active</SelectItem>
         </SelectContent>
       </Select>
     )
@@ -334,19 +334,19 @@ const componentExamples = {
     ),
     cyberpunk: (
       <Tabs defaultValue="data" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 h-9 bg-black/50 border border-cyan-500/50">
-          <TabsTrigger value="data" className="text-xs font-medium data-[state=active]:bg-cyan-500 data-[state=active]:text-black">Data</TabsTrigger>
-          <TabsTrigger value="cypher" className="text-xs font-medium data-[state=active]:bg-pink-500 data-[state=active]:text-white">Cypher</TabsTrigger>
-          <TabsTrigger value="matrix" className="text-xs font-medium data-[state=active]:bg-yellow-400 data-[state=active]:text-black">Matrix</TabsTrigger>
+        <TabsList className="cyberpunk-tabs-list flex w-full justify-center h-12 bg-black/80 border border-cyan-500/40 rounded-sm p-2 gap-2">
+          <TabsTrigger value="data" className="cyberpunk-tabs-trigger flex-1 px-4 py-2 text-xs font-bold font-mono uppercase tracking-wider text-cyan-400/70 border border-cyan-500/30 bg-transparent hover:border-cyan-400/60 hover:text-cyan-400 hover:bg-cyan-500/10 data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-cyan-600/20 data-[state=active]:border-cyan-400 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(0,255,255,0.4)] transition-all duration-300">Data Stream</TabsTrigger>
+          <TabsTrigger value="cypher" className="cyberpunk-tabs-trigger flex-1 px-4 py-2 text-xs font-bold font-mono uppercase tracking-wider text-pink-400/70 border border-pink-500/30 bg-transparent hover:border-pink-400/60 hover:text-pink-400 hover:bg-pink-500/10 data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500/20 data-[state=active]:to-pink-600/20 data-[state=active]:border-pink-400 data-[state=active]:text-white data-[state=active]:shadow-[0_0_15px_rgba(236,72,153,0.4)] transition-all duration-300">Cypher</TabsTrigger>
+          <TabsTrigger value="matrix" className="cyberpunk-tabs-trigger flex-1 px-4 py-2 text-xs font-bold font-mono uppercase tracking-wider text-yellow-400/70 border border-yellow-500/30 bg-transparent hover:border-yellow-400/60 hover:text-yellow-400 hover:bg-yellow-500/10 data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-500/20 data-[state=active]:to-yellow-600/20 data-[state=active]:border-yellow-400 data-[state=active]:text-black data-[state=active]:shadow-[0_0_15px_rgba(255,255,0,0.4)] transition-all duration-300">Matrix</TabsTrigger>
         </TabsList>
-        <TabsContent value="data" className="mt-2">
-          <p className="text-xs text-cyan-400">Neural data stream active</p>
+        <TabsContent value="data" className="mt-4">
+          <p className="text-xs text-cyan-400 font-mono">[SYSTEM] Neural data stream active</p>
         </TabsContent>
-        <TabsContent value="cypher" className="mt-2">
-          <p className="text-xs text-pink-400">Encrypted protocols engaged</p>
+        <TabsContent value="cypher" className="mt-4">
+          <p className="text-xs text-pink-400 font-mono">[ENCRYPTED] Protocols engaged</p>
         </TabsContent>
-        <TabsContent value="matrix" className="mt-2">
-          <p className="text-xs text-yellow-400">System matrix online</p>
+        <TabsContent value="matrix" className="mt-4">
+          <p className="text-xs text-yellow-400 font-mono">[MATRIX] System online</p>
         </TabsContent>
       </Tabs>
     )
@@ -483,14 +483,23 @@ export default function PlaygroundPage() {
             
             {/* Category Filter */}
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[160px] h-10">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Category" />
+              <SelectTrigger className={cn(
+                "w-[180px] h-10 cyberpunk-select-trigger",
+                selectedTheme === 'cyberpunk' && "bg-black/80 border-cyan-500/50 text-cyan-100 hover:border-cyan-400/70"
+              )}>
+                <Filter className="h-4 w-4 mr-2 flex-shrink-0" />
+                <SelectValue placeholder="Category" className="cyberpunk-select-value" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
+              <SelectContent className={cn(
+                selectedTheme === 'cyberpunk' && "bg-black/90 border-cyan-500/50 text-cyan-100"
+              )}>
+                <SelectItem value="all" className={cn(
+                  selectedTheme === 'cyberpunk' && "text-cyan-400 focus:bg-cyan-500/20 focus:text-cyan-300"
+                )}>All Categories</SelectItem>
                 {Object.keys(componentCategories).map(category => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
+                  <SelectItem key={category} value={category} className={cn(
+                    selectedTheme === 'cyberpunk' && "text-cyan-400 focus:bg-cyan-500/20 focus:text-cyan-300"
+                  )}>{category}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
