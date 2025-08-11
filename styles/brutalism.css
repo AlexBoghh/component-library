@@ -1,87 +1,260 @@
 /* Brutalism Theme Styles - Surgical & Targeted Version */
 
-/* Base brutalism theme */
+/* Base brutalism theme - Authentic Raw Aesthetic */
 [data-theme="brutalism"] {
-  /* Typography */
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
+  /* Raw System Typography - Authentic Brutalist */
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+  font-weight: 400;
   letter-spacing: 0;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
+  line-height: 1.2;
   
-  /* Remove smooth transitions - brutalism is immediate */
+  /* Concrete texture background pattern */
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 119, 98, 0.03) 0%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.02) 50.1%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px);
+  
+  /* Remove smooth transitions - brutalism is immediate and jarring */
   * {
-    transition: none;
-    animation-timing-function: step-end;
+    transition: none !important;
+    animation-timing-function: steps(3, end) !important;
+    animation-duration: 0.05s !important;
   }
   
+  /* Raw monospace headings */
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Arial Black", "Helvetica Bold", sans-serif;
-    font-weight: 900;
+    font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.1em;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+    border-left: 8px solid black;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.05) 10px,
+      rgba(0, 0, 0, 0.05) 11px
+    );
+  }
+  
+  /* Exposed structure - show the raw HTML */
+  pre, code {
+    font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px solid black;
+    padding: 0.5rem;
+    font-weight: 700;
+  }
+  
+  /* Raw paragraph styling */
+  p {
+    font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 1rem;
   }
 }
 
-/* Brutalism color variables - Better Contrast */
+/* Brutalism color variables - Authentic Clashing & High Contrast */
 [data-theme="brutalism"] {
-  --background: 0 0% 98%;
-  --foreground: 0 0% 5%;
-  --muted: 0 0% 85%;
-  --muted-foreground: 0 0% 25%;
+  /* Raw concrete and industrial colors */
+  --background: 0 0% 100%;  /* Pure white like raw concrete */
+  --foreground: 0 0% 0%;    /* Pitch black - no fear */
+  --muted: 0 0% 80%;        /* Raw concrete gray */
+  --muted-foreground: 0 0% 10%;
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 5%;
+  --popover-foreground: 0 0% 0%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 5%;
-  --border: 0 0% 0%;
+  --card-foreground: 0 0% 0%;
+  --border: 0 0% 0%;        /* Always black borders - exposed structure */
   --input: 0 0% 0%;
-  --primary: 45 100% 50%;
+  
+  /* Clashing primary colors - jarring combinations */
+  --primary: 45 100% 50%;   /* Industrial yellow - warning tape */
   --primary-foreground: 0 0% 0%;
-  --secondary: 0 100% 50%;
+  --secondary: 0 100% 50%;  /* Brutal red - danger */
   --secondary-foreground: 0 0% 100%;
-  --accent: 210 100% 50%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 350 80% 55%;
-  --destructive-foreground: 0 0% 100%;
-  --ring: 45 100% 50%;
-  --radius: 0rem;
+  --accent: 300 100% 50%;   /* Shocking magenta - clash with everything */
+  --accent-foreground: 0 0% 0%;
+  --destructive: 120 100% 40%; /* Toxic green - unnatural */
+  --destructive-foreground: 0 0% 0%;
+  
+  /* Brutalist utility colors */
+  --warning: 30 100% 50%;   /* Construction orange */
+  --info: 210 100% 50%;     /* Electric blue */
+  --success: 90 100% 40%;   /* Lime green */
+  
+  --ring: 0 0% 0%;         /* Black focus rings */
+  --radius: 0rem;          /* No rounded corners - ever */
+  
+  /* Raw material textures */
+  --concrete-light: 0 0% 92%;
+  --concrete-dark: 0 0% 15%;
+  --steel: 210 5% 25%;
+  --rust: 15 60% 35%;
 }
 
-/* Dark mode brutalism */
+/* Dark mode brutalism - Underground/Industrial Aesthetic */
 .dark [data-theme="brutalism"] {
-  --background: 0 0% 8%;
-  --foreground: 0 0% 95%;
-  --muted: 0 0% 20%;
-  --muted-foreground: 0 0% 70%;
-  --popover: 0 0% 12%;
+  /* Underground concrete bunker aesthetic */
+  --background: 0 0% 8%;    /* Dark concrete */
+  --foreground: 0 0% 95%;   /* Harsh fluorescent white */
+  --muted: 0 0% 15%;        /* Dirty concrete */
+  --muted-foreground: 0 0% 85%;
+  --popover: 0 0% 5%;       /* Deep shadow */
   --popover-foreground: 0 0% 95%;
-  --card: 0 0% 12%;
+  --card: 0 0% 10%;         /* Concrete slab */
   --card-foreground: 0 0% 95%;
-  --border: 0 0% 100%;
+  --border: 0 0% 100%;      /* White borders in dark - stark contrast */
   --input: 0 0% 100%;
-  --primary: 45 100% 50%;
+  
+  /* Same clashing colors but adjusted for dark */
+  --primary: 45 100% 60%;   /* Brighter warning yellow */
   --primary-foreground: 0 0% 0%;
-  --secondary: 0 100% 50%;
-  --secondary-foreground: 0 0% 100%;
-  --accent: 210 100% 50%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 350 80% 60%;
+  --secondary: 0 100% 60%;  /* Brighter danger red */
+  --secondary-foreground: 0 0% 0%;
+  --accent: 300 100% 60%;   /* Neon magenta */
+  --accent-foreground: 0 0% 0%;
+  --destructive: 120 100% 50%; /* Toxic glow green */
   --destructive-foreground: 0 0% 0%;
-  --ring: 45 100% 50%;
+  
+  --ring: 0 0% 100%;       /* White focus rings in dark */
+  
+  /* Dark industrial background with noise */
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 100, 0.02) 0%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.01) 50.1%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255, 255, 255, 0.005) 3px, rgba(255, 255, 255, 0.005) 6px);
+}
+
+/* === BRUTALIST TEXTURES & PATTERNS === */
+
+/* Concrete texture utility classes */
+[data-theme="brutalism"] .concrete-texture {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.05) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px);
+}
+
+/* Industrial grid pattern */
+[data-theme="brutalism"] .industrial-grid {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Exposed structure elements */
+[data-theme="brutalism"] .exposed-structure::before {
+  content: "<!-- EXPOSED HTML STRUCTURE -->";
+  display: block;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Raw material sections */
+[data-theme="brutalism"] .raw-section {
+  border: 4px solid black;
+  margin: 2rem 0;
+  padding: 1rem;
+  position: relative;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(0, 0, 0, 0.02) 10px,
+      rgba(0, 0, 0, 0.02) 20px
+    );
+}
+
+/* Broken grid layouts */
+[data-theme="brutalism"] .broken-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  border: 4px solid black;
+}
+
+[data-theme="brutalism"] .broken-grid > * {
+  border: 2px solid black;
+  padding: 1rem;
+  margin: -1px;
+  transform: rotate(0.5deg);
+}
+
+[data-theme="brutalism"] .broken-grid > *:nth-child(2n) {
+  transform: rotate(-0.3deg);
+}
+
+[data-theme="brutalism"] .broken-grid > *:nth-child(3n) {
+  transform: rotate(0.2deg);
+}
+
+/* Asymmetric elements */
+[data-theme="brutalism"] .asymmetric {
+  transform: skew(-2deg, 0.5deg);
+  border-left: 8px solid black;
+  border-right: 2px solid black;
+  border-top: 6px solid black;
+  border-bottom: 4px solid black;
+}
+
+/* Raw overlapping elements */
+[data-theme="brutalism"] .overlap-raw {
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="brutalism"] .overlap-raw::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: 10px;
+  bottom: 10px;
+  border: 3px solid black;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 5px,
+    rgba(0, 0, 0, 0.1) 5px,
+    rgba(0, 0, 0, 0.1) 10px
+  );
+  z-index: -1;
 }
 
 /* === TARGETED COMPONENT FIXES === */
 
-/* INPUT FIELD FIXES - Surgical targeting */
+/* INPUT FIELD FIXES - Raw Industrial Form Elements */
 [data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]) {
   background-color: white;
   color: black;
-  border: 3px solid black;
+  border: 4px solid black;
   border-radius: 0;
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
   font-weight: 700;
-  padding: 0.75rem;
-  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  box-shadow: 
+    inset 4px 4px 0px rgba(0, 0, 0, 0.2),
+    4px 4px 0px rgba(0, 0, 0, 1);
   outline: none;
   font-size: 16px;
   line-height: 1.2;
@@ -91,100 +264,190 @@
   pointer-events: auto;
   user-select: text;
   cursor: text;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  /* Industrial grid texture */
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
 }
 
 [data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]):focus {
-  outline: 3px solid hsl(45, 100%, 50%);
-  outline-offset: 2px;
-  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.5);
+  outline: 4px solid hsl(45, 100%, 50%);
+  outline-offset: 4px;
+  box-shadow: 
+    inset 4px 4px 0px rgba(0, 0, 0, 0.4),
+    8px 8px 0px rgba(0, 0, 0, 1),
+    0 0 0 2px white;
   border-color: black;
+  background-color: hsl(45, 100%, 95%);
+  animation: input-focus-glitch 0.1s steps(2, end);
 }
 
 [data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]):hover:not(:focus) {
-  box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.4);
-  transform: translate(-1px, -1px);
+  box-shadow: 
+    inset 2px 2px 0px rgba(0, 0, 0, 0.3),
+    6px 6px 0px rgba(0, 0, 0, 1);
+  transform: translate(-2px, -2px);
+  background-color: hsl(0, 0%, 98%);
 }
 
 [data-theme="brutalism"] input::placeholder {
-  color: hsl(0, 0%, 50%);
+  color: hsl(0, 0%, 40%);
   opacity: 1;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
 }
 
-/* CHECKBOX FIXES - Surgical targeting */
+@keyframes input-focus-glitch {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* CHECKBOX FIXES - Industrial Switch Aesthetic */
 [data-theme="brutalism"] [data-radix-checkbox-root] {
-  border: 4px solid black;
+  border: 5px solid black;
   border-radius: 0;
   background-color: white;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  box-shadow: 
+    inset 2px 2px 0px rgba(0, 0, 0, 0.2),
+    4px 4px 0px rgba(0, 0, 0, 1);
   position: relative;
   flex-shrink: 0;
+  
+  /* Industrial texture */
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.05) 2px,
+      rgba(0, 0, 0, 0.05) 4px
+    );
 }
 
 [data-theme="brutalism"] [data-radix-checkbox-root]:hover:not([data-state="checked"]) {
-  background-color: hsl(0, 0%, 95%);
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  background-color: hsl(300, 100%, 95%);
+  transform: translate(-2px, -2px);
+  box-shadow: 
+    inset 2px 2px 0px rgba(0, 0, 0, 0.3),
+    6px 6px 0px rgba(0, 0, 0, 1);
+  animation: checkbox-hover 0.1s steps(2, end);
 }
 
 [data-theme="brutalism"] [data-radix-checkbox-root][data-state="checked"] {
-  background-color: hsl(45, 100%, 60%);
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      hsl(300, 100%, 50%),
+      hsl(300, 100%, 50%) 3px,
+      black 3px,
+      black 6px
+    );
   border-color: black;
-  color: black;
+  color: white;
+  animation: checkbox-check 0.2s steps(3, end);
 }
 
 [data-theme="brutalism"] [data-radix-checkbox-indicator] {
-  color: black;
-  stroke: black;
-  stroke-width: 4px;
+  color: white;
+  stroke: white;
+  stroke-width: 6px;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  fill: black;
+  fill: white;
+  filter: drop-shadow(1px 1px 0px black);
 }
 
 [data-theme="brutalism"] [data-radix-checkbox-indicator] svg {
-  color: black;
-  stroke: black;
-  stroke-width: 4px;
-  width: 14px;
-  height: 14px;
-  fill: black;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  color: white;
+  stroke: white;
+  stroke-width: 6px;
+  width: 16px;
+  height: 16px;
+  fill: white;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }
 
-/* RADIO BUTTON FIXES - Surgical targeting */
+@keyframes checkbox-hover {
+  0% { transform: translate(-2px, -2px) rotate(0deg); }
+  50% { transform: translate(-1px, -3px) rotate(0.5deg); }
+  100% { transform: translate(-2px, -2px) rotate(0deg); }
+}
+
+@keyframes checkbox-check {
+  0% { transform: scale(0.8) rotate(-2deg); }
+  50% { transform: scale(1.1) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* RADIO BUTTON FIXES - Industrial Dial Aesthetic */
 [data-theme="brutalism"] [data-radix-radio-group-item] {
-  border: 4px solid black;
-  border-radius: 50%;
+  border: 5px solid black;
+  border-radius: 0;
   background-color: white;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
+  box-shadow: 
+    inset 2px 2px 0px rgba(0, 0, 0, 0.2),
+    4px 4px 0px rgba(0, 0, 0, 1);
   position: relative;
   flex-shrink: 0;
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 24px;
+  min-height: 24px;
+  transform: rotate(45deg);
+  
+  /* Industrial crosshatch texture */
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.1) 1px,
+      rgba(0, 0, 0, 0.1) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.1) 1px,
+      rgba(0, 0, 0, 0.1) 2px
+    );
+  background-size: 4px 4px;
 }
 
 [data-theme="brutalism"] [data-radix-radio-group-item]:hover:not([data-state="checked"]) {
-  background-color: hsl(0, 0%, 95%);
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  background-color: hsl(210, 100%, 95%);
+  transform: rotate(45deg) translate(-2px, -2px);
+  box-shadow: 
+    inset 2px 2px 0px rgba(0, 0, 0, 0.3),
+    6px 6px 0px rgba(0, 0, 0, 1);
+  animation: radio-hover 0.15s steps(2, end);
 }
 
 [data-theme="brutalism"] [data-radix-radio-group-item][data-state="checked"] {
-  background-color: hsl(45, 100%, 60%);
+  background-color: hsl(210, 100%, 50%);
   border-color: black;
+  border-width: 6px;
+  animation: radio-select 0.2s steps(4, end);
 }
 
 [data-theme="brutalism"] [data-radix-radio-group-indicator] {
@@ -193,16 +456,36 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  transform: rotate(-45deg);
 }
 
 [data-theme="brutalism"] [data-radix-radio-group-indicator]:before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  content: "●";
+  width: 12px;
+  height: 12px;
   background-color: black;
   display: block;
+  text-align: center;
+  line-height: 12px;
+  font-size: 8px;
+  font-weight: 900;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px black;
+}
+
+@keyframes radio-hover {
+  0% { transform: rotate(45deg) translate(-2px, -2px) scale(1); }
+  50% { transform: rotate(45deg) translate(-1px, -3px) scale(1.05); }
+  100% { transform: rotate(45deg) translate(-2px, -2px) scale(1); }
+}
+
+@keyframes radio-select {
+  0% { transform: rotate(45deg) scale(0.8); }
+  25% { transform: rotate(50deg) scale(1.2); }
+  50% { transform: rotate(40deg) scale(0.9); }
+  75% { transform: rotate(47deg) scale(1.1); }
+  100% { transform: rotate(45deg) scale(1); }
 }
 
 /* SWITCH FIXES - Surgical targeting */
@@ -306,15 +589,16 @@
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
 }
 
-/* BUTTON FIXES - Surgical targeting */
+/* BUTTON FIXES - Harsh Brutalist Aesthetic */
 [data-theme="brutalism"] button {
   border: 4px solid black;
   border-radius: 0;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
-  font-weight: 900;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.75rem 1.5rem;
+  letter-spacing: 0.15em;
+  padding: 1rem 2rem;
   cursor: pointer;
   position: relative;
   z-index: 1;
@@ -325,25 +609,82 @@
   align-items: center;
   justify-content: center;
   min-width: fit-content;
+  
+  /* Raw industrial texture */
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.03) 1px,
+      rgba(0, 0, 0, 0.03) 2px
+    );
 }
 
+/* Jarring hover effect - non-smooth */
 [data-theme="brutalism"] button:hover:not(:disabled) {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  background-color: hsl(45, 100%, 80%);
+  animation: button-glitch 0.1s steps(2, end);
 }
 
+/* Brutal active state */
 [data-theme="brutalism"] button:active:not(:disabled) {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
+  background-color: hsl(0, 100%, 80%);
 }
 
-/* Primary button variant */
+/* Glitch animation for brutalist feel */
+@keyframes button-glitch {
+  0% { transform: translate(-4px, -4px) scale(1); }
+  50% { transform: translate(-3px, -5px) scale(1.02); }
+  100% { transform: translate(-4px, -4px) scale(1); }
+}
+
+/* Primary button variant - Warning Tape Aesthetic */
 [data-theme="brutalism"] button.bg-primary,
 [data-theme="brutalism"] [class*="bg-primary"] button {
-  background-color: hsl(45, 100%, 60%);
-  color: black;
-  border-color: black;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      hsl(45, 100%, 50%),
+      hsl(45, 100%, 50%) 10px,
+      black 10px,
+      black 20px
+    );
+  color: white;
+  border: 6px solid black;
   font-weight: 900;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+}
+
+/* Secondary button - Danger Red */
+[data-theme="brutalism"] button.bg-secondary,
+[data-theme="brutalism"] [class*="bg-secondary"] button {
+  background-color: hsl(0, 100%, 50%);
+  color: white;
+  border: 6px solid black;
+  font-weight: 900;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0 0 0 2px white, 8px 8px 0px rgba(0, 0, 0, 1);
+}
+
+/* Destructive button - Toxic Green */
+[data-theme="brutalism"] button.bg-destructive,
+[data-theme="brutalism"] [class*="bg-destructive"] button {
+  background-color: hsl(120, 100%, 40%);
+  color: black;
+  border: 6px solid black;
+  font-weight: 900;
+  animation: toxic-pulse 2s steps(3, end) infinite;
+}
+
+@keyframes toxic-pulse {
+  0% { box-shadow: 8px 8px 0px rgba(0, 0, 0, 1); }
+  50% { box-shadow: 8px 8px 0px rgba(0, 0, 0, 1), 0 0 20px hsl(120, 100%, 40%); }
+  100% { box-shadow: 8px 8px 0px rgba(0, 0, 0, 1); }
 }
 
 /* TAB FIXES - Surgical targeting */
@@ -522,20 +863,83 @@
   stroke-width: 3px;
 }
 
-/* CARD FIXES - Surgical targeting */
+/* CARD FIXES - Concrete Slab Aesthetic */
 [data-theme="brutalism"] .card {
-  border: 4px solid black;
+  border: 6px solid black;
   border-radius: 0;
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  box-shadow: 
+    12px 12px 0px rgba(0, 0, 0, 1),
+    inset -2px -2px 0px rgba(0, 0, 0, 0.1);
   background-color: white;
   position: relative;
   z-index: 1;
   color: black;
-  padding: 1.5rem;
+  padding: 2rem;
+  
+  /* Concrete texture with noise */
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(0, 0, 0, 0.02) 8px,
+      rgba(0, 0, 0, 0.02) 16px
+    );
+  
+  /* Asymmetric brutal styling */
+  border-left-width: 8px;
+  border-top-width: 4px;
+  border-right-width: 6px;
+  border-bottom-width: 10px;
+  
+  /* Raw material edge */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 5px) 0,
+    100% 5px,
+    100% calc(100% - 3px),
+    calc(100% - 2px) 100%,
+    3px 100%,
+    0 calc(100% - 7px)
+  );
+}
+
+[data-theme="brutalism"] .card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 
+    15px 15px 0px rgba(0, 0, 0, 1),
+    inset -2px -2px 0px rgba(0, 0, 0, 0.2);
+  animation: card-shift 0.1s steps(2, end);
 }
 
 [data-theme="brutalism"] .card * {
   color: black;
+}
+
+/* Card exposed structure */
+[data-theme="brutalism"] .card::before {
+  content: "[CARD_COMPONENT]";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+  background: white;
+  padding: 2px 4px;
+  border: 1px solid black;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 10;
+}
+
+@keyframes card-shift {
+  0% { transform: translate(-3px, -3px) rotate(0deg); }
+  50% { transform: translate(-2px, -4px) rotate(0.2deg); }
+  100% { transform: translate(-3px, -3px) rotate(0deg); }
 }
 
 /* ICON VISIBILITY FIXES - Surgical targeting */
@@ -698,45 +1102,134 @@
   color: black;
 }
 
-/* Link styling */
+/* Link styling - Raw HTML Hyperlinks */
 [data-theme="brutalism"] a {
   color: hsl(210, 100%, 50%);
   text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 2px;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 3px;
   font-weight: 900;
-}
-
-[data-theme="brutalism"] a:hover {
-  background-color: hsl(45, 100%, 50%);
-  color: black;
-  text-decoration: none;
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid transparent;
   padding: 2px 4px;
+  display: inline-block;
+  position: relative;
+  
+  /* Raw underline with breaks */
+  text-decoration-style: solid;
+  background: 
+    repeating-linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 70%,
+      hsl(210, 100%, 50%) 70%,
+      hsl(210, 100%, 50%) 100%
+    );
+  background-size: 8px 3px;
+  background-position: 0 calc(100% - 2px);
+  background-repeat: repeat-x;
 }
 
-/* Table styling */
+/* Brutal link hover - like old web */
+[data-theme="brutalism"] a:hover {
+  background-color: hsl(300, 100%, 50%);
+  color: white;
+  text-decoration: none;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  border: 2px solid black;
+  transform: translate(-2px, -2px);
+  animation: link-glitch 0.15s steps(3, end);
+  text-shadow: 2px 2px 0px black;
+  background-image: none;
+}
+
+/* Visited links - old web aesthetic */
+[data-theme="brutalism"] a:visited {
+  color: hsl(300, 80%, 40%);
+}
+
+@keyframes link-glitch {
+  0% { transform: translate(-2px, -2px); }
+  33% { transform: translate(-1px, -3px); }
+  66% { transform: translate(-3px, -1px); }
+  100% { transform: translate(-2px, -2px); }
+}
+
+/* Table styling - Industrial Data Grid */
 [data-theme="brutalism"] table {
-  border: 4px solid black;
+  border: 6px solid black;
   border-collapse: separate;
   border-spacing: 0;
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+  width: 100%;
+  background: white;
 }
 
 [data-theme="brutalism"] th {
-  border: 3px solid black;
-  background-color: hsl(45, 100%, 50%);
-  color: black;
+  border: 4px solid black;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      hsl(45, 100%, 50%),
+      hsl(45, 100%, 50%) 10px,
+      black 10px,
+      black 20px
+    );
+  color: white;
   font-weight: 900;
   text-transform: uppercase;
-  padding: 1rem;
+  padding: 1.25rem;
+  text-shadow: 2px 2px 0px black;
+  letter-spacing: 0.1em;
+  position: relative;
+  
+  /* Industrial rivets */
+  background-image: 
+    radial-gradient(circle at 10px 10px, black 2px, transparent 2px),
+    radial-gradient(circle at calc(100% - 10px) 10px, black 2px, transparent 2px),
+    repeating-linear-gradient(
+      45deg,
+      hsl(45, 100%, 50%),
+      hsl(45, 100%, 50%) 10px,
+      black 10px,
+      black 20px
+    );
 }
 
 [data-theme="brutalism"] td {
-  border: 2px solid black;
-  padding: 0.75rem;
+  border: 3px solid black;
+  padding: 1rem;
   font-weight: 700;
   background-color: white;
   color: black;
+  
+  /* Alternating industrial pattern */
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(0, 0, 0, 0.02) 20px,
+      rgba(0, 0, 0, 0.02) 40px
+    );
+}
+
+[data-theme="brutalism"] tr:nth-child(even) td {
+  background-color: hsl(0, 0%, 95%);
+}
+
+[data-theme="brutalism"] tr:hover td {
+  background-color: hsl(300, 100%, 95%);
+  animation: row-glitch 0.1s steps(2, end);
+}
+
+@keyframes row-glitch {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
 }
 
 /* Tooltip styling */
@@ -795,12 +1288,160 @@
   text-decoration-thickness: 3px;
 }
 
-/* No rounded corners */
-[data-theme="brutalism"] * {
-  border-radius: 0;
+/* === BRUTALIST NAVIGATION & UTILITY PATTERNS === */
+
+/* Raw navigation styling */
+[data-theme="brutalism"] nav {
+  background: white;
+  border: 4px solid black;
+  border-bottom-width: 8px;
+  box-shadow: 0 8px 0px rgba(0, 0, 0, 1);
+  padding: 1rem;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-/* Allow specific overrides for radio buttons */
+[data-theme="brutalism"] nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0;
+}
+
+[data-theme="brutalism"] nav li {
+  border-right: 3px solid black;
+  margin: 0;
+}
+
+[data-theme="brutalism"] nav li:last-child {
+  border-right: none;
+}
+
+[data-theme="brutalism"] nav a {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: black;
+  text-decoration: none;
+  border: none;
+  background: none;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="brutalism"] nav a:hover {
+  background: hsl(45, 100%, 50%);
+  color: black;
+  box-shadow: inset 0 0 0 2px black;
+  animation: nav-glitch 0.2s steps(4, end);
+  text-shadow: none;
+  transform: none;
+}
+
+[data-theme="brutalism"] nav a.active {
+  background: black;
+  color: white;
+  box-shadow: inset 4px 4px 0px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes nav-glitch {
+  0% { background-position: 0 0; }
+  25% { background-position: 2px 0; }
+  50% { background-position: -1px 0; }
+  75% { background-position: 1px 0; }
+  100% { background-position: 0 0; }
+}
+
+/* Brutalist utility classes */
+[data-theme="brutalism"] .brutalist-border {
+  border: 4px solid black;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+}
+
+[data-theme="brutalism"] .brutalist-text {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+[data-theme="brutalism"] .brutal-emphasis {
+  background: black;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+  transform: rotate(-1deg);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="brutalism"] .raw-container {
+  border: 6px solid black;
+  padding: 2rem;
+  margin: 2rem 0;
+  background: white;
+  position: relative;
+  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  
+  /* Exposed container label */
+  &::before {
+    content: "<CONTAINER>";
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: white;
+    border: 2px solid black;
+    padding: 2px 8px;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Industrial progress bars */
+[data-theme="brutalism"] .progress {
+  width: 100%;
+  height: 24px;
+  border: 4px solid black;
+  background: white;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="brutalism"] .progress-bar {
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      hsl(45, 100%, 50%),
+      hsl(45, 100%, 50%) 4px,
+      black 4px,
+      black 8px
+    );
+  border-right: 2px solid black;
+  transition: none;
+  animation: progress-industrial 1s steps(10, end) infinite;
+}
+
+@keyframes progress-industrial {
+  0% { background-position: 0 0; }
+  100% { background-position: 8px 0; }
+}
+
+/* No rounded corners - EVER */
+[data-theme="brutalism"] * {
+  border-radius: 0 !important;
+}
+
+/* Allow specific overrides for radio buttons only */
 [data-theme="brutalism"] [data-radix-radio-group-item] {
-  border-radius: 50%;
+  border-radius: 0 !important;
 }
