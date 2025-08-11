@@ -118,15 +118,30 @@ const componentExamples = {
       </div>
     ),
     cyberpunk: (
-      <div className="flex flex-wrap gap-2">
-        <Button className="h-9 px-4 py-2 text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-black shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all">
+      <div className="flex flex-wrap gap-3">
+        {/* Primary Button - Cyan/Blue Glowing */}
+        <Button className="cyberpunk-btn-primary h-10 px-6 py-2 text-sm">
           Execute
         </Button>
-        <Button className="h-9 px-4 py-2 text-sm font-semibold bg-pink-500 hover:bg-pink-400 text-white shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all">
+        
+        {/* Secondary Button - Magenta/Pink Glowing */}
+        <Button className="cyberpunk-btn-secondary h-10 px-6 py-2 text-sm">
           Deploy
         </Button>
-        <Button className="h-9 px-4 py-2 text-sm font-semibold bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all">
+        
+        {/* Destructive Button - Red Glowing */}
+        <Button className="cyberpunk-btn-destructive h-10 px-6 py-2 text-sm">
+          Destroy
+        </Button>
+        
+        {/* Ghost Button - Transparent with Border */}
+        <Button className="cyberpunk-btn-ghost h-10 px-6 py-2 text-sm">
           Scan
+        </Button>
+        
+        {/* Outline Button - Border Only */}
+        <Button className="cyberpunk-btn-outline h-10 px-6 py-2 text-sm">
+          Analyze
         </Button>
       </div>
     )

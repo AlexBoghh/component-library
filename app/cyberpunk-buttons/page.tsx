@@ -348,6 +348,120 @@ export default function CyberpunkButtonsPage() {
           </div>
         </section>
 
+        {/* New Distinct Button Variants */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-cyan-400 mb-6 flex items-center gap-2">
+            <Zap className="w-6 h-6" />
+            DISTINCT VARIANT MATRIX
+          </h2>
+          <p className="text-cyan-400/70 font-mono text-sm mb-6">
+            Alternative button styling approach with distinct visual identities for each variant type.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="bg-black/50 border-cyan-400/20 p-6">
+              <h3 className="text-cyan-400 font-mono text-sm mb-4">PRIMARY_ACTION</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-primary h-10 px-6 py-2 text-sm">
+                  Execute Command
+                </button>
+                <button className="cyberpunk-btn-primary h-12 px-8 py-3 text-base">
+                  <Power className="mr-2 h-5 w-5" />
+                  Initialize System
+                </button>
+              </div>
+            </Card>
+
+            <Card className="bg-black/50 border-pink-400/20 p-6">
+              <h3 className="text-pink-400 font-mono text-sm mb-4">SECONDARY_ACTION</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-secondary h-10 px-6 py-2 text-sm">
+                  Deploy Module
+                </button>
+                <button className="cyberpunk-btn-secondary h-12 px-8 py-3 text-base">
+                  <Upload className="mr-2 h-5 w-5" />
+                  Transfer Data
+                </button>
+              </div>
+            </Card>
+
+            <Card className="bg-black/50 border-red-400/20 p-6">
+              <h3 className="text-red-400 font-mono text-sm mb-4">DESTRUCTIVE_ACTION</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-destructive h-10 px-6 py-2 text-sm">
+                  Terminate Process
+                </button>
+                <button className="cyberpunk-btn-destructive h-12 px-8 py-3 text-base">
+                  <AlertTriangle className="mr-2 h-5 w-5" />
+                  System Purge
+                </button>
+              </div>
+            </Card>
+
+            <Card className="bg-black/50 border-cyan-400/20 p-6">
+              <h3 className="text-cyan-400/70 font-mono text-sm mb-4">GHOST_MODE</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-ghost h-10 px-6 py-2 text-sm">
+                  Background Scan
+                </button>
+                <button className="cyberpunk-btn-ghost h-12 px-8 py-3 text-base">
+                  <Shield className="mr-2 h-5 w-5" />
+                  Stealth Mode
+                </button>
+              </div>
+            </Card>
+
+            <Card className="bg-black/50 border-yellow-400/20 p-6">
+              <h3 className="text-yellow-400 font-mono text-sm mb-4">OUTLINE_ONLY</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-outline h-10 px-6 py-2 text-sm">
+                  Analyze Data
+                </button>
+                <button className="cyberpunk-btn-outline h-12 px-8 py-3 text-base">
+                  <Terminal className="mr-2 h-5 w-5" />
+                  Debug Mode
+                </button>
+              </div>
+            </Card>
+
+            <Card className="bg-black/50 border-white/20 p-6">
+              <h3 className="text-white/70 font-mono text-sm mb-4">LOADING_STATES</h3>
+              <div className="space-y-4">
+                <button className="cyberpunk-btn-primary cyberpunk-btn-loading h-10 px-6 py-2 text-sm" disabled>
+                  Processing...
+                </button>
+                <button className="cyberpunk-btn-secondary cyberpunk-btn-loading h-10 px-6 py-2 text-sm" disabled>
+                  Connecting...
+                </button>
+              </div>
+            </Card>
+          </div>
+        </section>
+
+        {/* Disabled State Showcase */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-400 mb-6 flex items-center gap-2">
+            <Lock className="w-6 h-6" />
+            DISABLED_STATES
+          </h2>
+          <div className="flex flex-wrap gap-4">
+            <button className="cyberpunk-btn-primary h-10 px-6 py-2 text-sm" disabled>
+              Primary Disabled
+            </button>
+            <button className="cyberpunk-btn-secondary h-10 px-6 py-2 text-sm" disabled>
+              Secondary Disabled
+            </button>
+            <button className="cyberpunk-btn-destructive h-10 px-6 py-2 text-sm" disabled>
+              Destructive Disabled
+            </button>
+            <button className="cyberpunk-btn-ghost h-10 px-6 py-2 text-sm" disabled>
+              Ghost Disabled
+            </button>
+            <button className="cyberpunk-btn-outline h-10 px-6 py-2 text-sm" disabled>
+              Outline Disabled
+            </button>
+          </div>
+        </section>
+
         {/* Ghost and Outline Variants */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-indigo-400 mb-6">MINIMAL INTERFACES</h2>

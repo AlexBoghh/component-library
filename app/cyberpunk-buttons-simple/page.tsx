@@ -101,6 +101,30 @@ export default function CyberpunkButtonsSimplePage() {
           </section>
 
           <section>
+            <h2 className="text-xl font-bold text-cyan-400 mb-4">New Distinct Variants</h2>
+            <p className="text-cyan-400/70 text-sm mb-4">
+              Alternative button styling with unique visual identities for each variant.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="cyberpunk-btn-primary h-10 px-6 py-2 text-sm">
+                Primary Execute
+              </button>
+              <button className="cyberpunk-btn-secondary h-10 px-6 py-2 text-sm">
+                Secondary Deploy
+              </button>
+              <button className="cyberpunk-btn-destructive h-10 px-6 py-2 text-sm">
+                Destructive Delete
+              </button>
+              <button className="cyberpunk-btn-ghost h-10 px-6 py-2 text-sm">
+                Ghost Scan
+              </button>
+              <button className="cyberpunk-btn-outline h-10 px-6 py-2 text-sm">
+                Outline Analyze
+              </button>
+            </div>
+          </section>
+
+          <section>
             <h2 className="text-xl font-bold text-indigo-400 mb-4">Minimal Styles</h2>
             <div className="flex flex-wrap gap-4">
               <CyberpunkButton variant="ghost">
