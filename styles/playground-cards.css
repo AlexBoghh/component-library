@@ -4,8 +4,7 @@
 
 /* Remove any existing purple glow effects */
 .playground-card-default,
-.playground-card-cyberpunk,
-.playground-card-brutalism {
+.playground-card-cyberpunk {
   /* Reset any problematic global hover effects without breaking interactivity */
   /* box-shadow handled by theme-specific rules below */
 }
@@ -191,84 +190,7 @@
   80% { transform: translateY(-2px) translateX(-2px); }
 }
 
-/* ================================
-   BRUTALISM THEME HOVER EFFECTS
-   ================================ */
-
-.playground-card-brutalism {
-  transition: none; /* Brutalism = no smooth transitions */
-  border-width: 4px;
-  border-style: solid;
-  border-color: #000;
-  border-radius: 0 !important;
-  background-color: hsl(var(--card));
-  position: relative;
-}
-
-/* Double border effect */
-.playground-card-brutalism::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid #000;
-  border-radius: 0;
-  opacity: 0;
-  transition: none;
-}
-
-.playground-card-brutalism:hover {
-  /* Instant harsh transition - no smooth animations */
-  border-width: 6px;
-  transform: translateX(-3px) translateY(-3px);
-  box-shadow: 
-    6px 6px 0px 0px rgba(0, 0, 0, 1),
-    12px 12px 0px 0px rgba(0, 0, 0, 0.3);
-  background-color: hsl(var(--card));
-}
-
-.playground-card-brutalism:hover::before {
-  opacity: 1;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-}
-
-/* Triple border effect for extra brutalism */
-.playground-card-brutalism::after {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  border: 1px solid #000;
-  border-radius: 0;
-  opacity: 0;
-  transition: none;
-}
-
-.playground-card-brutalism:hover::after {
-  opacity: 1;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-}
-
-/* Offset shadow that moves on hover - brutal and immediate */
-.playground-card-brutalism {
-  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 1);
-}
-
-/* Active state for extra brutal feedback */
-.playground-card-brutalism:active {
-  transform: translateX(0) translateY(0) !important;
-  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1) !important;
-}
+/* Brutalism theme styles removed - theme temporarily disabled */
 
 /* ================================
    DARK MODE COMPATIBILITY
@@ -325,15 +247,10 @@
   will-change: transform, box-shadow, border-color;
 }
 
-/* Brutalism cards don't need GPU acceleration (no smooth animations) */
-.playground-card-brutalism {
-  will-change: auto;
-}
 
 /* Focus states for accessibility */
 .playground-card-default:focus-visible,
-.playground-card-cyberpunk:focus-visible,
-.playground-card-brutalism:focus-visible {
+.playground-card-cyberpunk:focus-visible {
   outline: 2px solid hsl(var(--primary));
   outline-offset: 2px;
 }
