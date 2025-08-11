@@ -8,86 +8,119 @@ import { Power, Zap, Lock, Unlock } from "lucide-react"
 export interface CyberpunkSwitchProps
   extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> {
   label?: string
-  variant?: 'power' | 'data' | 'security' | 'neon'
+  variant?: 'power' | 'data' | 'security' | 'neon' | 'neural' | 'quantum'
   showLabels?: boolean
   showIcon?: boolean
+  showStatus?: boolean
+  showLEDs?: boolean
+  intensity?: 'low' | 'medium' | 'high'
 }
 
 const CyberpunkSwitch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   CyberpunkSwitchProps
->(({ className, label, variant = 'power', showLabels = true, showIcon = false, ...props }, ref) => {
+>(({ 
+  className, 
+  label, 
+  variant = 'power', 
+  showLabels = true, 
+  showIcon = false, 
+  showStatus = true,
+  showLEDs = true,
+  intensity = 'medium',
+  ...props 
+}, ref) => {
   const [isHovered, setIsHovered] = React.useState(false)
   const [sparkAnimation, setSparkAnimation] = React.useState(false)
+  const [energyDischarge, setEnergyDischarge] = React.useState(false)
 
-  // Spark animation on toggle
+  // Enhanced animation effects on toggle
   React.useEffect(() => {
     if (props.checked !== undefined) {
       setSparkAnimation(true)
-      const timer = setTimeout(() => setSparkAnimation(false), 500)
-      return () => clearTimeout(timer)
+      setEnergyDischarge(true)
+      const sparkTimer = setTimeout(() => setSparkAnimation(false), 600)
+      const energyTimer = setTimeout(() => setEnergyDischarge(false), 800)
+      return () => {
+        clearTimeout(sparkTimer)
+        clearTimeout(energyTimer)
+      }
     }
   }, [props.checked])
 
-  const getColors = () => {
+  const getVariantConfig = () => {
+    const baseIntensity = {
+      low: { glow: '0.3', shadowSize: '15px' },
+      medium: { glow: '0.6', shadowSize: '25px' },
+      high: { glow: '0.9', shadowSize: '35px' }
+    }[intensity]
+
     switch (variant) {
       case 'power':
         return {
-          track: 'bg-gray-800 data-[state=checked]:bg-cyan-950',
-          thumb: 'bg-gray-600 data-[state=checked]:bg-cyan-400',
-          border: 'border-gray-600 data-[state=checked]:border-cyan-400',
-          glow: 'data-[state=checked]:shadow-[0_0_20px_rgba(0,255,255,0.6)]',
-          label: 'text-gray-400 data-[state=checked]:text-cyan-400'
+          colors: { primary: '#00ffff', secondary: '#0099cc', accent: '#66ffff' },
+          status: { off: 'STANDBY', on: 'ACTIVE' },
+          className: 'cyberpunk-switch-power'
         }
       case 'data':
         return {
-          track: 'bg-gray-800 data-[state=checked]:bg-green-950',
-          thumb: 'bg-gray-600 data-[state=checked]:bg-green-400',
-          border: 'border-gray-600 data-[state=checked]:border-green-400',
-          glow: 'data-[state=checked]:shadow-[0_0_20px_rgba(0,255,0,0.6)]',
-          label: 'text-gray-400 data-[state=checked]:text-green-400'
+          colors: { primary: '#00ff00', secondary: '#009900', accent: '#66ff66' },
+          status: { off: 'PAUSED', on: 'STREAMING' },
+          className: 'cyberpunk-switch-data'
         }
       case 'security':
         return {
-          track: 'bg-gray-800 data-[state=checked]:bg-purple-950',
-          thumb: 'bg-gray-600 data-[state=checked]:bg-purple-400',
-          border: 'border-gray-600 data-[state=checked]:border-purple-400',
-          glow: 'data-[state=checked]:shadow-[0_0_20px_rgba(168,85,247,0.6)]',
-          label: 'text-gray-400 data-[state=checked]:text-purple-400'
+          colors: { primary: '#a855f7', secondary: '#7c3aed', accent: '#c084fc' },
+          status: { off: 'LOCKED', on: 'SECURED' },
+          className: 'cyberpunk-switch-security'
         }
       case 'neon':
         return {
-          track: 'bg-black data-[state=checked]:bg-pink-950/50',
-          thumb: 'bg-pink-600 data-[state=checked]:bg-pink-400',
-          border: 'border-pink-600 data-[state=checked]:border-pink-400',
-          glow: 'data-[state=checked]:shadow-[0_0_20px_rgba(236,72,153,0.6)]',
-          label: 'text-pink-600 data-[state=checked]:text-pink-400'
+          colors: { primary: '#ec4899', secondary: '#db2777', accent: '#f472b6' },
+          status: { off: 'OFFLINE', on: 'NEON' },
+          className: 'cyberpunk-switch-neon'
+        }
+      case 'neural':
+        return {
+          colors: { primary: '#8b5cf6', secondary: '#7c3aed', accent: '#a78bfa' },
+          status: { off: 'DISCONNECTED', on: 'SYNCED' },
+          className: 'cyberpunk-switch-neural'
+        }
+      case 'quantum':
+        return {
+          colors: { primary: '#f59e0b', secondary: '#d97706', accent: '#fbbf24' },
+          status: { off: 'COLLAPSED', on: 'ENTANGLED' },
+          className: 'cyberpunk-switch-quantum'
         }
       default:
         return {
-          track: 'bg-gray-800 data-[state=checked]:bg-cyan-950',
-          thumb: 'bg-gray-600 data-[state=checked]:bg-cyan-400',
-          border: 'border-gray-600 data-[state=checked]:border-cyan-400',
-          glow: 'data-[state=checked]:shadow-[0_0_20px_rgba(0,255,255,0.6)]',
-          label: 'text-gray-400 data-[state=checked]:text-cyan-400'
+          colors: { primary: '#00ffff', secondary: '#0099cc', accent: '#66ffff' },
+          status: { off: 'STANDBY', on: 'ACTIVE' },
+          className: 'cyberpunk-switch-power'
         }
     }
   }
 
-  const colors = getColors()
+  const variantConfig = getVariantConfig()
 
   const getIcon = () => {
     if (!showIcon) return null
     
+    const iconProps = { className: "h-3 w-3", style: { color: props.checked ? variantConfig.colors.primary : 'rgba(100, 100, 120, 0.6)' } }
+    
     switch (variant) {
       case 'power':
-        return <Power className="h-3 w-3" />
+        return <Power {...iconProps} />
       case 'data':
-        return <Zap className="h-3 w-3" />
+        return <Zap {...iconProps} />
       case 'security':
-        return props.checked ? <Unlock className="h-3 w-3" /> : <Lock className="h-3 w-3" />
+        return props.checked ? <Unlock {...iconProps} /> : <Lock {...iconProps} />
+      case 'neural':
+        return <Zap {...iconProps} />
+      case 'quantum':
+        return <Power {...iconProps} />
       default:
-        return <Power className="h-3 w-3" />
+        return <Power {...iconProps} />
     }
   }
 
@@ -208,62 +241,30 @@ const CyberpunkSwitch = React.forwardRef<
             )} />
           )}
         </SwitchPrimitives.Root>
-
-        {/* Power Indicator LEDs */}
-        {variant === 'power' && (
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
-            <div className={cn(
-              "h-1 w-1 rounded-full transition-all duration-300",
-              props.checked ? "bg-cyan-400 animate-pulse" : "bg-gray-600"
-            )} />
-            <div className={cn(
-              "h-1 w-1 rounded-full transition-all duration-300",
-              props.checked ? "bg-cyan-400 animate-pulse delay-75" : "bg-gray-600"
-            )} />
-            <div className={cn(
-              "h-1 w-1 rounded-full transition-all duration-300",
-              props.checked ? "bg-cyan-400 animate-pulse delay-150" : "bg-gray-600"
-            )} />
-          </div>
-        )}
       </div>
 
-      {/* Label */}
+      {/* Enhanced Label */}
       {label && (
         <label 
           className={cn(
-            "text-sm font-mono cursor-pointer select-none",
-            "transition-colors duration-200",
+            "text-sm font-mono cursor-pointer select-none transition-all duration-300",
             props.disabled && "cursor-not-allowed opacity-50",
-            colors.label,
-            isHovered && !props.disabled && "text-white"
+            isHovered && !props.disabled && "text-white transform translateX(2px)"
           )}
+          style={{
+            color: props.checked ? variantConfig.colors.primary : 'rgba(156, 163, 175, 0.8)'
+          }}
         >
           {label}
-          {variant === 'power' && (
-            <span className={cn(
-              "ml-2 text-[8px]",
-              props.checked ? "text-cyan-400/50" : "text-gray-500"
-            )}>
-              [{props.checked ? 'ACTIVE' : 'STANDBY'}]
-            </span>
+          <span className={cn(
+            "ml-2 text-[8px] font-bold uppercase tracking-wide transition-all duration-300",
+            props.checked && "animate-pulse"
           )}
-          {variant === 'data' && (
-            <span className={cn(
-              "ml-2 text-[8px]",
-              props.checked ? "text-green-400/50" : "text-gray-500"
-            )}>
-              [{props.checked ? 'STREAMING' : 'PAUSED'}]
-            </span>
-          )}
-          {variant === 'security' && (
-            <span className={cn(
-              "ml-2 text-[8px]",
-              props.checked ? "text-purple-400/50" : "text-gray-500"
-            )}>
-              [{props.checked ? 'UNLOCKED' : 'SECURED'}]
-            </span>
-          )}
+          style={{
+            color: props.checked ? `${variantConfig.colors.accent}80` : 'rgba(107, 114, 128, 0.6)'
+          }}>
+            [{props.checked ? variantConfig.status.on : variantConfig.status.off}]
+          </span>
         </label>
       )}
     </div>

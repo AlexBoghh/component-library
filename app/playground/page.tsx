@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/primitives/badge'
 import { Input } from '@/components/ui/primitives/input'
 import { Label } from '@/components/ui/primitives/label'
 import { Switch } from '@/components/ui/primitives/switch'
+import { CyberpunkSwitch } from '@/components/ui/primitives/switch-cyberpunk'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/primitives/select'
 import { Checkbox } from '@/components/ui/primitives/checkbox'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/primitives/radio-group'
@@ -200,14 +201,65 @@ const componentExamples = {
       </div>
     ),
     cyberpunk: (
-      <div className="space-y-4">
-        <div className="flex items-center space-x-3">
-          <Switch className="h-7 w-14 cyberpunk-switch bg-black/80 border-2 border-cyan-500/50 data-[state=unchecked]:bg-black/90 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-cyan-900/50 data-[state=checked]:to-cyan-800/50 data-[state=checked]:border-cyan-400 data-[state=checked]:shadow-[0_0_20px_rgba(0,255,255,0.6)] transition-all duration-300" />
-          <Label className="text-sm font-medium text-cyan-400 font-mono">Neural Link</Label>
+      <div className="space-y-6">
+        {/* Power Systems */}
+        <div className="space-y-3">
+          <h4 className="text-xs font-bold text-cyan-400 uppercase tracking-wide">Power Systems</h4>
+          <CyberpunkSwitch 
+            variant="power" 
+            label="Neural Link" 
+            showStatus={true}
+            showLEDs={true}
+            intensity="high"
+          />
+          <CyberpunkSwitch 
+            variant="quantum" 
+            label="Quantum Core" 
+            defaultChecked
+            showStatus={true}
+            showLEDs={true}
+            intensity="medium"
+          />
         </div>
-        <div className="flex items-center space-x-3">
-          <Switch defaultChecked className="h-7 w-14 cyberpunk-switch bg-black/80 border-2 border-pink-500/50 data-[state=unchecked]:bg-black/90 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-pink-900/50 data-[state=checked]:to-pink-800/50 data-[state=checked]:border-pink-400 data-[state=checked]:shadow-[0_0_20px_rgba(236,72,153,0.6)] transition-all duration-300" />
-          <Label className="text-sm font-medium text-pink-400 font-mono">Combat Mode</Label>
+
+        {/* Security Protocols */}
+        <div className="space-y-3">
+          <h4 className="text-xs font-bold text-purple-400 uppercase tracking-wide">Security</h4>
+          <CyberpunkSwitch 
+            variant="security" 
+            label="Firewall" 
+            showStatus={true}
+            showLEDs={true}
+            showIcon={true}
+          />
+          <CyberpunkSwitch 
+            variant="neural" 
+            label="Brain Interface" 
+            defaultChecked
+            showStatus={true}
+            showLEDs={true}
+            intensity="high"
+          />
+        </div>
+
+        {/* Data Streams */}
+        <div className="space-y-3">
+          <h4 className="text-xs font-bold text-green-400 uppercase tracking-wide">Data Flow</h4>
+          <CyberpunkSwitch 
+            variant="data" 
+            label="Matrix Stream" 
+            defaultChecked
+            showStatus={true}
+            showLEDs={true}
+            showIcon={true}
+          />
+          <CyberpunkSwitch 
+            variant="neon" 
+            label="Neon Protocol" 
+            showStatus={true}
+            showLEDs={true}
+            intensity="low"
+          />
         </div>
       </div>
     )
