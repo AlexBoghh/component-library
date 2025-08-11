@@ -8,7 +8,17 @@
   letter-spacing: 0;
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-  line-height: 1.2;
+  line-height: 1.5;
+  
+  /* 8px grid system for consistent spacing */
+  --spacing-unit: 8px;
+  --spacing-xs: calc(var(--spacing-unit) * 1);  /* 8px */
+  --spacing-sm: calc(var(--spacing-unit) * 2);  /* 16px */
+  --spacing-md: calc(var(--spacing-unit) * 3);  /* 24px */
+  --spacing-lg: calc(var(--spacing-unit) * 4);  /* 32px */
+  --spacing-xl: calc(var(--spacing-unit) * 6);  /* 48px */
+  --spacing-2xl: calc(var(--spacing-unit) * 8); /* 64px */
+  --spacing-3xl: calc(var(--spacing-unit) * 12); /* 96px */
   
   /* Concrete texture background pattern */
   background-image: 
@@ -33,8 +43,9 @@
     letter-spacing: 0.1em;
     text-shadow: 3px 3px 0px rgba(0, 0, 0, 1);
     border-left: 8px solid black;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
+    padding-left: var(--spacing-sm);
+    margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+    line-height: 1.3;
     background: repeating-linear-gradient(
       90deg,
       transparent,
@@ -57,8 +68,14 @@
   p {
     font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
     font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    margin-top: 0;
+  }
+  
+  /* Better paragraph spacing in content areas */
+  p + p {
+    margin-top: var(--spacing-sm);
   }
 }
 
@@ -172,8 +189,8 @@
 /* Raw material sections */
 [data-theme="brutalism"] .raw-section {
   border: 4px solid black;
-  margin: 2rem 0;
-  padding: 1rem;
+  margin: var(--spacing-lg) 0; /* 32px consistent section margins */
+  padding: var(--spacing-md); /* 24px consistent padding */
   position: relative;
   background: 
     repeating-linear-gradient(
@@ -183,6 +200,20 @@
       rgba(0, 0, 0, 0.02) 10px,
       rgba(0, 0, 0, 0.02) 20px
     );
+}
+
+/* General section spacing */
+[data-theme="brutalism"] section {
+  margin-bottom: var(--spacing-lg); /* 32px between sections */
+}
+
+[data-theme="brutalism"] .section {
+  margin-bottom: var(--spacing-lg); /* 32px between sections */
+}
+
+[data-theme="brutalism"] .component-section {
+  margin-bottom: var(--spacing-2xl); /* 64px between major component sections */
+  padding: var(--spacing-md) 0;
 }
 
 /* Broken grid layouts */
@@ -243,21 +274,48 @@
 
 /* === TARGETED COMPONENT FIXES === */
 
-/* INPUT FIELD FIXES - Raw Industrial Form Elements */
+/* FORM ELEMENT SPACING - Consistent spacing system */
+[data-theme="brutalism"] .form-group,
+[data-theme="brutalism"] .form-field,
+[data-theme="brutalism"] fieldset {
+  margin-bottom: var(--spacing-md); /* 24px between form elements */
+}
+
+[data-theme="brutalism"] .form-row {
+  margin-bottom: var(--spacing-sm); /* 16px for form rows */
+}
+
+[data-theme="brutalism"] label {
+  display: block;
+  margin-bottom: var(--spacing-xs); /* 8px */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: black;
+  font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
+}
+
+[data-theme="brutalism"] label + input,
+[data-theme="brutalism"] label + textarea,
+[data-theme="brutalism"] label + select {
+  margin-top: var(--spacing-xs); /* 8px spacing after labels */
+}
+
+/* INPUT FIELD FIXES - Raw Industrial Form Elements with Better Usability */
 [data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]) {
   background-color: white;
   color: black;
-  border: 4px solid black;
+  border: 3px solid black;
   border-radius: 0;
   font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
   font-weight: 700;
-  padding: 1rem;
+  padding: var(--spacing-sm) var(--spacing-sm);
   box-shadow: 
-    inset 4px 4px 0px rgba(0, 0, 0, 0.2),
-    4px 4px 0px rgba(0, 0, 0, 1);
+    inset 3px 3px 0px rgba(0, 0, 0, 0.15),
+    3px 3px 0px rgba(0, 0, 0, 1);
   outline: none;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.4;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -266,6 +324,9 @@
   cursor: text;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  min-height: 48px;
+  margin-bottom: var(--spacing-sm); /* Consistent bottom spacing */
+  width: 100%;
   
   /* Industrial grid texture */
   background-image: 
@@ -280,10 +341,10 @@
 
 [data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]):focus {
   outline: 4px solid hsl(45, 100%, 50%);
-  outline-offset: 4px;
+  outline-offset: 3px;
   box-shadow: 
-    inset 4px 4px 0px rgba(0, 0, 0, 0.4),
-    8px 8px 0px rgba(0, 0, 0, 1),
+    inset 3px 3px 0px rgba(0, 0, 0, 0.25),
+    6px 6px 0px rgba(0, 0, 0, 1),
     0 0 0 2px white;
   border-color: black;
   background-color: hsl(45, 100%, 95%);
@@ -313,19 +374,47 @@
   100% { transform: translate(0, 0); }
 }
 
-/* CHECKBOX FIXES - Industrial Switch Aesthetic */
+/* CHECKBOX FIXES - Industrial Switch Aesthetic with Better Touch Targets */
 [data-theme="brutalism"] [data-radix-checkbox-root] {
-  border: 5px solid black;
+  border: 4px solid black;
   border-radius: 0;
   background-color: white;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   box-shadow: 
     inset 2px 2px 0px rgba(0, 0, 0, 0.2),
     4px 4px 0px rgba(0, 0, 0, 1);
   position: relative;
   flex-shrink: 0;
+  margin-right: var(--spacing-xs); /* 8px spacing to the right */
+  margin-bottom: var(--spacing-xs); /* 8px bottom spacing */
+  
+  /* Ensure minimum 44px touch target with invisible extension */
+}
+
+/* Checkbox group spacing */
+[data-theme="brutalism"] .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm); /* 16px between checkboxes */
+}
+
+[data-theme="brutalism"] .checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs); /* 8px between checkbox and label */
+  margin-bottom: var(--spacing-xs);
+}
+
+[data-theme="brutalism"] [data-radix-checkbox-root]::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  z-index: -1;
   
   /* Industrial texture */
   background-image: 
@@ -398,22 +487,47 @@
   100% { transform: scale(1) rotate(0deg); }
 }
 
-/* RADIO BUTTON FIXES - Industrial Dial Aesthetic */
+/* RADIO BUTTON FIXES - Industrial Dial Aesthetic with Better Touch Targets */
 [data-theme="brutalism"] [data-radix-radio-group-item] {
-  border: 5px solid black;
+  border: 4px solid black;
   border-radius: 0;
   background-color: white;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   box-shadow: 
     inset 2px 2px 0px rgba(0, 0, 0, 0.2),
     4px 4px 0px rgba(0, 0, 0, 1);
   position: relative;
   flex-shrink: 0;
-  min-width: 24px;
-  min-height: 24px;
+  min-width: 32px;
+  min-height: 32px;
   transform: rotate(45deg);
+  margin-right: var(--spacing-xs); /* 8px spacing to the right */
+}
+
+/* Radio group spacing */
+[data-theme="brutalism"] [data-radix-radio-group-root] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm); /* 16px between radio items */
+}
+
+[data-theme="brutalism"] .radio-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs); /* 8px between radio and label */
+  margin-bottom: var(--spacing-xs);
+}
+
+[data-theme="brutalism"] [data-radix-radio-group-item]::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  z-index: -1;
   
   /* Industrial crosshatch texture */
   background-image: 
@@ -488,16 +602,17 @@
   100% { transform: rotate(45deg) scale(1); }
 }
 
-/* SWITCH FIXES - Surgical targeting */
+/* SWITCH FIXES - Surgical targeting with Better Touch Area */
 [data-theme="brutalism"] [data-radix-switch-root] {
   background-color: hsl(0, 0%, 85%);
   border: 4px solid black;
   border-radius: 0;
-  width: 50px;
-  height: 26px;
+  width: 56px;
+  height: 32px;
   cursor: pointer;
   position: relative;
   box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3);
+  /* Now meets minimum 44px touch target requirement */
 }
 
 [data-theme="brutalism"] [data-radix-switch-root][data-state="checked"] {
@@ -509,11 +624,11 @@
   background-color: white;
   border: 3px solid black;
   border-radius: 0;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: block;
   position: relative;
-  transform: translateX(1px) translateY(-50%);
+  transform: translateX(2px) translateY(-50%);
   top: 50%;
   transition: transform 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
@@ -521,7 +636,7 @@
 }
 
 [data-theme="brutalism"] [data-radix-switch-root][data-state="checked"] [data-radix-switch-thumb] {
-  transform: translateX(23px) translateY(-50%);
+  transform: translateX(28px) translateY(-50%);
   background-color: black;
   border-color: black;
 }
@@ -589,16 +704,16 @@
   box-shadow: 5px 5px 0px rgba(0, 0, 0, 1);
 }
 
-/* BUTTON FIXES - Harsh Brutalist Aesthetic */
+/* BUTTON FIXES - Harsh Brutalist Aesthetic with Better Touch Targets */
 [data-theme="brutalism"] button {
   border: 4px solid black;
   border-radius: 0;
-  box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
   font-family: "Courier New", "Liberation Mono", "Consolas", "Monaco", monospace;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  padding: 1rem 2rem;
+  padding: var(--spacing-sm) var(--spacing-md);
   cursor: pointer;
   position: relative;
   z-index: 1;
@@ -609,6 +724,9 @@
   align-items: center;
   justify-content: center;
   min-width: fit-content;
+  min-height: 44px;
+  margin: var(--spacing-xs); /* 8px margin for button spacing */
+  margin-bottom: var(--spacing-sm); /* 16px bottom margin */
   
   /* Raw industrial texture */
   background-image: 
@@ -623,24 +741,24 @@
 
 /* Jarring hover effect - non-smooth */
 [data-theme="brutalism"] button:hover:not(:disabled) {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px rgba(0, 0, 0, 1);
   background-color: hsl(45, 100%, 80%);
   animation: button-glitch 0.1s steps(2, end);
 }
 
 /* Brutal active state */
 [data-theme="brutalism"] button:active:not(:disabled) {
-  transform: translate(4px, 4px);
+  transform: translate(3px, 3px);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
   background-color: hsl(0, 100%, 80%);
 }
 
 /* Glitch animation for brutalist feel */
 @keyframes button-glitch {
-  0% { transform: translate(-4px, -4px) scale(1); }
-  50% { transform: translate(-3px, -5px) scale(1.02); }
-  100% { transform: translate(-4px, -4px) scale(1); }
+  0% { transform: translate(-3px, -3px) scale(1); }
+  50% { transform: translate(-2px, -4px) scale(1.02); }
+  100% { transform: translate(-3px, -3px) scale(1); }
 }
 
 /* Primary button variant - Warning Tape Aesthetic */
@@ -687,13 +805,25 @@
   100% { box-shadow: 8px 8px 0px rgba(0, 0, 0, 1); }
 }
 
+/* BUTTON GROUP SPACING */
+[data-theme="brutalism"] .button-group {
+  display: flex;
+  gap: var(--spacing-sm); /* 16px between buttons */
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-md);
+}
+
+[data-theme="brutalism"] .button-group button {
+  margin: 0; /* Remove individual button margins in groups */
+}
+
 /* TAB FIXES - Surgical targeting */
 [data-theme="brutalism"] [data-radix-tabs-list] {
   background-color: transparent;
   border: none;
   border-radius: 0;
   padding: 0;
-  gap: 4px;
+  gap: var(--spacing-xs); /* 8px gap between tabs */
   display: flex;
   box-shadow: none;
   align-items: stretch;
@@ -701,6 +831,7 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   min-height: 48px;
+  margin-bottom: var(--spacing-sm);
 }
 
 [data-theme="brutalism"] [data-radix-tabs-trigger] {
@@ -760,13 +891,13 @@
 [data-theme="brutalism"] [role="alert"] {
   border: 4px solid black;
   border-radius: 0;
-  padding: 1.25rem;
+  padding: var(--spacing-md); /* 24px consistent padding */
   background-color: white;
   color: black;
   font-weight: 700;
   box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
   position: relative;
-  margin: 1rem 0;
+  margin: var(--spacing-md) 0; /* 24px consistent margins */
 }
 
 [data-theme="brutalism"] .alert * {
@@ -1296,10 +1427,13 @@
   border: 4px solid black;
   border-bottom-width: 8px;
   box-shadow: 0 8px 0px rgba(0, 0, 0, 1);
-  padding: 1rem;
+  padding: var(--spacing-sm) var(--spacing-md); /* Consistent padding */
   font-family: "Courier New", monospace;
   text-transform: uppercase;
   font-weight: 700;
+  margin-bottom: calc(var(--spacing-lg) + 8px); /* Account for shadow */
+  z-index: 10; /* Keep nav above other elements */
+  position: relative;
 }
 
 [data-theme="brutalism"] nav ul {
@@ -1355,10 +1489,47 @@
   100% { background-position: 0 0; }
 }
 
+/* === BRUTALIST SPACING UTILITIES === */
+
+/* Margin utilities */
+[data-theme="brutalism"] .m-0 { margin: 0 !important; }
+[data-theme="brutalism"] .m-xs { margin: var(--spacing-xs) !important; }
+[data-theme="brutalism"] .m-sm { margin: var(--spacing-sm) !important; }
+[data-theme="brutalism"] .m-md { margin: var(--spacing-md) !important; }
+[data-theme="brutalism"] .m-lg { margin: var(--spacing-lg) !important; }
+
+[data-theme="brutalism"] .mb-0 { margin-bottom: 0 !important; }
+[data-theme="brutalism"] .mb-xs { margin-bottom: var(--spacing-xs) !important; }
+[data-theme="brutalism"] .mb-sm { margin-bottom: var(--spacing-sm) !important; }
+[data-theme="brutalism"] .mb-md { margin-bottom: var(--spacing-md) !important; }
+[data-theme="brutalism"] .mb-lg { margin-bottom: var(--spacing-lg) !important; }
+
+[data-theme="brutalism"] .mt-0 { margin-top: 0 !important; }
+[data-theme="brutalism"] .mt-xs { margin-top: var(--spacing-xs) !important; }
+[data-theme="brutalism"] .mt-sm { margin-top: var(--spacing-sm) !important; }
+[data-theme="brutalism"] .mt-md { margin-top: var(--spacing-md) !important; }
+[data-theme="brutalism"] .mt-lg { margin-top: var(--spacing-lg) !important; }
+
+/* Padding utilities */
+[data-theme="brutalism"] .p-0 { padding: 0 !important; }
+[data-theme="brutalism"] .p-xs { padding: var(--spacing-xs) !important; }
+[data-theme="brutalism"] .p-sm { padding: var(--spacing-sm) !important; }
+[data-theme="brutalism"] .p-md { padding: var(--spacing-md) !important; }
+[data-theme="brutalism"] .p-lg { padding: var(--spacing-lg) !important; }
+
+/* Gap utilities for flex/grid */
+[data-theme="brutalism"] .gap-0 { gap: 0 !important; }
+[data-theme="brutalism"] .gap-xs { gap: var(--spacing-xs) !important; }
+[data-theme="brutalism"] .gap-sm { gap: var(--spacing-sm) !important; }
+[data-theme="brutalism"] .gap-md { gap: var(--spacing-md) !important; }
+[data-theme="brutalism"] .gap-lg { gap: var(--spacing-lg) !important; }
+
 /* Brutalist utility classes */
 [data-theme="brutalism"] .brutalist-border {
   border: 4px solid black;
   box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  margin-right: 6px;
+  margin-bottom: 6px;
 }
 
 [data-theme="brutalism"] .brutalist-text {
@@ -1366,27 +1537,34 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  line-height: 1.4;
 }
 
 [data-theme="brutalism"] .brutal-emphasis {
   background: black;
   color: white;
-  padding: 0.25rem 0.5rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
   display: inline-block;
   transform: rotate(-1deg);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+  margin: var(--spacing-xs);
 }
 
 [data-theme="brutalism"] .raw-container {
   border: 6px solid black;
-  padding: 2rem;
-  margin: 2rem 0;
+  padding: var(--spacing-lg); /* 32px consistent padding */
+  margin: var(--spacing-lg) 0; /* 32px consistent margins */
   background: white;
   position: relative;
   box-shadow: 12px 12px 0px rgba(0, 0, 0, 1);
+  z-index: 1; /* Prevent overlap issues */
+  
+  /* Ensure content doesn't overlap with shadow */
+  margin-right: 12px;
+  margin-bottom: calc(var(--spacing-lg) + 12px);
   
   /* Exposed container label */
   &::before {
@@ -1434,6 +1612,72 @@
 @keyframes progress-industrial {
   0% { background-position: 0 0; }
   100% { background-position: 8px 0; }
+}
+
+/* === LAYOUT AND OVERLAP FIXES === */
+
+/* Ensure elements with shadows have proper spacing */
+[data-theme="brutalism"] *[style*="box-shadow"],
+[data-theme="brutalism"] .card,
+[data-theme="brutalism"] button,
+[data-theme="brutalism"] .alert,
+[data-theme="brutalism"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="brutalism"] textarea {
+  margin-right: max(var(--spacing-xs), 8px); /* Account for right shadows */
+  margin-bottom: max(var(--spacing-xs), 8px); /* Account for bottom shadows */
+}
+
+/* Container spacing to prevent overlap */
+[data-theme="brutalism"] .container,
+[data-theme="brutalism"] .content {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Grid and flex layouts */
+[data-theme="brutalism"] .grid {
+  display: grid;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+[data-theme="brutalism"] .flex {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Ensure proper stacking context */
+[data-theme="brutalism"] .modal,
+[data-theme="brutalism"] [data-radix-dropdown-menu-content],
+[data-theme="brutalism"] [data-radix-select-content],
+[data-theme="brutalism"] [data-radix-popover-content] {
+  z-index: 1000;
+}
+
+/* Prevent text overlap in tight spaces */
+[data-theme="brutalism"] * {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 768px) {
+  [data-theme="brutalism"] {
+    --spacing-lg: calc(var(--spacing-unit) * 3); /* Reduce from 32px to 24px on mobile */
+    --spacing-xl: calc(var(--spacing-unit) * 5); /* Reduce from 48px to 40px on mobile */
+  }
+  
+  [data-theme="brutalism"] .card,
+  [data-theme="brutalism"] .raw-container {
+    padding: var(--spacing-md); /* Reduce padding on mobile */
+    margin: var(--spacing-sm); /* Reduce margins on mobile */
+  }
+  
+  [data-theme="brutalism"] button {
+    padding: var(--spacing-xs) var(--spacing-sm); /* Smaller buttons on mobile */
+    margin: calc(var(--spacing-xs) / 2);
+  }
 }
 
 /* No rounded corners - EVER */
